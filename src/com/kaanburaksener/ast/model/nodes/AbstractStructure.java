@@ -2,12 +2,14 @@ package com.kaanburaksener.ast.model.nodes;
 
 import com.github.javaparser.ast.Modifier;
 
+import java.util.List;
+
 /**
  * Created by kaanburaksener on 16/02/17.
  */
 public class AbstractStructure {
     private int id;
-    private Modifier accessModifier; //It should be turned into List<Modifier>, Any node can have more than one modifiers!!!
+    private List<Modifier> accessModifiers; //It should be turned into List<Modifier>, Any node can have more than one modifiers!!!
     private String name;
     private String path;
 
@@ -24,12 +26,12 @@ public class AbstractStructure {
         this.id = id;
     }
 
-    public Modifier getAccessModifier() {
-        return accessModifier;
+    public List<Modifier> getAccessModifiers() {
+        return accessModifiers;
     }
 
-    public void setAccessModifier(Modifier accessModifier) {
-        this.accessModifier = accessModifier;
+    public void setAccessModifiers(List<Modifier> accessModifiers) {
+        this.accessModifiers = accessModifiers;
     }
 
     public String getName() {
@@ -49,6 +51,10 @@ public class AbstractStructure {
     }
 
     public void printStructure() {
-        System.out.println("modifier:" + accessModifier + ", name: " + name + ", path: " + path);
+        System.out.print("modifiers: ");
+        accessModifiers.stream().forEach(am-> {
+                System.out.print(am + " ");
+        });
+        System.out.println(", name: " + name + ", path: " + path);
     }
 }

@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/***
  * Created by kaanburaksener on 11/02/17.
  */
 public class NodeParser {
@@ -50,21 +50,18 @@ public class NodeParser {
         for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
             try {
                 CompilationUnit compilationUnit = JavaParser.parse(new File(targetFolderName + abstractStructure.getPath()));
-                compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().
-                        filter(f -> f.getModifiers().contains(Modifier.PUBLIC)).
-                        forEach(f -> System.out.println("Class Name: " + f.getNameAsString()));
             } catch (Exception e) {
                 System.out.println("Error occured while opening the given file: " + e.getMessage());
             }
         }
     }
 
-    /**
+    /***
      * This methods lists all the .java files and their names in a given directory
      *
      * @param projectDir
      */
-    public void listNodes(File projectDir) {
+    public void loadNodes(File projectDir) {
         List<AbstractStructure> nodes = new ArrayList<AbstractStructure>();
 
         new DirExplorer((level, path, file) -> path.endsWith(".java"), (level, path, file) -> {
@@ -103,10 +100,10 @@ public class NodeParser {
         nodeHolder.setNodes(nodes);
     }
 
-    /**
+    /***
      * This methods lists all the methods in a given class or interface
      */
-    public void listMethods() {
+    public void loadNodesMethods() {
         for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
             if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
                 try {
@@ -121,7 +118,7 @@ public class NodeParser {
         }
     }
 
-    /**
+    /***
      * Simple visitor implementation for visiting MethodDeclaration nodes
      */
     private static class MethodVisitor extends VoidVisitorAdapter<Void> {
@@ -144,9 +141,9 @@ public class NodeParser {
                     parameters.add(parameter);
                 });
 
-                methodStructure = new MethodStructure(castStringToModifier(n.getModifiers().toString()), n.getType().toString(), n.getNameAsString(), parameters);
+                methodStructure = new MethodStructure(castStringToModifiers(n.getModifiers().toString()), n.getType().toString(), n.getNameAsString(), parameters);
             } else {
-                methodStructure = new MethodStructure(castStringToModifier(n.getModifiers().toString()), n.getType().toString(), n.getNameAsString());
+                methodStructure = new MethodStructure(castStringToModifiers(n.getModifiers().toString()), n.getType().toString(), n.getNameAsString());
             }
 
             ((ClassStructure)this.abstractStructure).addMethod(methodStructure);
@@ -155,10 +152,10 @@ public class NodeParser {
         }
     }
 
-    /**
+    /***
      * This methods lists all the attributes in a given class or interface and all the values in a given enumeration
      */
-    public void listAttributes() {
+    public void loadNodesAttributesOrValues() {
         for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
             if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
                 try {
@@ -168,17 +165,17 @@ public class NodeParser {
                         variableDeclarators.stream().forEach(vd -> {
                             AttributeStructure attributeStructure;
 
-                            Modifier modifier = castStringToModifier(field.getModifiers().toString());
+                            List<Modifier> modifiers = castStringToModifiers(field.getModifiers().toString());
                             String type = vd.getType().toString();
                             String name = vd.getNameAsString();
 
                             if(vd.getInitializer().toString().equals("Optional.empty")) {
-                                    attributeStructure = new AttributeStructure(modifier, type, name);
+                                    attributeStructure = new AttributeStructure(modifiers, type, name);
                             } else {
                                 String unstructuredInitializer = vd.getInitializer().toString();
                                 String initializer = unstructuredInitializer.substring(unstructuredInitializer.indexOf("[") + 1, unstructuredInitializer.indexOf("]"));
                                 initializer = initializer.substring(1,initializer.length()-1);
-                                attributeStructure = new AttributeStructure(modifier, type, name, initializer);
+                                attributeStructure = new AttributeStructure(modifiers, type, name, initializer);
                             }
 
                             ((ClassStructure)abstractStructure).addAttribute(attributeStructure);
@@ -203,20 +200,20 @@ public class NodeParser {
         }
     }
 
-    /**
-     * This method sets the modifiers to the nodes
+    /***
+     * This method sets the modifiers into the nodes
      */
-    public void nodeModifierInitializer() {
+    public void initializeNodesModifiers() {
         for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
             try {
                 CompilationUnit compilationUnit =  getCompilationUnit(abstractStructure);
 
                 compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
-                    abstractStructure.setAccessModifier(castStringToModifier(c.getModifiers().toString()));
+                    abstractStructure.setAccessModifiers(castStringToModifiers(c.getModifiers().toString()));
                 });
 
                 compilationUnit.getNodesByType(EnumDeclaration.class).stream().forEach(c -> {
-                    abstractStructure.setAccessModifier(castStringToModifier(c.getModifiers().toString()));
+                    abstractStructure.setAccessModifiers(castStringToModifiers(c.getModifiers().toString()));
                 });
             } catch (Exception e) {
                 System.out.println("Error occured while opening the given file: " + e.getMessage());
@@ -225,47 +222,71 @@ public class NodeParser {
     }
 
     /***
-     * A Class, a method, or an attribute might have more than one modifiers so this method should be reviewed!!!
-     * @param modifier
+     * @param modifiers
      * @return
      */
-    public static Modifier castStringToModifier(String modifier) {
-        Modifier castModifier;
+    public static List<Modifier> castStringToModifiers(String modifiers) {
+        List<Modifier> castModifiers = new ArrayList<Modifier>();
 
-        switch (modifier) {
-            case "[PUBLIC]":
-                castModifier = Modifier.PUBLIC;
-                break;
-            case "[PRIVATE]":
-                castModifier = Modifier.PRIVATE;
-                break;
-            case "[PROTECTED]":
-                castModifier = Modifier.PROTECTED;
-                break;
-            case "[ABSTRACT]":
-                castModifier = Modifier.ABSTRACT;
-                break;
-            case "[STATIC]":
-                castModifier = Modifier.STATIC;
-                break;
-            case "[FINAL]":
-                castModifier = Modifier.FINAL;
-            case "[SYNCHRONIZED]":
-                castModifier = Modifier.SYNCHRONIZED;
-                break;
-            case "[]":
-                castModifier = Modifier.PUBLIC;
-                break;
-            default:
-                castModifier = null;
-                break;
+        if(modifiers.toLowerCase().contains(",")) {
+            String content = modifiers.substring(modifiers.indexOf("[") + 1, modifiers.indexOf("]"));
+            String[] modifierList = content.split(",");
+
+            for(String modifier : modifierList) {
+                modifier = modifier.trim();
+                modifier = "[" + modifier + "]";
+                castModifiers.add(getModifier(modifier));
+            }
+        } else {
+            castModifiers.add(getModifier(modifiers));
         }
 
-        return castModifier;
+        return castModifiers;
     }
 
     /***
-     * This method is used to control how accurately the source codes turned into structured objects
+     * This methods return the equivalent access modifier in Modifier Class Type
+     * @param modifier
+     * @return
+     */
+    public static Modifier getModifier(String modifier) {
+        Modifier originalModifier = null;
+
+        switch (modifier) {
+            case "[PUBLIC]":
+                originalModifier = Modifier.PUBLIC;
+                break;
+            case "[PRIVATE]":
+                originalModifier = Modifier.PRIVATE;
+                break;
+            case "[PROTECTED]":
+                originalModifier = Modifier.PROTECTED;
+                break;
+            case "[ABSTRACT]":
+                originalModifier = Modifier.ABSTRACT;
+                break;
+            case "[STATIC]":
+                originalModifier = Modifier.STATIC;
+                break;
+            case "[FINAL]":
+                originalModifier = Modifier.FINAL;
+                break;
+            case "[SYNCHRONIZED]":
+                originalModifier = Modifier.SYNCHRONIZED;
+                break;
+            case "[]":
+                originalModifier = Modifier.PUBLIC;
+                break;
+            default:
+                System.out.println("***** SOMETHING GOES WRONG!" + modifier);
+                break;
+        }
+
+        return originalModifier;
+    }
+
+    /***
+     * This method is used to control how accurately the source codes turned into structured node objects
      */
     public void testNodes() {
         nodeHolder.printAllNodes();

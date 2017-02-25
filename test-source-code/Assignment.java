@@ -6,7 +6,7 @@ import java.util.Collection;
 
 public class Assignment {
 	protected Hashtable<Long, Submission> submissions;
-	protected Date dueDate;
+	protected static Date dueDate;
 	protected float weight;
 	protected String title;
 	protected String description;
@@ -43,7 +43,7 @@ public class Assignment {
 		return dueDate;
 	}
 	
-	public void setDueDate(Date dueDate){
+	public static void setDueDate(Date dueDate){
 		this.dueDate = dueDate;
 	}
 	

@@ -22,10 +22,10 @@ public class NodeController {
     public void initialize() {
         this.nodeHolder = new NodeHolder();
         this.nodeParser = new NodeParser(nodeHolder, path);
-        nodeParser.listNodes(projectDir);
-        nodeParser.nodeModifierInitializer();
-        nodeParser.listMethods();
-        nodeParser.listAttributes();
+        nodeParser.loadNodes(projectDir);
+        nodeParser.initializeNodesModifiers();
+        nodeParser.loadNodesMethods();
+        nodeParser.loadNodesAttributesOrValues();
         nodeParser.testNodes();
     }
 }

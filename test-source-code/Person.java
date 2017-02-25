@@ -1,15 +1,10 @@
 package com.kaanburaksener;
 
 public class Person {
-
     protected String firstName;
-
     protected String lastName;
-
     protected String address;
-
     protected String phone;
-
     protected String email;
 
     public String getFirstName() {
