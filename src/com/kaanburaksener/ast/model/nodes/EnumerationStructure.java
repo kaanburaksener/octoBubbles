@@ -34,4 +34,16 @@ public class EnumerationStructure extends AbstractStructure {
     public String getType(){
         return type;
     }
+
+    @Override
+    public void printStructure() {
+        super.printStructure();
+        this.printValues();
+    }
+
+    public void printValues() {
+        values.stream().forEach(v -> {
+            System.out.println(v);
+        });
+    }
 }

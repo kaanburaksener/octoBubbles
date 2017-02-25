@@ -7,10 +7,9 @@ import com.github.javaparser.ast.Modifier;
  */
 public class AbstractStructure {
     private int id;
-    private Modifier accessModifier;
+    private Modifier accessModifier; //It should be turned into List<Modifier>, Any node can have more than one modifiers!!!
     private String name;
     private String path;
-
 
     public AbstractStructure(String name, String path) {
         this.name = name;

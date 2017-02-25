@@ -2,25 +2,25 @@ package com.kaanburaksener.ast.util;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.*;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import com.github.javaparser.ast.Modifier;
 
-import com.google.common.base.Strings;
-
-import com.kaanburaksener.ast.helper.NodeIterator;
+import com.kaanburaksener.ast.model.AttributeStructure;
+import com.kaanburaksener.ast.model.MethodStructure;
 import com.kaanburaksener.ast.model.NodeHolder;
+import com.kaanburaksener.ast.model.ParameterStructure;
 import com.kaanburaksener.ast.model.nodes.AbstractStructure;
 import com.kaanburaksener.ast.helper.DirExplorer;
+import com.kaanburaksener.ast.model.nodes.ClassStructure;
+import com.kaanburaksener.ast.model.nodes.EnumerationStructure;
+import com.kaanburaksener.ast.model.nodes.InterfaceStructure;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
 
 /**
  * Created by kaanburaksener on 11/02/17.
@@ -74,7 +74,14 @@ public class NodeParser {
                     @Override
                     public void visit(ClassOrInterfaceDeclaration n, Object arg) {
                         super.visit(n, arg);
-                        AbstractStructure abstractStructure = new AbstractStructure(n.getNameAsString(), path);
+                        AbstractStructure abstractStructure;
+
+                        if(!n.isInterface()) {
+                            abstractStructure = new ClassStructure(n.getNameAsString(), path);
+                        } else {
+                            abstractStructure = new InterfaceStructure(n.getNameAsString(), path);
+                        }
+
                         nodes.add(abstractStructure);
                     }
                 }.visit(JavaParser.parse(file), null);
@@ -84,7 +91,7 @@ public class NodeParser {
                     @Override
                     public void visit(EnumDeclaration m, Object arg) {
                         super.visit(m, arg);
-                        AbstractStructure abstractStructure = new AbstractStructure(m.getNameAsString(), path);
+                        AbstractStructure abstractStructure = new EnumerationStructure(m.getNameAsString(), path);
                         nodes.add(abstractStructure);
                     }
                 }.visit(JavaParser.parse(file), null);
@@ -97,34 +104,119 @@ public class NodeParser {
     }
 
     /**
-     * This method distinguishes classes, interfaces, and enumeration in a given node list
-     *
-     * @param
+     * This methods lists all the methods in a given class or interface
      */
-    public void nodeRecognizer() {
+    public void listMethods() {
         for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
-            System.out.println(abstractStructure.getName() + " --->" + abstractStructure.getPath());
+            if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
+                try {
+                    CompilationUnit compilationUnit =  getCompilationUnit(abstractStructure);
+                    compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
+                        new MethodVisitor(abstractStructure).visit(c,null);
+                    });
+                } catch (Exception e) {
+                    System.out.println("Error occured while opening the given file: " + e.getMessage());
+                }
+            }
+        }
+    }
 
-            try {
-                CompilationUnit compilationUnit =  getCompilationUnit(abstractStructure);
-                compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().filter(c -> c.isInterface()).forEach(c -> {
-                    abstractStructure.setAccessModifier(castStringToModifier(c.getModifiers().toString()));
-                    System.out.println("Interface: " + c.getNameAsString());
-                    System.out.println("Modifier" + c.getModifiers().toString());
-                    System.out.println("--------");
+    /**
+     * Simple visitor implementation for visiting MethodDeclaration nodes
+     */
+    private static class MethodVisitor extends VoidVisitorAdapter<Void> {
+        private AbstractStructure abstractStructure;
+
+        public MethodVisitor(AbstractStructure abstractStructure) {
+            this.abstractStructure = abstractStructure;
+        }
+
+        @Override
+        public void visit(MethodDeclaration n, Void arg) {
+            MethodStructure methodStructure;
+
+            if(n.getParameters().size() > 0) {
+                List<ParameterStructure> parameters = new ArrayList<ParameterStructure>();
+
+                NodeList<Parameter> unstructuredParameters = n.getParameters();
+                unstructuredParameters.forEach(up -> {
+                    ParameterStructure parameter = new ParameterStructure(up.getType().toString(), up.getNameAsString());
+                    parameters.add(parameter);
                 });
 
-                compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().filter(c -> !c.isInterface()).forEach(c -> {
+                methodStructure = new MethodStructure(castStringToModifier(n.getModifiers().toString()), n.getType().toString(), n.getNameAsString(), parameters);
+            } else {
+                methodStructure = new MethodStructure(castStringToModifier(n.getModifiers().toString()), n.getType().toString(), n.getNameAsString());
+            }
+
+            ((ClassStructure)this.abstractStructure).addMethod(methodStructure);
+
+            super.visit(n, arg);
+        }
+    }
+
+    /**
+     * This methods lists all the attributes in a given class or interface and all the values in a given enumeration
+     */
+    public void listAttributes() {
+        for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
+            if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
+                try {
+                    CompilationUnit compilationUnit =  getCompilationUnit(abstractStructure);
+                    compilationUnit.getNodesByType(FieldDeclaration.class).stream().forEach(field -> {
+                        List<VariableDeclarator> variableDeclarators = field.getVariables();
+                        variableDeclarators.stream().forEach(vd -> {
+                            AttributeStructure attributeStructure;
+
+                            Modifier modifier = castStringToModifier(field.getModifiers().toString());
+                            String type = vd.getType().toString();
+                            String name = vd.getNameAsString();
+
+                            if(vd.getInitializer().toString().equals("Optional.empty")) {
+                                    attributeStructure = new AttributeStructure(modifier, type, name);
+                            } else {
+                                String unstructuredInitializer = vd.getInitializer().toString();
+                                String initializer = unstructuredInitializer.substring(unstructuredInitializer.indexOf("[") + 1, unstructuredInitializer.indexOf("]"));
+                                initializer = initializer.substring(1,initializer.length()-1);
+                                attributeStructure = new AttributeStructure(modifier, type, name, initializer);
+                            }
+
+                            ((ClassStructure)abstractStructure).addAttribute(attributeStructure);
+                        });
+                    });
+                } catch (Exception e) {
+                    System.out.println("Error occured while opening the given file: " + e.getMessage());
+                }
+            } else if(abstractStructure instanceof EnumerationStructure) {
+                try {
+                    CompilationUnit compilationUnit =  getCompilationUnit(abstractStructure);
+                    compilationUnit.getNodesByType(EnumDeclaration.class).stream().forEach(enumeration -> {
+                        List<EnumConstantDeclaration> enumValues = enumeration.getEntries();
+                        enumValues.stream().forEach(ev -> {
+                            ((EnumerationStructure)abstractStructure).addValue(ev.getNameAsString());
+                        });
+                    });
+                } catch (Exception e) {
+                    System.out.println("Error occured while opening the given file: " + e.getMessage());
+                }
+            }
+        }
+    }
+
+    /**
+     * This method sets the modifiers to the nodes
+     */
+    public void nodeModifierInitializer() {
+        for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
+            try {
+                CompilationUnit compilationUnit =  getCompilationUnit(abstractStructure);
+
+                compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
                     abstractStructure.setAccessModifier(castStringToModifier(c.getModifiers().toString()));
-                    System.out.println("Class: " + c.getNameAsString());
-                    System.out.println("Modifier" + c.getModifiers().toString());
-                    System.out.println("--------");
                 });
 
                 compilationUnit.getNodesByType(EnumDeclaration.class).stream().forEach(c -> {
                     abstractStructure.setAccessModifier(castStringToModifier(c.getModifiers().toString()));
-                    System.out.println("Enumeration: " + c.getNameAsString());
-                    System.out.println("Modifier" + c.getModifiers().toString());
                 });
             } catch (Exception e) {
                 System.out.println("Error occured while opening the given file: " + e.getMessage());
@@ -132,26 +224,11 @@ public class NodeParser {
         }
     }
 
-    public static void statementsByLine(File projectDir) {
-        new DirExplorer((level, path, file) -> path.endsWith(".java"), (level, path, file) -> {
-            System.out.println(path);
-            System.out.println(Strings.repeat("=", path.length()));
-            try {
-                new NodeIterator(new NodeIterator.NodeHandler() {
-                    @Override
-                    public boolean handle(Node node) {
-                        System.out.println("Parent Node" + node.getParentNode());
-                        System.out.println("Parent Node for Children" + node.getParentNodeForChildren());
-                        return true;
-                    }
-                }).explore(JavaParser.parse(file));
-                System.out.println(); // empty line
-            } catch (IOException e) {
-                new RuntimeException(e);
-            }
-        }).explore(projectDir);
-    }
-
+    /***
+     * A Class, a method, or an attribute might have more than one modifiers so this method should be reviewed!!!
+     * @param modifier
+     * @return
+     */
     public static Modifier castStringToModifier(String modifier) {
         Modifier castModifier;
 
@@ -173,12 +250,24 @@ public class NodeParser {
                 break;
             case "[FINAL]":
                 castModifier = Modifier.FINAL;
+            case "[SYNCHRONIZED]":
+                castModifier = Modifier.SYNCHRONIZED;
+                break;
+            case "[]":
+                castModifier = Modifier.PUBLIC;
                 break;
             default:
-                castModifier = Modifier.SYNCHRONIZED;
+                castModifier = null;
                 break;
         }
 
         return castModifier;
+    }
+
+    /***
+     * This method is used to control how accurately the source codes turned into structured objects
+     */
+    public void testNodes() {
+        nodeHolder.printAllNodes();
     }
 }

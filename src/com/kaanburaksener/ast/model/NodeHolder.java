@@ -1,6 +1,9 @@
 package com.kaanburaksener.ast.model;
 
 import com.kaanburaksener.ast.model.nodes.AbstractStructure;
+import com.kaanburaksener.ast.model.nodes.ClassStructure;
+import com.kaanburaksener.ast.model.nodes.EnumerationStructure;
+import com.kaanburaksener.ast.model.nodes.InterfaceStructure;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,13 +30,18 @@ public class NodeHolder {
         return nodes;
     }
 
-    public void printAllNodes() {
-        for(AbstractStructure node : nodes) {
-            node.printStructure();
-        }
-    }
-
     public void setNodes(List<AbstractStructure> nodes) {
         this.nodes = nodes;
+    }
+
+    public void printAllNodes() {
+        nodes.stream().forEach(node -> {
+            if(node instanceof ClassStructure || node instanceof InterfaceStructure) {
+                ((ClassStructure)node).printStructure();
+            } else if(node instanceof EnumerationStructure) {
+                ((EnumerationStructure)node).printStructure();
+            }
+            System.out.println("------------ END OF NODE ----------");
+        });
     }
 }

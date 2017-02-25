@@ -2,8 +2,6 @@ package com.kaanburaksener.ast.model;
 
 import com.github.javaparser.ast.Modifier;
 
-import com.kaanburaksener.ast.model.ParameterStructure;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,5 +40,13 @@ public class MethodStructure {
         this.name = name;
         this.parameters = new ArrayList<ParameterStructure>();
         this.parameters = parameters;
+    }
+
+    public void printMethodDeclaration() {
+        System.out.print(accessModifier + " " + returnType + " " + name + "(");
+        parameters.stream().forEach(p -> {
+            System.out.print(p.dataType + " " + p.name + ",");
+        });
+        System.out.print(")");
     }
 }

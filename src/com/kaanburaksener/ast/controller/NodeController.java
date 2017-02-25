@@ -23,6 +23,9 @@ public class NodeController {
         this.nodeHolder = new NodeHolder();
         this.nodeParser = new NodeParser(nodeHolder, path);
         nodeParser.listNodes(projectDir);
-        nodeParser.nodeRecognizer();
+        nodeParser.nodeModifierInitializer();
+        nodeParser.listMethods();
+        nodeParser.listAttributes();
+        nodeParser.testNodes();
     }
 }

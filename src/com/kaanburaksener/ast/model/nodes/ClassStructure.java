@@ -51,4 +51,25 @@ public class ClassStructure extends AbstractStructure {
     public String getType(){
         return type;
     }
+
+    @Override
+    public void printStructure() {
+        super.printStructure();
+        this.printMethods();
+        this.printAttributes();
+    }
+
+    public void printMethods() {
+        methods.stream().forEach(m -> {
+            m.printMethodDeclaration();
+            System.out.println();
+        });
+    }
+
+    public void printAttributes() {
+        attributes.stream().forEach(a -> {
+            a.printAttributeDeclaration();
+            System.out.println();
+        });
+    }
 }

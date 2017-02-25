@@ -5,11 +5,11 @@ import java.util.Hashtable;
 
 public class Course {
 	//TODO: Revisit the cycle between students and courses (potential memory leaks)
-	Vector<Student> students;
-	Vector<Assignment> assignments;
+	public Vector<Student> students;
+	private Vector<Assignment> assignments;
 	Hashtable<Long,Float> finalGrades;
 	String courseNumber;
-	String title;
+	String title = "Guf Umer";
 	
 	public Course(String courseNumber, String title){
 		students = new Vector<Student>();
