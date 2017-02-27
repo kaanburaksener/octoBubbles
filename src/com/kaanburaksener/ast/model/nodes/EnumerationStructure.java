@@ -42,8 +42,10 @@ public class EnumerationStructure extends AbstractStructure {
     }
 
     public void printValues() {
-        values.stream().forEach(v -> {
-            System.out.println(v);
-        });
+        if(values.size() > 0) {
+            values.stream().forEach(v -> {
+                System.out.println(v);
+            });
+        }
     }
 }

@@ -4,6 +4,7 @@ import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.*;
+import com.github.javaparser.ast.type.ClassOrInterfaceType;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import com.github.javaparser.ast.Modifier;
 
@@ -191,6 +192,32 @@ public class NodeParser {
                         List<EnumConstantDeclaration> enumValues = enumeration.getEntries();
                         enumValues.stream().forEach(ev -> {
                             ((EnumerationStructure)abstractStructure).addValue(ev.getNameAsString());
+                        });
+                    });
+                } catch (Exception e) {
+                    System.out.println("Error occured while opening the given file: " + e.getMessage());
+                }
+            }
+        }
+    }
+
+    /***
+     * This methods lists the relations (extends, implements) between Classes and Interfaces
+     */
+    public void loadRelations() {
+        for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
+            if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
+                try {
+                    CompilationUnit compilationUnit =  getCompilationUnit(abstractStructure);
+                    compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
+                        List<ClassOrInterfaceType> implementsList = c.getImplementedTypes();
+                        List<ClassOrInterfaceType> extendsList = c.getExtendedTypes();
+
+                        implementsList.stream().forEach(impl -> {
+                            ((ClassStructure)abstractStructure).addImplementsClass(impl.getNameAsString());
+                        });
+                        extendsList.stream().forEach(extd -> {
+                            ((ClassStructure)abstractStructure).addExtendsClass(extd.getNameAsString());
                         });
                     });
                 } catch (Exception e) {

@@ -1,6 +1,6 @@
 package com.kaanburaksener;
 
-public class Person {
+public class Person implements NameOfInterface {
     protected String firstName;
     protected String lastName;
     protected String address;

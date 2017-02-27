@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class AbstractStructure {
     private int id;
-    private List<Modifier> accessModifiers; //It should be turned into List<Modifier>, Any node can have more than one modifiers!!!
+    private List<Modifier> accessModifiers;
     private String name;
     private String path;
 

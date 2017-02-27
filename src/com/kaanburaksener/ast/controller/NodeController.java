@@ -26,6 +26,7 @@ public class NodeController {
         nodeParser.initializeNodesModifiers();
         nodeParser.loadNodesMethods();
         nodeParser.loadNodesAttributesOrValues();
+        nodeParser.loadRelations();
         nodeParser.testNodes();
     }
 }
