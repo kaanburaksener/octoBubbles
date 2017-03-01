@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+
+<VBox fx:controller="com.kaanburaksener.octoUML.src.controller.TabController" xmlns:fx="http://javafx.com/fxml">
+    <MenuBar fx:id="menuBar">
+        <menus>
+            <Menu text="File">
+                <items>
+                    <MenuItem text="New Class Diagram" onAction="#handleMenuActionNewClassDiagram"/>
+                    <MenuItem text="New Sequence Diagram" onAction="#handleMenuActionNewSequenceDiagram"/>
+                    <MenuItem text="Open" onAction="#handleMenuActionLoad"/>
+                    <MenuItem text="Save as XMI" onAction="#handleMenuActionSave"/>
+                    <MenuItem text="Save as Image" onAction="#handleMenuActionImage"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Launch Server" onAction="#handleMenuActionServer"/>
+                    <MenuItem text="Join as Client" onAction="#handleMenuActionClient"/>
+                    <MenuItem text="Upload to GitHub" onAction="#handleMenuActionGit"/>
+                    <SeparatorMenuItem/>
+                    <CheckMenuItem fx:id="mouseMenuItem" text="Mouse activated" onAction="#handleMenuActionMouse" selected="false"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Exit" onAction="#handleMenuActionExit"/>
+                </items>
+            </Menu>
+            <Menu text="Edit">
+                <items>
+                    <MenuItem text="Copy"/>
+                    <MenuItem text="Cut"/>
+                    <MenuItem text="Paste"/>
+                </items>
+            </Menu>
+            <Menu text="View">
+                <items>
+                    <CheckMenuItem fx:id="umlMenuItem" text="UML" onAction="#handleMenuActionUML" selected="true"/>
+                    <CheckMenuItem fx:id="sketchesMenuItem" text="Sketches" onAction="#handleMenuActionSketches" selected="true"/>
+                    <CheckMenuItem fx:id="gridMenuItem" text="Grid" onAction="#handleMenuActionGrid" selected="true"/>
+                    <SeparatorMenuItem/>
+                    <CheckMenuItem fx:id="snapToGridMenuItem" text="Snap to grid" onAction="#handleMenuActionSnapToGrid" selected="true"/>
+                    <CheckMenuItem fx:id="snapIndicatorsMenuItem" text="Snap Indicators" onAction="#handleMenuActionSnapIndicators" selected="false"/>
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+    <TabPane fx:id="tabPane">
+
+    </TabPane>
+    <stylesheets>
+        <URL value="@main.css" />
+    </stylesheets>
+</VBox>

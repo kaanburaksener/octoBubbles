@@ -1,0 +1,158 @@
+#classDiagramButton {
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: #21487F;
+    -fx-padding: 10 10;
+    -fx-border-radius: 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+}
+
+.button-in-use{
+    -fx-text-fill: white;
+    -fx-background-color: #082C59;
+}
+
+#aDrawPane {
+    -fx-background-color: #ffffff;
+}
+
+#aToolBar {
+    -fx-background-color: #3F4144;
+    -fx-alignment: center;
+    -fx-padding: 10 10;
+    -fx-spacing: 20;
+}
+
+#infoPane {
+    -fx-background-color: #3F4144;
+    -fx-padding: 10 10;
+    -fx-spacing: 20;
+}
+
+#colorPicker {
+    -fx-background-color: #e6e6e6
+}
+
+.slider .thumb {
+    -fx-background-color: #21487F;
+    /*-fx-background-image: url("/icons/sliderhandle.png");
+    -fx-padding: 10;*/
+}
+
+.slider .track {
+    -fx-background-color: #e6e6e6;
+}
+
+#zoomPane {
+    -fx-background-color: #3F4144
+}
+
+#umlBox {
+    -fx-spacing: 5;
+    -fx-padding: 0 25 0 0;
+}
+
+#drawBox {
+    -fx-spacing: 5;
+    -fx-padding: 0 15 0 15;
+}
+
+#utilBox {
+    -fx-spacing: 5;
+    -fx-padding: 0 15 0 15;
+}
+
+#undoBox {
+    -fx-spacing: 5;
+    -fx-padding: 0 15 0 15;
+}
+
+#recognizeBox {
+    -fx-spacing: 5;
+    -fx-padding: 0 0 0 15;
+}
+
+.separator *.line {
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: black;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+
+.tab-pane
+{
+    -fx-tab-min-width:90px;
+    -fx-tab-max-height: 16px;
+    -fx-background-color: #C7C7C7;
+}
+
+.tab{
+    -fx-background-insets: 0 1 0 0,0,0;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.tab-pane .tab
+{
+    -fx-background-color: #e6e6e6;
+}
+
+.tab-pane .tab:selected
+{
+    -fx-background-color: #3F4144;
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #828282;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #f2f2f2;
+}
+
+.tab-pane:top *.tab-header-area {
+    -fx-background-insets: 0, 0 0 0 0;
+    -fx-padding: 0.0em 0.0em 0.0em 0.0em;
+}
+
+#zoomLabel, #serverLabel {
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.menu-item .label {
+    -fx-text-fill: white;
+}
+
+.menu-item:focused {
+    -fx-background-color: darkgray;
+}
+
+.context-menu {
+    -fx-background-color: #3F4144;
+}
+
+.menu-bar
+{
+    -fx-background-color: #3F4144;
+}
+
+.menu-bar .label {
+    -fx-text-fill: white;
+}
+
+.menu-bar:focused {
+    -fx-background-color: #3F4144
+}

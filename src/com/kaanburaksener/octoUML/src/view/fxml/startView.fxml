@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane fx:controller="com.kaanburaksener.octoUML.src.controller.StartController" xmlns:fx="http://javafx.com/fxml" prefHeight="8000.0" prefWidth="8000.0">
+    <top>
+        <BorderPane>
+            <top>
+                <Pane prefHeight="100"></Pane>
+            </top>
+            <center>
+                <VBox alignment="CENTER">
+                    <Label text="OctoUML" fx:id="titleLabel"/>
+                    <Label text="Choose diagram type" fx:id="subTitleLabel"/>
+                </VBox>
+            </center>
+        </BorderPane>
+    </top>
+    <center>
+        <HBox alignment="CENTER" spacing="10">
+            <Button fx:id="classDiagramButton" text="New Class Diagram" onAction="#handleActionNewClassDiagram"/>
+            <Button fx:id="sequenceDiagramButton" text="New Sequence Diagram" onAction="#handleActionNewSequenceDiagram"/>
+        </HBox>
+    </center>
+
+</BorderPane>

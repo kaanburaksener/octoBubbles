@@ -1,0 +1,31 @@
+<component name="libraryTable">
+  <library name="asm-5.0.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/asm-5.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/controlsfx-8.40.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ecologylabFundamental.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/gson-2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hamcrest-core-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Jama-1.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit-4.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kryo-4.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kryonet-2.21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j-1.2.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/minlog-1.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/objenesis-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/paleo.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/reflectasm-1.11.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sikulixapi.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weka.jar!/" />
+      <root url="file://$PROJECT_DIR$/lib/git" />
+      <root url="file://$PROJECT_DIR$/lib/voice" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/ecologylabFundamental.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/paleo.jar!/" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/lib/git" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/voice" recursive="false" />
+  </library>
+</component>
