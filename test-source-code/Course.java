@@ -10,17 +10,19 @@ public class Course {
 	Hashtable<Long,Float> finalGrades;
 	String courseNumber;
 	String title = "Guf Umer";
+	Employee teacher;
 	
 	public Course(String courseNumber, String title){
 		students = new Vector<Student>();
 		assignments = new Vector<Assignment>();
 		finalGrades = new Hashtable<Long,Float>();
 		this.courseNumber = courseNumber;
-		this.title = title;		
+		this.title = title;
 	}
 	
 	public Course(){
 		this("", "");
+		this.teacher = new Employee();
 	}
 	
 	public void addStudent(Student student){

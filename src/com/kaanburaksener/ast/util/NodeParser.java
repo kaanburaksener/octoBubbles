@@ -8,10 +8,7 @@ import com.github.javaparser.ast.type.ClassOrInterfaceType;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import com.github.javaparser.ast.Modifier;
 
-import com.kaanburaksener.ast.model.AttributeStructure;
-import com.kaanburaksener.ast.model.MethodStructure;
-import com.kaanburaksener.ast.model.NodeHolder;
-import com.kaanburaksener.ast.model.ParameterStructure;
+import com.kaanburaksener.ast.model.*;
 import com.kaanburaksener.ast.model.nodes.AbstractStructure;
 import com.kaanburaksener.ast.helper.DirExplorer;
 import com.kaanburaksener.ast.model.nodes.ClassStructure;
@@ -22,6 +19,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /***
  * Created by kaanburaksener on 11/02/17.
@@ -214,14 +213,71 @@ public class NodeParser {
                         List<ClassOrInterfaceType> extendsList = c.getExtendedTypes();
 
                         implementsList.stream().forEach(impl -> {
-                            ((ClassStructure)abstractStructure).addImplementsClass(impl.getNameAsString());
+                            ((ClassStructure)abstractStructure).addAssociation(AssociationType.IMPLEMENTATION, impl.getNameAsString());
                         });
                         extendsList.stream().forEach(extd -> {
-                            ((ClassStructure)abstractStructure).addExtendsClass(extd.getNameAsString());
+                            ((ClassStructure)abstractStructure).addAssociation(AssociationType.INHERITENCE, extd.getNameAsString());
                         });
                     });
+
+                    List<String> bodyOfConstructors = new ArrayList<String>();
+                    compilationUnit.getNodesByType(ConstructorDeclaration.class).stream().forEach(cnstr -> {
+                        bodyOfConstructors.add(cnstr.getBody().toString());
+                    });
+
+                    if(bodyOfConstructors.size() > 0) {
+                        // A class might have multiple constructors
+                        checkCompositionAssociation(abstractStructure, bodyOfConstructors);
+                    } else {
+                        // If there is no constructor, there is no possibility to have a composition association
+                        checkAggregationAssociation(abstractStructure);
+                    }
                 } catch (Exception e) {
                     System.out.println("Error occured while opening the given file: " + e.getMessage());
+                }
+            }
+        }
+    }
+
+    /***
+     * This methods lists the relations (aggregation) between Classes
+     */
+    public void checkAggregationAssociation(AbstractStructure abstractStructure) {
+        ((ClassStructure)abstractStructure).getAllAttributes().stream().forEach(a -> {
+            for(AbstractStructure node : nodeHolder.getAllNodes()) {
+                if(node.getName().equals(a.getDataType())) {
+                    ((ClassStructure)abstractStructure).addAssociation(AssociationType.AGGREGATION, node.getName());
+                }
+            }
+        });
+    }
+
+    /***
+     * This methods lists the relations (aggregation, composition) between Classes
+     */
+    public void checkCompositionAssociation(AbstractStructure abstractStructure, List<String> bodyOfConstructors) {
+        boolean isFound = false;
+
+        for(AttributeStructure attribute : ((ClassStructure)abstractStructure).getAllAttributes()) {
+            for(AbstractStructure node : nodeHolder.getAllNodes()) {
+                if(node.getName().equals(attribute.getDataType())) {
+                    for(String body : bodyOfConstructors) {
+                        if(body.contains(attribute.getName())) {
+                            String regex = "( (?:this\\.)?" + attribute.getName() + "= | " + "(?:this\\.)?" + attribute.getName() + " = )";
+
+                            Pattern p = Pattern.compile(regex);
+                            Matcher m = p.matcher(body);
+
+                            if(m.find()) {
+                                ((ClassStructure)abstractStructure).addAssociation(AssociationType.COMPOSITION, node.getName());
+                                isFound = true;
+                            }
+                        }
+                    }
+
+                    if(!isFound){
+                        ((ClassStructure)abstractStructure).addAssociation(AssociationType.AGGREGATION, node.getName());
+                    }
                 }
             }
         }

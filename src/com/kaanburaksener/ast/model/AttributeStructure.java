@@ -34,6 +34,14 @@ public class AttributeStructure {
         this.initializer = initializer;
     }
 
+    public String getDataType() {
+        return parameterStructure.dataType;
+    }
+
+    public String getName() {
+        return parameterStructure.name;
+    }
+
     public void printAttributeDeclaration() {
         accessModifiers.stream().forEach(am -> {
             System.out.print(am + " ");

@@ -51,7 +51,7 @@ public class AbstractStructure {
     }
 
     public void printStructure() {
-        System.out.print("modifiers: ");
+        System.out.print("Modifiers: ");
         accessModifiers.stream().forEach(am-> {
                 System.out.print(am + " ");
         });

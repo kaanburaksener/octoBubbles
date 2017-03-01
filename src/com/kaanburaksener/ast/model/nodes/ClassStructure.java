@@ -1,5 +1,7 @@
 package com.kaanburaksener.ast.model.nodes;
 
+import com.kaanburaksener.ast.model.AssociationStructure;
+import com.kaanburaksener.ast.model.AssociationType;
 import com.kaanburaksener.ast.model.AttributeStructure;
 import com.kaanburaksener.ast.model.MethodStructure;
 
@@ -13,8 +15,7 @@ public class ClassStructure extends AbstractStructure {
     private static final String type = "CLASS";
     private List<MethodStructure> methods;
     private List<AttributeStructure> attributes;
-    private List<String> extendsList;
-    private List<String> implementsList;
+    private List<AssociationStructure> associationList;
 
     /**
      * @param name
@@ -24,24 +25,15 @@ public class ClassStructure extends AbstractStructure {
         super(name, path);
         this.methods = new ArrayList<MethodStructure>();
         this.attributes = new ArrayList<AttributeStructure>();
-        this.extendsList = new ArrayList<String>();
-        this.implementsList = new ArrayList<String>();
+        this.associationList = new ArrayList<AssociationStructure>();
     }
 
-    public List<AttributeStructure> getAllAttributes() {
-        return attributes;
+    public void addAssociation(AssociationType type, String className) {
+        associationList.add(new AssociationStructure(type,className));
     }
 
-    public List<MethodStructure> getAllMethods() {
-        return methods;
-    }
-
-    public void addMethod(MethodStructure method) {
-        methods.add(method);
-    }
-
-    public void removeMethod(MethodStructure method) {
-        methods.remove(method);
+    public void removeAssociation(AssociationType type, String className) {
+        associationList.remove(new AssociationStructure(type, className));
     }
 
     public void addAttribute(AttributeStructure attribute) {
@@ -52,20 +44,24 @@ public class ClassStructure extends AbstractStructure {
         attributes.remove(attribute);
     }
 
-    public void addExtendsClass(String className) {
-        extendsList.add(className);
+    public void addMethod(MethodStructure method) {
+        methods.add(method);
     }
 
-    public void removeExtendsClass(String className) {
-        extendsList.remove(className);
+    public void removeMethod(MethodStructure method) {
+        methods.remove(method);
     }
 
-    public void addImplementsClass(String className) {
-        implementsList.add(className);
+    public List<AssociationStructure> getAllAssociations() {
+        return associationList;
     }
 
-    public void removeImplementsClass(String className) {
-        implementsList.remove(className);
+    public List<AttributeStructure> getAllAttributes() {
+        return attributes;
+    }
+
+    public List<MethodStructure> getAllMethods() {
+        return methods;
     }
 
     public String getType(){
@@ -75,10 +71,19 @@ public class ClassStructure extends AbstractStructure {
     @Override
     public void printStructure() {
         super.printStructure();
+        this.printAssociations();
         this.printAttributes();
         this.printMethods();
-        this.printExtends();
-        this.printImplements();
+    }
+
+    public void printAssociations() {
+        if(associationList.size() > 0) {
+            System.out.print("Associations -> ");
+
+            associationList.stream().forEach(a -> {
+                System.out.println(a.getAssociatedClassName() + " (" + a.getType() + "), ");
+            });
+        }
     }
 
     public void printAttributes() {
@@ -86,26 +91,6 @@ public class ClassStructure extends AbstractStructure {
             attributes.stream().forEach(a -> {
                 a.printAttributeDeclaration();
                 System.out.println();
-            });
-        }
-    }
-
-    public void printExtends() {
-        if(extendsList.size() > 0) {
-            System.out.print("Extends -> ");
-
-            extendsList.stream().forEach(e -> {
-                System.out.println(e + ", ");
-            });
-        }
-    }
-
-    public void printImplements() {
-        if(implementsList.size() > 0) {
-            System.out.print("Implements -> ");
-
-            implementsList.stream().forEach(i -> {
-                System.out.println(i + ", ");
             });
         }
     }
