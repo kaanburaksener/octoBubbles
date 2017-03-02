@@ -8,6 +8,7 @@ import java.util.List;
  * Created by kaanburaksener on 16/02/17.
  */
 public class AbstractStructure {
+    private static final String type = "ABSTRACT";
     private int id;
     private List<Modifier> accessModifiers;
     private String name;
@@ -40,6 +41,10 @@ public class AbstractStructure {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType(){
+        return type;
     }
 
     public String getPath() {

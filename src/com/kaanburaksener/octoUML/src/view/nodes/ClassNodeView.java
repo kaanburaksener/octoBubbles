@@ -1,7 +1,5 @@
 package com.kaanburaksener.octoUML.src.view.nodes;
 
-import com.kaanburaksener.octoUML.src.model.nodes.ClassNode;
-import com.kaanburaksener.octoUML.src.util.Constants;
 import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,6 +13,9 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
+import com.kaanburaksener.octoUML.src.model.nodes.ClassNode;
+import com.kaanburaksener.octoUML.src.util.Constants;
 
 import java.beans.PropertyChangeEvent;
 
@@ -140,12 +141,18 @@ public class ClassNodeView extends AbstractNodeView implements NodeView {
         type.setFont(Font.font("Helvetica", FontWeight.BOLD, 13));
         type.setTextFill(Color.web("#EADB98"));
 
-        if(node.getType() == null || node.getType().equals("CLASS")) {
-            type.setManaged(false);
-        }
-
         title = new Label();
         title.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+
+        if(node.getType() == null || node.getType().equals("ABSTRACT") || node.getType().equals("CLASS")) {
+            type.setManaged(false);
+        } else {
+            type.setText("<<" + node.getType().toLowerCase() + ">>");
+            type.setAlignment(Pos.TOP_CENTER);
+            title.setAlignment(Pos.BOTTOM_CENTER);
+            type.setVisible(true);
+            type.setManaged(true);
+        }
 
         if(node.getTitle() != null) {
             title.setText(node.getTitle());
@@ -237,7 +244,7 @@ public class ClassNodeView extends AbstractNodeView implements NodeView {
                 type.setVisible(false);
                 type.setManaged(false);
             } else {
-                type.setText("<<" + ((String) evt.getNewValue()).toLowerCase() + ">>");
+                type.setText("<<" + (String) ((String) evt.getNewValue()).toLowerCase() + ">>");
                 type.setAlignment(Pos.TOP_CENTER);
                 title.setAlignment(Pos.BOTTOM_CENTER);
                 type.setVisible(true);

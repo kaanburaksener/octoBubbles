@@ -12,13 +12,12 @@ import com.kaanburaksener.octoUML.src.view.nodes.AbstractNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.ClassNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.EnumerationNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.PackageNodeView;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;

@@ -4,14 +4,15 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
-import com.kaanburaksener.octoUML.src.model.Graph;
-import com.kaanburaksener.octoUML.src.model.Sketch;
+
+import com.kaanburaksener.octoUML.src.model.*;
 import com.kaanburaksener.octoUML.src.model.edges.*;
 import com.kaanburaksener.octoUML.src.model.nodes.AbstractNode;
 import com.kaanburaksener.octoUML.src.model.nodes.ClassNode;
 import com.kaanburaksener.octoUML.src.model.nodes.EnumerationNode;
 import com.kaanburaksener.octoUML.src.model.nodes.PackageNode;
 import com.kaanburaksener.octoUML.src.util.Constants;
+
 import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Alert;

@@ -1002,7 +1002,6 @@ public abstract class AbstractDiagramController {
         mode = pMode;
     }
 
-    @FXML
     ScrollPane getScrollPane(){
         return scrollPane;
     }

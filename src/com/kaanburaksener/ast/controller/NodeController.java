@@ -27,6 +27,10 @@ public class NodeController {
         nodeParser.loadNodesMethods();
         nodeParser.loadNodesAttributesOrValues();
         nodeParser.loadRelations();
-        nodeParser.testNodes();
+        //nodeParser.testNodes();
+    }
+
+    public NodeHolder getNodeHolder() {
+        return nodeHolder;
     }
 }

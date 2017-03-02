@@ -7,6 +7,7 @@ import com.kaanburaksener.octoUML.src.model.edges.MessageEdge;
 import com.kaanburaksener.octoUML.src.view.edges.AbstractEdgeView;
 import com.kaanburaksener.octoUML.src.view.edges.MessageEdgeView;
 import com.kaanburaksener.octoUML.src.view.nodes.AbstractNodeView;
+
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
