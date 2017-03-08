@@ -400,7 +400,10 @@ public class ClassDiagramController extends AbstractDiagramController {
 
         recognizeBtn.setOnAction(event -> recognizeController.recognize(selectedSketches));
 
-        sourceCodeBtn.setOnAction(event -> sourceCodeController.recognize());
+        sourceCodeBtn.setOnAction(event -> {
+            setButtonClicked(sourceCodeBtn);
+            sourceCodeController.recognize();
+        });
 
         voiceBtn.setOnAction(event -> {
             if(voiceController.voiceEnabled){

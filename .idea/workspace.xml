@@ -2,27 +2,56 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee14513c-d92a-4c6d-b29b-881028f6d4ba" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/model/nodes/AbstractStructure.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/model/nodes/AbstractStructure.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController$Mode.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController$Mode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController$ToolEnum.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController$ToolEnum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/ClientController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/ClientController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/EdgeController$1.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/EdgeController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/EdgeController$2.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/EdgeController$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/EdgeController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/EdgeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/ServerController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/ServerController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/SourceCodeController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/SourceCodeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/dialog/EdgeEditDialogController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/dialog/EdgeEditDialogController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/util/persistence/PersistenceManager.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/util/persistence/PersistenceManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/AbstractStructure.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/AbstractStructure.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClientController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClientController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/EdgeController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/EdgeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ServerController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ServerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/SourceCodeController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/SourceCodeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/dialog/EdgeEditDialogController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/dialog/EdgeEditDialogController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/util/persistence/PersistenceManager.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/util/persistence/PersistenceManager.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_163244.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_163830.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_164022.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_164224.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_171906.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_172446.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_173131.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_173139.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_174110.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_174144.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_174421.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_175103.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_175401.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_175444.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_183052.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_183920.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_184742.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_185811.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_185816.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_192056.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_192409.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_193045.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_193414.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_193738.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_194252.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_194338.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_194523.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_195243.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_234713.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170301_235239.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_002101.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_002347.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_002452.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_012833.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_124319.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_124956.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_125500.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_125504.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_125510.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_125652.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_125857.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_125945.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_135316.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_135326.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_135350.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_135543.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_135549.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_141951.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/OctoUMLLog20170302_141957.csv" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,7 +66,18 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="ClassDiagramController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="24" column="30" lean-forward="false" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -48,8 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>icons/</find>
-      <find>TabPane</find>
       <find>.xml</find>
       <find>fxml&quot;</find>
       <find>addTab()</find>
@@ -78,6 +116,8 @@
       <find>aggr</find>
       <find>drawArrowHead</find>
       <find>line</find>
+      <find>selectBtn</find>
+      <find>createBtn</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/com/kaanburaksener/octoUML</dir>
@@ -110,7 +150,6 @@
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/tests/view/ClassNodeViewTest.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/tests/view/EnumerationNodeViewTest.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/Launcher.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/SequenceDiagramController.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/classViewDiag.fxml" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/util/Constants.java" />
@@ -145,6 +184,7 @@
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/util/persistence/PersistenceManager.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/edges/AbstractEdgeView.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/edges/RealizationEdgeView.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.java" />
       </list>
     </option>
   </component>
@@ -252,6 +292,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoBubbles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoBubbles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaanburaksener" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoUML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fxml" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -934,16 +1008,16 @@
       <workItem from="1488897448904" duration="648000" />
       <workItem from="1488989054565" duration="116000" />
       <workItem from="1488989276231" duration="2867000" />
-      <workItem from="1489003836144" duration="974000" />
+      <workItem from="1489003836144" duration="1686000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85898000" />
+    <option name="totallyTimeSpent" value="86610000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="719" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -954,14 +1028,15 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16153847" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.124615386" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2796875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2796875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15538462" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -974,7 +1049,6 @@
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920793" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09405941" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1156,14 +1230,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1171">
-          <caret line="863" column="53" lean-forward="true" selection-start-line="863" selection-start-column="53" selection-end-line="863" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClientController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -1227,6 +1293,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1289,6 +1356,63 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1260">
           <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/startView.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/mainView.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-466">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/classDiagramView.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="20" column="58" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1952">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="367" column="57" lean-forward="false" selection-start-line="367" selection-start-column="48" selection-end-line="367" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="24" column="30" lean-forward="false" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
           <folding />
         </state>
       </provider>
