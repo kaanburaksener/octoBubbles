@@ -433,6 +433,9 @@ public class PersistenceManager {
             } else if (relation.equals("Composition")){
                 edge = new CompositionEdge(idMap.get(startNodeId), idMap.get(endNodeId));
                 edge.setDirection(AbstractEdge.Direction.valueOf(direction));
+            } else if (relation.equals("Realization")){
+                edge = new RealizationEdge(idMap.get(startNodeId), idMap.get(endNodeId));
+                edge.setDirection(AbstractEdge.Direction.valueOf(direction));
             } else { //Standard is Assocation
                 edge = new AssociationEdge(idMap.get(startNodeId), idMap.get(endNodeId));
             }

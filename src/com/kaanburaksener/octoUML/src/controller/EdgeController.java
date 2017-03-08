@@ -199,6 +199,8 @@ public class EdgeController {
                             newEdge = new AggregationEdge(edge.getStartNode(), edge.getEndNode());
                         } else if (typeBox.getValue().equals("Composition")) {
                             newEdge = new CompositionEdge(edge.getStartNode(), edge.getEndNode());
+                        } else if (typeBox.getValue().equals("Realization")) {
+                            newEdge = new RealizationEdge(edge.getStartNode(), edge.getEndNode());
                         }
                         newEdge.setDirection(AbstractEdge.Direction.valueOf(directionBox.getValue().toString()));
                         newEdge.setStartMultiplicity(controller.getStartMultiplicity());

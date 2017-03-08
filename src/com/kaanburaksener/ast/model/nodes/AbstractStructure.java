@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class AbstractStructure {
     private static final String type = "ABSTRACT";
-    private int id;
+    private String id;
     private List<Modifier> accessModifiers;
     private String name;
     private String path;
@@ -19,11 +19,11 @@ public class AbstractStructure {
         this.path = path;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

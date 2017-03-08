@@ -189,6 +189,7 @@ public class ServerController implements PropertyChangeListener {
         kryo.register(CompositionEdge.class);
         kryo.register(AssociationEdge.class);
         kryo.register(AggregationEdge.class);
+        kryo.register(RealizationEdge.class);
         kryo.register(Graph.class);
         kryo.register(ArrayList.class);
         kryo.register(AbstractEdge.Direction.class);

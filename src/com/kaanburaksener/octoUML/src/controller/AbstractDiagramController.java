@@ -15,6 +15,7 @@ import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
 import javafx.scene.SnapshotParameters;
@@ -30,6 +31,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+
 import javax.imageio.ImageIO;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
@@ -37,7 +39,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.awt.geom.Point2D;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -489,7 +491,7 @@ public abstract class AbstractDiagramController {
 
     public void handleMenuActionInsert (){
         InsertIMG insertIMG = new InsertIMG(aStage, drawPane);
-        insertIMG.openFileChooser(this, new Point2D.Double(0,0));
+        insertIMG.openFileChooser(this, new java.awt.geom.Point2D.Double(0,0));
     }
 
     public void handleMenuActionNew() {
@@ -592,7 +594,7 @@ public abstract class AbstractDiagramController {
 
         MenuItem cmItemInsertImg = new MenuItem("Insert Image");
         cmItemInsertImg.setOnAction(event -> {
-            Point2D.Double point = new Point2D.Double(copyPasteController.copyPasteCoords[0], copyPasteController.copyPasteCoords[1]);
+            java.awt.geom.Point2D.Double point = new java.awt.geom.Point2D.Double(copyPasteController.copyPasteCoords[0], copyPasteController.copyPasteCoords[1]);
             InsertIMG insertImg = new InsertIMG(aStage, drawPane);
             insertImg.openFileChooser(AbstractDiagramController.this, point);
         });
@@ -655,7 +657,7 @@ public abstract class AbstractDiagramController {
      * @param point
      * @return
      */
-    public PictureNodeView createPictureView (ImageView view, Image image, Point2D.Double point){
+    public PictureNodeView createPictureView (ImageView view, Image image, java.awt.geom.Point2D.Double point){
         PictureNode picNode = new PictureNode(image, point.getX(), point.getY(), view.getImage().getWidth(), view.getImage().getHeight());
         PictureNodeView picView = new PictureNodeView(view, picNode);
         picNode.setTranslateX(point.getX());
@@ -808,6 +810,8 @@ public abstract class AbstractDiagramController {
             edgeView = new CompositionEdgeView(edge, startNodeView, endNodeView);
         } else if (edge instanceof InheritanceEdge) {
             edgeView = new InheritanceEdgeView(edge, startNodeView, endNodeView);
+        } else if (edge instanceof RealizationEdge) {
+            edgeView = new RealizationEdgeView(edge, startNodeView, endNodeView);
         } else {
             edgeView = null;
         }
@@ -856,6 +860,8 @@ public abstract class AbstractDiagramController {
             edgeView = new CompositionEdgeView(edge, startNodeView, endNodeView);
         } else if (edge instanceof InheritanceEdge) {
             edgeView = new InheritanceEdgeView(edge, startNodeView, endNodeView);
+        } else if (edge instanceof RealizationEdge) {
+            edgeView = new RealizationEdgeView(edge, startNodeView, endNodeView);
         } else { //Association
             edgeView = new AssociationEdgeView(edge, startNodeView, endNodeView);
         }
@@ -1029,6 +1035,23 @@ public abstract class AbstractDiagramController {
 
     public GraphController getGraphController(){
         return graphController;
+    }
+
+    /**
+     * Returns the NodeView given a Point where it's located.
+     * @param point can not be null.
+     * @return the node if found, otherwise null.
+     */
+    public NodeView findNodeView(javafx.geometry.Point2D point) {
+        assert point != null;
+
+        for (NodeView nodeView : allNodeViews){
+            if (nodeView.getX() == point.getX() && nodeView.getY() == point.getY()) {
+                return nodeView;
+            }
+        }
+
+        return null;
     }
 }
 
