@@ -34,6 +34,12 @@ public class NodeParser {
         this.targetFolderName = targetFolderName;
     }
 
+
+    /***
+     * This methods return the content of any .java file
+     *
+     * @param abstractStructure
+     */
     public static CompilationUnit getCompilationUnit(AbstractStructure abstractStructure) {
         CompilationUnit compilationUnit = new CompilationUnit();
 
@@ -44,16 +50,6 @@ public class NodeParser {
         }
 
         return compilationUnit;
-    }
-
-    public void getCompilationUnits() {
-        for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
-            try {
-                CompilationUnit compilationUnit = JavaParser.parse(new File(targetFolderName + abstractStructure.getPath()));
-            } catch (Exception e) {
-                System.out.println("Error occured while opening the given file: " + e.getMessage());
-            }
-        }
     }
 
     /***
@@ -79,6 +75,9 @@ public class NodeParser {
                             abstractStructure = new InterfaceStructure(n.getNameAsString(), path);
                         }
 
+                        CompilationUnit compilationUnit =  getCompilationUnit(abstractStructure);
+                        abstractStructure.setCompilationUnit(compilationUnit);
+
                         nodes.add(abstractStructure);
                     }
                 }.visit(JavaParser.parse(file), null);
@@ -89,6 +88,10 @@ public class NodeParser {
                     public void visit(EnumDeclaration m, Object arg) {
                         super.visit(m, arg);
                         AbstractStructure abstractStructure = new EnumerationStructure(m.getNameAsString(), path);
+
+                        CompilationUnit compilationUnit =  getCompilationUnit(abstractStructure);
+                        abstractStructure.setCompilationUnit(compilationUnit);
+
                         nodes.add(abstractStructure);
                     }
                 }.visit(JavaParser.parse(file), null);
@@ -107,8 +110,7 @@ public class NodeParser {
         for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
             if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
                 try {
-                    CompilationUnit compilationUnit =  getCompilationUnit(abstractStructure);
-                    compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
+                    abstractStructure.getCompilationUnit().getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
                         new MethodVisitor(abstractStructure).visit(c,null);
                     });
                 } catch (Exception e) {
@@ -157,9 +159,10 @@ public class NodeParser {
      */
     public void loadNodesAttributesOrValues() {
         for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
+            CompilationUnit compilationUnit =  abstractStructure.getCompilationUnit();
+
             if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
                 try {
-                    CompilationUnit compilationUnit =  getCompilationUnit(abstractStructure);
                     compilationUnit.getNodesByType(FieldDeclaration.class).stream().forEach(field -> {
                         List<VariableDeclarator> variableDeclarators = field.getVariables();
                         variableDeclarators.stream().forEach(vd -> {
@@ -170,7 +173,7 @@ public class NodeParser {
                             String name = vd.getNameAsString();
 
                             if(vd.getInitializer().toString().equals("Optional.empty")) {
-                                    attributeStructure = new AttributeStructure(modifiers, type, name);
+                                attributeStructure = new AttributeStructure(modifiers, type, name);
                             } else {
                                 String unstructuredInitializer = vd.getInitializer().toString();
                                 String initializer = unstructuredInitializer.substring(unstructuredInitializer.indexOf("[") + 1, unstructuredInitializer.indexOf("]"));
@@ -186,7 +189,6 @@ public class NodeParser {
                 }
             } else if(abstractStructure instanceof EnumerationStructure) {
                 try {
-                    CompilationUnit compilationUnit =  getCompilationUnit(abstractStructure);
                     compilationUnit.getNodesByType(EnumDeclaration.class).stream().forEach(enumeration -> {
                         List<EnumConstantDeclaration> enumValues = enumeration.getEntries();
                         enumValues.stream().forEach(ev -> {
@@ -207,7 +209,8 @@ public class NodeParser {
         for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
             if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
                 try {
-                    CompilationUnit compilationUnit =  getCompilationUnit(abstractStructure);
+                    CompilationUnit compilationUnit =  abstractStructure.getCompilationUnit();
+
                     compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
                         List<ClassOrInterfaceType> implementsList = c.getImplementedTypes();
                         List<ClassOrInterfaceType> extendsList = c.getExtendedTypes();
@@ -289,7 +292,7 @@ public class NodeParser {
     public void initializeNodesModifiers() {
         for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
             try {
-                CompilationUnit compilationUnit =  getCompilationUnit(abstractStructure);
+                CompilationUnit compilationUnit =  abstractStructure.getCompilationUnit();
 
                 compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
                     abstractStructure.setAccessModifiers(castStringToModifiers(c.getModifiers().toString()));

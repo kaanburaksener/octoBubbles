@@ -1,5 +1,6 @@
 package com.kaanburaksener.ast.model.nodes;
 
+import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.Modifier;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class AbstractStructure {
     private List<Modifier> accessModifiers;
     private String name;
     private String path;
+    private CompilationUnit compilationUnit;
 
     public AbstractStructure(String name, String path) {
         this.name = name;
@@ -55,11 +57,22 @@ public class AbstractStructure {
         this.path = path;
     }
 
+    public CompilationUnit getCompilationUnit() {
+        return compilationUnit;
+    }
+
+    public void setCompilationUnit(CompilationUnit compilationUnit) {
+        this.compilationUnit = compilationUnit;
+    }
+
     public void printStructure() {
         System.out.print("Modifiers: ");
         accessModifiers.stream().forEach(am-> {
                 System.out.print(am + " ");
         });
         System.out.println(", name: " + name + ", path: " + path);
+        System.out.println();
+        System.out.println(compilationUnit.toString());
+        System.out.println();
     }
 }
