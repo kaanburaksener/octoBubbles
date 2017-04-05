@@ -5,11 +5,15 @@ import com.kaanburaksener.octoUML.src.util.commands.CompoundCommand;
 import com.kaanburaksener.octoUML.src.util.commands.MoveGraphElementCommand;
 import com.kaanburaksener.octoUML.src.view.nodes.AbstractNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.PackageNodeView;
+
 import javafx.fxml.FXML;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
+
 import org.controlsfx.control.Notifications;
+
 
 import java.awt.geom.Point2D;
 
@@ -17,7 +21,6 @@ import java.awt.geom.Point2D;
  * Created by chalmers on 2016-08-31.
  */
 public class ClassDiagramController extends AbstractDiagramController {
-
     @FXML
     public void initialize() {
         super.initialize();
@@ -355,7 +358,6 @@ public class ClassDiagramController extends AbstractDiagramController {
         buttonInUse = createBtn;
         buttonInUse.getStyleClass().add("button-in-use");
 
-
         //---------------------- Actions for buttons ----------------------------
         createBtn.setOnAction(event -> {
             tool = ToolEnum.CREATE_CLASS;
@@ -401,8 +403,10 @@ public class ClassDiagramController extends AbstractDiagramController {
         recognizeBtn.setOnAction(event -> recognizeController.recognize(selectedSketches));
 
         sourceCodeBtn.setOnAction(event -> {
-            setButtonClicked(sourceCodeBtn);
-            sourceCodeController.recognize();
+            if(!selectedNodes.isEmpty()) {
+                setButtonClicked(sourceCodeBtn);
+                sourceCodeController.recognize(selectedNodes);
+            }
         });
 
         voiceBtn.setOnAction(event -> {
@@ -418,7 +422,6 @@ public class ClassDiagramController extends AbstractDiagramController {
                         .showInformation();
             }
             voiceController.onVoiceButtonClick();
-
         });
     }
 }

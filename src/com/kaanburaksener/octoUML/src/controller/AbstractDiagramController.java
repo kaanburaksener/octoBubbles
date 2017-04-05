@@ -11,11 +11,11 @@ import com.kaanburaksener.octoUML.src.util.insertIMG.InsertIMG;
 import com.kaanburaksener.octoUML.src.util.persistence.PersistenceManager;
 import com.kaanburaksener.octoUML.src.view.edges.*;
 import com.kaanburaksener.octoUML.src.view.nodes.*;
+
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
-import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
 import javafx.scene.SnapshotParameters;
@@ -30,8 +30,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-
 import javax.imageio.ImageIO;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
@@ -1039,14 +1037,12 @@ public abstract class AbstractDiagramController {
 
     /**
      * Returns the NodeView given a Point where it's located.
-     * @param point can not be null.
+     * @param refNode
      * @return the node if found, otherwise null.
      */
-    public NodeView findNodeView(javafx.geometry.Point2D point) {
-        assert point != null;
-
-        for (NodeView nodeView : allNodeViews){
-            if (nodeView.getX() == point.getX() && nodeView.getY() == point.getY()) {
+    public NodeView findSelectedNodeView(AbstractNode refNode) {
+        for (AbstractNodeView nodeView : selectedNodes){
+            if(nodeView.getRefNode().equals(refNode)) {
                 return nodeView;
             }
         }
@@ -1054,4 +1050,3 @@ public abstract class AbstractDiagramController {
         return null;
     }
 }
-

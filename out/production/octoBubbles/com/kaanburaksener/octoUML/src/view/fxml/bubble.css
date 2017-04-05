@@ -1,0 +1,88 @@
+.bubble {
+    -fx-background-color: #877C89;
+    -fx-padding: 10;
+    -fx-background-radius: 5;
+}
+
+.bubble .label {
+    -fx-font-family: Helvetica;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 5 0;
+}
+
+.bubble .text-area {
+    -fx-background-color: #B6B8C1;
+    -fx-text-fill: #142744;
+    -fx-highlight-fill: #877C89;
+    -fx-highlight-text-fill: #01B3E3;
+    -fx-font-size: 12px;
+    -fx-font-family: Consolas;
+}
+
+.bubble .text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.bubble .text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+.bubble .text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.bubble .text-area .scroll-bar:horizontal,
+.bubble .text-area .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+/* The increment and decrement button CSS class of scrollbar */
+.bubble .text-area .increment-button,
+.bubble .text-area .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 2em;
+}
+
+/* The main scrollbar **track** CSS class  */
+.bubble .text-area .scroll-bar:horizontal .track,
+.bubble .text-area .scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-background-radius: 2em;
+    -fx-border-radius:2em;
+}
+
+/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+.bubble .text-area .scroll-bar:horizontal .thumb,
+.bubble .text-area .scroll-bar:vertical .thumb {
+    -fx-background-color:derive(#E65A4A, 5%);
+    -fx-background-insets: 3, 0, 0;
+    -fx-background-radius: 2em;
+}
+
+.bubble .cancel-button {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: #FD8267;
+    -fx-padding: 3 5 3 5;
+    -fx-background-radius: 5;
+}
+
+.bubble .edit-button {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: #FEDE81;
+    -fx-padding: 3 5 3 5;
+    -fx-background-radius: 5;
+}
+
+.bubble .save-button {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: #ACCE45;
+    -fx-padding: 3 5 3 5;
+    -fx-background-radius: 5;
+}

@@ -106,7 +106,6 @@ public class ClassNodeView extends AbstractNodeView implements NodeView {
     }
 
     private void createHandles(){
-
         shortHandleLine = new Line();
         longHandleLine = new Line();
 

@@ -11,17 +11,19 @@ import com.kaanburaksener.octoUML.src.model.nodes.EnumerationNode;
 import com.kaanburaksener.octoUML.src.model.nodes.Node;
 import com.kaanburaksener.octoUML.src.util.commands.CompoundCommand;
 
+import com.kaanburaksener.octoUML.src.view.BubbleView;
 import com.kaanburaksener.octoUML.src.view.nodes.AbstractNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.ClassNodeView;
+import com.kaanburaksener.octoUML.src.view.nodes.EnumerationNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.NodeView;
 import edu.tamu.core.sketch.Point;
 import edu.tamu.core.sketch.Stroke;
 import edu.tamu.recognition.paleo.PaleoConfig;
 import edu.tamu.recognition.paleo.PaleoSketchRecognizer;
 
-import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,20 +36,16 @@ public class SourceCodeController {
     private AbstractDiagramController diagramController;
     private PaleoSketchRecognizer recognizer;
     private Graph graph;
-    private List<ClassNode> recognizedClasses;
-    private List<ClassNode> recognizedInterfaces;
-    private List<EnumerationNode> recognizedEnumerations;
-    private List<AbstractStructure> recognizedNodes;
-    private List<AbstractNodeView> allNodeViews;
+    private List<AbstractStructure> existingNodes;
+    private List<AbstractNode> recognizedNodes;
 
     public SourceCodeController(Pane pDrawPane, AbstractDiagramController pController) {
         aDrawPane = pDrawPane;
         diagramController = pController;
         graph = diagramController.getGraphModel();
 
-        recognizedClasses = new ArrayList<ClassNode>();
-        recognizedInterfaces = new ArrayList<ClassNode>();
-        recognizedEnumerations = new ArrayList<EnumerationNode>();
+        recognizedNodes = new ArrayList<>();
+        existingNodes = new ArrayList<>();
 
         //TODO Find a nicer solution for this:
         //This is to load the recognizer when starting app, not when starting to draw.
@@ -59,55 +57,83 @@ public class SourceCodeController {
         recognizer.recognize().getBestShape();
     }
 
-    public synchronized void recognize() {
-        List<Edge> recognizedEdges = new ArrayList<>();
+    public synchronized void recognize(ArrayList<AbstractNodeView> selectedNodes) {
         CompoundCommand recognizeCompoundCommand = new CompoundCommand();
+        recognizedNodes = new ArrayList<>();
 
-        recognizedEdges = graph.getAllEdges();
-
-        //Go through all sketches to find Nodes.
-        for (AbstractNode rn : graph.getAllNodes()) {
-            switch (rn.getType()) {
-                case "CLASS":
-                    recognizedClasses.add((ClassNode)rn);
-                    break;
-                case "ENUM":
-                    recognizedEnumerations.add((EnumerationNode)rn);
-                    break;
-                case "INTERFACE":
-                    recognizedInterfaces.add((ClassNode)rn);
-                    break;
-                default:
-                    System.out.println("Something goes wrong!");
-                    break;
+        //Perform matching between selected nodes and their views
+        for(AbstractNodeView selectedNode : selectedNodes) {
+            if(selectedNode instanceof ClassNodeView) {
+                recognizedNodes.add((ClassNode) selectedNode.getRefNode());
+            } else if(selectedNode instanceof EnumerationNodeView) {
+                recognizedNodes.add((EnumerationNode) selectedNode.getRefNode());
             }
         }
 
+        this.drawBorders();
         this.match();
     }
 
     public void match() {
-        String path = "test-source-code";
+        final String path = "test-source-code";
         NodeController nodeController = new NodeController(path);
         nodeController.initialize();
 
-        recognizedNodes = new ArrayList<AbstractStructure>();
-        recognizedNodes = nodeController.getNodeHolder().getAllNodes();
+        existingNodes = nodeController.getNodeHolder().getAllNodes();
 
-        graph.getAllNodes().stream().forEach(graphNode -> {
-            recognizedNodes.stream().forEach(codeNode -> {
-                if(graphNode.getType().equals(codeNode.getType())) {
-                    if(graphNode.getTitle().equals(codeNode.getName())) {
-                        System.out.println("This " + graphNode.getType() + " has been found in Source Code -> " + codeNode.getPath());
-
-                        Point2D point = new Point2D(graphNode.getX(), graphNode.getY());
-                        NodeView nodeView = diagramController.findNodeView(point);
+        for (AbstractNode graphNode: recognizedNodes) {
+            existingNodes.stream().forEach(existingNode -> {
+                if(graphNode.getType().equals(existingNode.getType())) {
+                    if(graphNode.getTitle().equals(existingNode.getName())) {
+                        NodeView nodeView = diagramController.findSelectedNodeView(graphNode);
                         nodeView.setFill(Color.PALEGREEN);
 
-                        codeNode.setId(graphNode.getId());// These two nodes get connected by id
+                        existingNode.setId(graphNode.getId());// These two nodes get connected by id
                     }
                 }
             });
-        });
+        }
+    }
+
+    private void drawBorders() {
+        final double MARGIN = 50.0;
+        double xMin, yMin, xMax, yMax;
+
+        AbstractNode firstNode = graph.getAllNodes().get(0);
+
+        xMin = firstNode.getX();
+        yMin = firstNode.getY();
+        xMax = firstNode.getWidth() + firstNode.getX();
+        yMax = firstNode.getHeight() + firstNode.getY();
+
+        //Go through all sketches to find Nodes.
+        for (AbstractNode graphNode: graph.getAllNodes()) {
+            if((graphNode.getX() + graphNode.getWidth()) > xMax) {
+                xMax = graphNode.getX() + graphNode.getWidth();
+            }
+
+            if(graphNode.getX() < xMin) {
+                xMin = graphNode.getX();
+            }
+
+            if((graphNode.getY() + graphNode.getHeight()) > yMax) {
+                yMax = graphNode.getY() + graphNode.getHeight();
+            }
+
+            if(graphNode.getY() < yMin) {
+                yMin = graphNode.getY();
+            }
+        }
+
+        Rectangle rectangle = new Rectangle();
+        rectangle.setX(xMin - MARGIN);
+        rectangle.setY(yMin - MARGIN);
+        rectangle.setWidth(xMax - xMin + (MARGIN * 2));
+        rectangle.setHeight(yMax - yMin + (MARGIN * 2));
+        rectangle.setStroke(Color.GOLD);
+        rectangle.setStrokeWidth(10);
+        rectangle.setFill(Color.TRANSPARENT);
+
+        aDrawPane.getChildren().add(rectangle);
     }
 }
