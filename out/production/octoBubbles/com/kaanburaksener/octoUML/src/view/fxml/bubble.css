@@ -1,5 +1,5 @@
 .bubble {
-    -fx-background-color: #877C89;
+    -fx-background-color: #253238;
     -fx-padding: 10;
     -fx-background-radius: 5;
 }
@@ -12,8 +12,8 @@
 }
 
 .bubble .text-area {
-    -fx-background-color: #B6B8C1;
-    -fx-text-fill: #142744;
+    -fx-background-color: #253238;
+    -fx-text-fill: #c2cde3;
     -fx-highlight-fill: #877C89;
     -fx-highlight-text-fill: #01B3E3;
     -fx-font-size: 12px;
@@ -55,34 +55,52 @@
 /* The main scrollbar **thumb** CSS class which we drag every time (movable) */
 .bubble .text-area .scroll-bar:horizontal .thumb,
 .bubble .text-area .scroll-bar:vertical .thumb {
-    -fx-background-color:derive(#E65A4A, 5%);
+    -fx-background-color:derive(#536e7a, 1%);
     -fx-background-insets: 3, 0, 0;
     -fx-background-radius: 2em;
 }
 
-.bubble .cancel-button {
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
+.bubble .extend-button {
+    -fx-min-height: 24px;
+    -fx-min-width: 24px;
+    -fx-background-image: url("../../icons/extend-icon.png");
+    -fx-background-size: 24px 24px;
     -fx-background-repeat: no-repeat;
-    -fx-background-color: #FD8267;
+    -fx-background-color: transparent;
+    -fx-background-position: center center;
     -fx-padding: 3 5 3 5;
-    -fx-background-radius: 5;
 }
 
-.bubble .edit-button {
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
+.bubble .cancel-button {
+    -fx-min-height: 24px;
+    -fx-min-width: 24px;
+    -fx-background-image: url("../../icons/cancel-icon.png");
+    -fx-background-size: 24px 24px;
+    -fx-background-position: center center;
     -fx-background-repeat: no-repeat;
-    -fx-background-color: #FEDE81;
+    -fx-background-color: transparent;
     -fx-padding: 3 5 3 5;
-    -fx-background-radius: 5;
 }
 
 .bubble .save-button {
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
+    -fx-min-height: 24px;
+    -fx-min-width: 24px;
+    -fx-background-image: url("../../icons/save-icon.png");
+    -fx-background-size: 24px 24px;
+    -fx-background-position: center center;
     -fx-background-repeat: no-repeat;
-    -fx-background-color: #ACCE45;
+    -fx-background-color: transparent;
     -fx-padding: 3 5 3 5;
-    -fx-background-radius: 5;
+}
+
+.bubble .extend-button:hover {
+    -fx-background-image: url("../../icons/extend-icon-hover.png");
+}
+
+.bubble .cancel-button:hover {
+    -fx-background-image: url("../../icons/cancel-icon-hover.png");
+}
+
+.bubble .save-button:hover {
+    -fx-background-image: url("../../icons/save-icon-hover.png");
 }

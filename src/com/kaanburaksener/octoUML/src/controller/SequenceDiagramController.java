@@ -6,6 +6,7 @@ import com.kaanburaksener.octoUML.src.model.nodes.SequenceObject;
 import com.kaanburaksener.octoUML.src.util.commands.CompoundCommand;
 import com.kaanburaksener.octoUML.src.util.commands.MoveGraphElementCommand;
 import com.kaanburaksener.octoUML.src.util.commands.MoveMessageCommand;
+import com.kaanburaksener.octoUML.src.view.BubbleView;
 import com.kaanburaksener.octoUML.src.view.edges.AbstractEdgeView;
 import com.kaanburaksener.octoUML.src.view.edges.MessageEdgeView;
 import com.kaanburaksener.octoUML.src.view.nodes.AbstractNodeView;
@@ -305,7 +306,6 @@ public class SequenceDiagramController extends AbstractDiagramController {
         });
     }
 
-
     private double previousMoveX, previousMoveY, initMoveX, initMoveY;
     public void initMessageHandleActions(MessageEdgeView edgeView){
         Circle circleHandle = edgeView.getCircleHandle();
@@ -482,4 +482,6 @@ public class SequenceDiagramController extends AbstractDiagramController {
             voiceController.onVoiceButtonClick();
         });
     }
+
+    void initBubbleActions(BubbleView bubble) {}
 }

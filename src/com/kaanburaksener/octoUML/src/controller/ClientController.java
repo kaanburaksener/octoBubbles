@@ -7,10 +7,7 @@ import com.esotericsoftware.kryonet.Listener;
 
 import com.kaanburaksener.octoUML.src.model.*;
 import com.kaanburaksener.octoUML.src.model.edges.*;
-import com.kaanburaksener.octoUML.src.model.nodes.AbstractNode;
-import com.kaanburaksener.octoUML.src.model.nodes.ClassNode;
-import com.kaanburaksener.octoUML.src.model.nodes.EnumerationNode;
-import com.kaanburaksener.octoUML.src.model.nodes.PackageNode;
+import com.kaanburaksener.octoUML.src.model.nodes.*;
 import com.kaanburaksener.octoUML.src.util.Constants;
 
 import javafx.application.Platform;
@@ -47,16 +44,13 @@ public class ClientController implements PropertyChangeListener {
             public void received (Connection connection, Object object) {
                 if (object instanceof AbstractNode) {
                     Platform.runLater(() -> diagramController.createNodeView((AbstractNode)object, true));
-                }
-                else if (object instanceof AbstractEdge) {
+                } else if (object instanceof AbstractEdge) {
                     Platform.runLater(() -> diagramController.addEdgeView((AbstractEdge)object, true));
-                }
-                else if (object instanceof Graph){
+                } else if (object instanceof Graph){
                     Graph graph = (Graph) object;
                     graph.addRemotePropertyChangeListener(ClientController.this);
                     Platform.runLater(() -> diagramController.load(graph, true));
-                }
-                else if (object instanceof String[]){
+                } else if (object instanceof String[]){
                     Platform.runLater(() -> diagramController.remoteCommand((String[])object));
                 }
             }
@@ -92,65 +86,54 @@ public class ClientController implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         String propertyName = evt.getPropertyName();
+
         if(propertyName.equals(Constants.sketchAdd)){
             String[] dataArray = {Constants.sketchAdd}; //Because serializing Sketch was tricky
             client.sendTCP(dataArray);
-        }
-        else if (propertyName.equals(Constants.changeSketchPoint)){
+        } else if (propertyName.equals(Constants.changeSketchPoint)){
             Sketch sketch = (Sketch) evt.getSource();
             Point2D point = (Point2D) evt.getNewValue();
             String[] dataArray = {Constants.changeSketchPoint, sketch.getId(),
                     Double.toString(point.getX()), Double.toString(point.getY())};
             client.sendTCP(dataArray);
-        }
-        else if (propertyName.equals(Constants.changeSketchStart)) {
+        } else if (propertyName.equals(Constants.changeSketchStart)) {
             Sketch sketch = (Sketch) evt.getSource();
             Point2D point = (Point2D) evt.getNewValue();
             String[] dataArray = {Constants.changeSketchStart, sketch.getId(),
                     Double.toString(point.getX()), Double.toString(point.getY()), sketch.getColor().toString()};
             client.sendTCP(dataArray);
-        }
-        else if (propertyName.equals(Constants.sketchRemove)){
+        } else if (propertyName.equals(Constants.sketchRemove)){
             String[] dataArray = {Constants.sketchRemove, (String)evt.getNewValue()};
             client.sendTCP(dataArray);
-        }
-        else if(propertyName.equals(Constants.NodeAdd)) {
+        } else if(propertyName.equals(Constants.NodeAdd)) {
             AbstractNode node = (AbstractNode) evt.getNewValue();
             client.sendTCP(node);
-        }
-        else if (propertyName.equals(Constants.NodeRemove)){
+        } else if (propertyName.equals(Constants.NodeRemove)){
             String[] dataArray = {Constants.NodeRemove, (String)evt.getNewValue()};
             client.sendTCP(dataArray);
-        }
-        else if (propertyName.equals(Constants.EdgeAdd)){
+        } else if (propertyName.equals(Constants.EdgeAdd)){
             AbstractEdge edge = (AbstractEdge) evt.getNewValue();
             client.sendTCP(edge);
-        }
-        else if(propertyName.equals(Constants.EdgeRemove)) {
+        } else if(propertyName.equals(Constants.EdgeRemove)) {
             String [] dataArray = {Constants.EdgeRemove, (String)evt.getNewValue()};
             client.sendTCP(dataArray);
-        }
-        else if (propertyName.equals(Constants.changeNodeTranslateX) || propertyName.equals(Constants.changeNodeTranslateY)) { //NodeX/Y not needed
+        } else if (propertyName.equals(Constants.changeNodeTranslateX) || propertyName.equals(Constants.changeNodeTranslateY)) { //NodeX/Y not needed
             AbstractNode node = (AbstractNode) evt.getSource();
             String[] dataArray = {propertyName, node.getId(), Double.toString(node.getTranslateX()), Double.toString(node.getTranslateY())};
             client.sendTCP(dataArray);
-        }
-        else if (propertyName.equals(Constants.changeNodeWidth) || propertyName.equals(Constants.changeNodeHeight)){
+        } else if (propertyName.equals(Constants.changeNodeWidth) || propertyName.equals(Constants.changeNodeHeight)){
             AbstractNode node = (AbstractNode) evt.getSource();
             String[] dataArray = {propertyName, node.getId(), Double.toString(node.getWidth()), Double.toString(node.getHeight())};
             client.sendTCP(dataArray);
-        }
-        else if (propertyName.equals(Constants.changeNodeTitle)) {
+        } else if (propertyName.equals(Constants.changeNodeTitle)) {
             AbstractNode node = (AbstractNode) evt.getSource();
             String[] dataArray = {propertyName, node.getId(), node.getTitle()};
             client.sendTCP(dataArray);
-        }
-        else if (propertyName.equals(Constants.changeClassNodeAttributes) || propertyName.equals(Constants.changeClassNodeOperations) || propertyName.equals(Constants.changeClassNodeType)){
+        } else if (propertyName.equals(Constants.changeClassNodeAttributes) || propertyName.equals(Constants.changeClassNodeOperations) || propertyName.equals(Constants.changeClassNodeType)){
             ClassNode node = (ClassNode) evt.getSource();
             String[] dataArray = {propertyName, node.getId(), node.getType(), node.getAttributes(), node.getOperations()};
             client.sendTCP(dataArray);
-        }
-        else if(propertyName.equals(Constants.changeEdgeStartMultiplicity) || propertyName.equals(Constants.changeEdgeEndMultiplicity)){
+        } else if(propertyName.equals(Constants.changeEdgeStartMultiplicity) || propertyName.equals(Constants.changeEdgeEndMultiplicity)){
             AbstractEdge edge = (AbstractEdge) evt.getSource();
             String[] dataArray = {propertyName, edge.getId(), edge.getStartMultiplicity(), edge.getEndMultiplicity()};
             client.sendTCP(dataArray);
@@ -162,10 +145,13 @@ public class ClientController implements PropertyChangeListener {
             Sketch sketch = (Sketch) evt.getSource();
             String[] dataArray = {propertyName, sketch.getId(), Double.toString(sketch.getTranslateY())};
             client.sendTCP(dataArray);
-        }
-        else if (propertyName.equals(Constants.changeEnumerationNodeValues)){
+        } else if (propertyName.equals(Constants.changeEnumerationNodeValues)){
             EnumerationNode node = (EnumerationNode) evt.getSource();
             String[] dataArray = {propertyName, node.getId(), node.getValues()};
+            client.sendTCP(dataArray);
+        } else if(propertyName.equals(Constants.changeBubbleSourceCode) || propertyName.equals(Constants.changeBubbleType)) {
+            Bubble bubble = (Bubble) evt.getSource();
+            String[] dataArray = {propertyName, bubble.getId(), bubble.getType(), bubble.getSourceCodeText()};
             client.sendTCP(dataArray);
         }
     }
@@ -174,6 +160,7 @@ public class ClientController implements PropertyChangeListener {
         kryo.register(ClassNode.class);
         kryo.register(AbstractNode.class);
         kryo.register(EnumerationNode.class);
+        kryo.register(Bubble.class);
         kryo.register(PackageNode.class);
         kryo.register(AbstractEdge.class);
         kryo.register(InheritanceEdge.class);

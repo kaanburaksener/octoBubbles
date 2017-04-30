@@ -209,6 +209,8 @@ public class ClassNodeView extends AbstractNodeView implements NodeView {
         return container.getBoundsInParent();
     }
 
+    public String getTitle() { return title.getText(); }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         super.propertyChange(evt);

@@ -3,17 +3,18 @@ package com.kaanburaksener.octoUML.src.controller;
 import com.kaanburaksener.octoUML.src.model.Sketch;
 import com.kaanburaksener.octoUML.src.util.commands.CompoundCommand;
 import com.kaanburaksener.octoUML.src.util.commands.MoveGraphElementCommand;
+import com.kaanburaksener.octoUML.src.view.BubbleView;
 import com.kaanburaksener.octoUML.src.view.nodes.AbstractNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.PackageNodeView;
 
 import javafx.fxml.FXML;
 
+import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
+import javafx.scene.input.*;
 
 import org.controlsfx.control.Notifications;
-
 
 import java.awt.geom.Point2D;
 
@@ -159,7 +160,6 @@ public class ClassDiagramController extends AbstractDiagramController {
     boolean wasAlreadySelected = false;
 
     void initNodeActions(AbstractNodeView nodeView) {
-
         nodeView.setOnMousePressed(event -> {
             if (event.getClickCount() == 2) { //Open dialog window on double click.
                 nodeController.onDoubleClick(nodeView);
@@ -178,7 +178,7 @@ public class ClassDiagramController extends AbstractDiagramController {
                 if (!(nodeView instanceof PackageNodeView)) {
                     nodeView.toFront();
                 }
-                if (mode == Mode.NO_MODE) { //Either drag selected elements or resize node.
+                if (mode == Mode.NO_MODE && tool != ToolEnum.DISPLAY_CODE) { //Either drag selected elements or resize node.
                     Point2D.Double eventPoint = new Point2D.Double(event.getX(), event.getY());
                     if (eventPoint.distance(new Point2D.Double(nodeView.getWidth(), nodeView.getHeight())) < 20) {  //Resize if event is close to corner of node
                         mode = Mode.RESIZING;
@@ -204,22 +204,21 @@ public class ClassDiagramController extends AbstractDiagramController {
         });
 
         nodeView.setOnMouseDragged(event -> {
-            if ((tool == ToolEnum.SELECT || tool == ToolEnum.CREATE_CLASS) && mode == Mode.DRAGGING) { //Continue dragging selected elements
+            if ((tool == ToolEnum.SELECT || tool == ToolEnum.CREATE_CLASS && tool != ToolEnum.DISPLAY_CODE) && mode == Mode.DRAGGING) { //Continue dragging selected elements
                 nodeController.moveNodes(event);
                 sketchController.moveSketches(event);
             } else if (mode == Mode.MOVING && tool == ToolEnum.MOVE_SCENE) { //Continue panning graph.
                 graphController.movePane(event);
-            } else if ((tool == ToolEnum.SELECT || tool == ToolEnum.CREATE_CLASS) && mode == Mode.RESIZING) { //Continue resizing node.
+            } else if ((tool == ToolEnum.SELECT || tool == ToolEnum.CREATE_CLASS && tool != ToolEnum.DISPLAY_CODE) && mode == Mode.RESIZING) { //Continue resizing node.
                 nodeController.resize(event);
             } else if (tool == ToolEnum.EDGE && mode == Mode.CREATING) { //Continue creating edge.
                 edgeController.onMouseDragged(event);
             }
             event.consume();
-
         });
 
         nodeView.setOnMouseReleased(event -> {
-            if ((tool == ToolEnum.SELECT || tool == ToolEnum.CREATE_CLASS) && mode == Mode.DRAGGING) { //Finish dragging nodes and create a compound command.
+            if ((tool == ToolEnum.SELECT || tool == ToolEnum.CREATE_CLASS && tool != ToolEnum.DISPLAY_CODE) && mode == Mode.DRAGGING) { //Finish dragging nodes and create a compound command.
                 double[] deltaTranslateVector = nodeController.moveNodesFinished(event);
                 sketchController.moveSketchFinished(event);
                 if(deltaTranslateVector[0] != 0 || deltaTranslateVector[1] != 0){ //If it was actually moved
@@ -240,7 +239,7 @@ public class ClassDiagramController extends AbstractDiagramController {
             } else if (mode == Mode.MOVING && tool == ToolEnum.MOVE_SCENE) { //Finish panning of graph.
                 graphController.movePaneFinished();
                 mode = Mode.NO_MODE;
-            } else if ((tool == ToolEnum.SELECT || tool == ToolEnum.CREATE_CLASS) && mode == Mode.RESIZING) { //Finish resizing node.
+            } else if ((tool == ToolEnum.SELECT || tool == ToolEnum.CREATE_CLASS && tool != ToolEnum.DISPLAY_CODE) && mode == Mode.RESIZING) { //Finish resizing node.
                 nodeController.resizeFinished(nodeMap.get(nodeView));
             } else if (tool == ToolEnum.EDGE && mode == Mode.CREATING) { //Finish creation of edge.
                 edgeController.onMouseReleasedRelation();
@@ -252,7 +251,7 @@ public class ClassDiagramController extends AbstractDiagramController {
         ////////////////////////////////////////////////////////////////
 
         nodeView.setOnTouchPressed(event -> {
-            if (nodeView instanceof PackageNodeView && (tool == ToolEnum.CREATE_CLASS || tool == ToolEnum.CREATE_PACKAGE || tool == ToolEnum.CREATE_ENUM)) {
+            if (nodeView instanceof PackageNodeView && (tool == ToolEnum.CREATE_CLASS || tool == ToolEnum.CREATE_PACKAGE || tool == ToolEnum.CREATE_ENUM && tool != ToolEnum.DISPLAY_CODE)) {
                 mode = Mode.CREATING;
                 createNodeController.onTouchPressed(event);
             } else if (tool == ToolEnum.DRAW) {
@@ -263,8 +262,7 @@ public class ClassDiagramController extends AbstractDiagramController {
         });
 
         nodeView.setOnTouchMoved(event -> {
-            if (nodeView instanceof PackageNodeView && (tool == ToolEnum.CREATE_CLASS || tool == ToolEnum.CREATE_PACKAGE || tool == ToolEnum.CREATE_ENUM) &&
-                    mode == Mode.CREATING) {
+            if (nodeView instanceof PackageNodeView && (tool == ToolEnum.CREATE_CLASS || tool == ToolEnum.CREATE_PACKAGE || tool == ToolEnum.CREATE_ENUM) && mode == Mode.CREATING) {
                 createNodeController.onTouchDragged(event);
             } else if (tool == ToolEnum.DRAW && mode == Mode.DRAWING) {
                 sketchController.onTouchMoved(event);
@@ -404,6 +402,7 @@ public class ClassDiagramController extends AbstractDiagramController {
 
         sourceCodeBtn.setOnAction(event -> {
             if(!selectedNodes.isEmpty()) {
+                tool = ToolEnum.DISPLAY_CODE;
                 setButtonClicked(sourceCodeBtn);
                 sourceCodeController.recognize(selectedNodes);
             }
@@ -423,5 +422,65 @@ public class ClassDiagramController extends AbstractDiagramController {
             }
             voiceController.onVoiceButtonClick();
         });
+    }
+
+    void initBubbleActions(BubbleView bubbleView) {
+        Point2D.Double delta = new Point2D.Double();
+
+        bubbleView.setOnMousePressed(event -> {
+            if (event.getClickCount() == 2) { //Open dialog window on double click.
+                setTool(ToolEnum.SELECT);
+                setButtonClicked(selectBtn);
+            } else if (tool == ToolEnum.MOVE_SCENE) { //Start panning of graph.
+                mode = Mode.MOVING;
+                graphController.movePaneStart(event);
+                event.consume();
+            } else {
+                mode = Mode.DRAGGING;
+
+                delta.x = event.getX();
+                delta.y = event.getY();
+
+                bubbleView.toFront();
+                bubbleView.getScene().setCursor(Cursor.MOVE);
+            }
+
+            event.consume();
+        });
+
+        bubbleView.setOnMouseDragged(event -> {
+            if (mode == Mode.MOVING && tool == ToolEnum.MOVE_SCENE) { //Continue panning graph.
+                graphController.movePane(event);
+            }
+
+            bubbleView.getRefNode().setX(bubbleView.getLayoutX() + event.getX() - delta.getX());
+            bubbleView.getRefNode().setY(bubbleView.getLayoutY() + event.getY() - delta.getY());
+
+            mode = Mode.NO_MODE;
+            event.consume();
+        });
+
+        bubbleView.setOnMouseReleased(event -> {
+            if (mode == Mode.MOVING && tool == ToolEnum.MOVE_SCENE) { //Finish panning of graph.
+                graphController.movePaneFinished();
+                mode = Mode.NO_MODE;
+            }
+
+            event.consume();
+        });
+
+        bubbleView.getCloseButton().setOnAction(event -> {
+            CompoundCommand command = new CompoundCommand();
+            deleteSimpleEdgeView(findSimpleEdgeView(bubbleView), command, false, false);
+            deleteBubbleView(bubbleView, command, false, false);
+        });
+
+        //////////////////////////////////////////////////////////////// For touch screen
+
+        bubbleView.setOnTouchPressed(event -> {});
+
+        bubbleView.setOnTouchMoved(event -> {});
+
+        bubbleView.setOnTouchReleased(event -> {});
     }
 }

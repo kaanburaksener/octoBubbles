@@ -20,6 +20,15 @@ public class Constants {
     public static String EdgeRemove = "EdgeRemove";
     public static String sketchAdd = "SketchAdd";
     public static String sketchRemove = "SketchRemove";
+    public static String BubbleAdd = "BubbleAdd";
+    public static String BubbleRemove = "BubbleRemove";
+
+    public static String changeBubbleX = "BubbleX";
+    public static String changeBubbleY = "BubbleY";
+    public static String changeBubbleWidth = "BubbleWidth";
+    public static String changeBubbleHeight = "BubbleHeight";
+    public static String changeBubbleSourceCode = "BubbleSourceCode";
+    public static String changeBubbleType = "BubbleType";
 
     public static String changeNodeX = "NodeX";
     public static String changeNodeY = "NodeY";

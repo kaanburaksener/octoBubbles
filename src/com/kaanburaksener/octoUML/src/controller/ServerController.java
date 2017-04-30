@@ -7,10 +7,7 @@ import com.esotericsoftware.kryonet.Server;
 
 import com.kaanburaksener.octoUML.src.model.*;
 import com.kaanburaksener.octoUML.src.model.edges.*;
-import com.kaanburaksener.octoUML.src.model.nodes.AbstractNode;
-import com.kaanburaksener.octoUML.src.model.nodes.ClassNode;
-import com.kaanburaksener.octoUML.src.model.nodes.EnumerationNode;
-import com.kaanburaksener.octoUML.src.model.nodes.PackageNode;
+import com.kaanburaksener.octoUML.src.model.nodes.*;
 import com.kaanburaksener.octoUML.src.util.Constants;
 
 import javafx.application.Platform;
@@ -171,10 +168,13 @@ public class ServerController implements PropertyChangeListener {
             Sketch sketch = (Sketch) evt.getSource();
             String[] dataArray = {propertyName, sketch.getId(), Double.toString(sketch.getTranslateY())};
             server.sendToAllTCP(dataArray);
-        }
-        else if (propertyName.equals(Constants.changeEnumerationNodeValues)){
+        } else if(propertyName.equals(Constants.changeEnumerationNodeValues)){
             EnumerationNode node = (EnumerationNode) evt.getSource();
             String[] dataArray = {propertyName, node.getId(), node.getValues()};
+            server.sendToAllTCP(dataArray);
+        } else if(propertyName.equals(Constants.changeBubbleSourceCode) || propertyName.equals(Constants.changeBubbleType)) {
+            Bubble bubble = (Bubble) evt.getSource();
+            String[] dataArray = {propertyName, bubble.getId(), bubble.getType(), bubble.getSourceCodeText()};
             server.sendToAllTCP(dataArray);
         }
     }
@@ -183,6 +183,7 @@ public class ServerController implements PropertyChangeListener {
         kryo.register(ClassNode.class);
         kryo.register(AbstractNode.class);
         kryo.register(EnumerationNode.class);
+        kryo.register(Bubble.class);
         kryo.register(PackageNode.class);
         kryo.register(AbstractEdge.class);
         kryo.register(InheritanceEdge.class);

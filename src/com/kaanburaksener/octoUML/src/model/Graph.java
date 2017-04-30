@@ -2,7 +2,9 @@ package com.kaanburaksener.octoUML.src.model;
 
 import com.kaanburaksener.octoUML.src.model.edges.AbstractEdge;
 import com.kaanburaksener.octoUML.src.model.edges.Edge;
+import com.kaanburaksener.octoUML.src.model.edges.SimpleEdge;
 import com.kaanburaksener.octoUML.src.model.nodes.AbstractNode;
+import com.kaanburaksener.octoUML.src.model.nodes.Bubble;
 import com.kaanburaksener.octoUML.src.model.nodes.Node;
 import com.kaanburaksener.octoUML.src.model.nodes.PackageNode;
 import com.kaanburaksener.octoUML.src.util.Constants;
@@ -25,8 +27,10 @@ public class Graph implements Serializable, PropertyChangeListener {
 
     private transient PropertyChangeSupport remoteChanges = new PropertyChangeSupport(this);
 
+    private List<Bubble> allBubbles = new ArrayList<>();
     private List<AbstractNode> allNodes = new ArrayList<>();
     private List<Edge> allEdges = new ArrayList<>();
+    private List<SimpleEdge> allSimpleEdges = new ArrayList<>();
     private transient List<Sketch> allSketches = new ArrayList<>();
 
     private String name = "";
@@ -97,6 +101,36 @@ public class Graph implements Serializable, PropertyChangeListener {
         s.addPropertyChangeListener(this);
     }
 
+    /**
+     * Add a Bubble to the Graph
+     * @param b, cannot be null.
+     */
+    public void addBubble(Bubble b, boolean remote) {
+        assert b != null;
+        if(!remote){
+            remoteChanges.firePropertyChange(Constants.BubbleAdd, null, b);
+        } else {
+            Bubble.incrementObjectCount();
+        }
+        allBubbles.add(b);
+        b.addPropertyChangeListener(this);
+    }
+
+    /**
+     * Add a Simple Edge to the Graph.
+     * @param remote, true if change comes from a remote server
+     * @param simpleEdge, cannot be null.
+     */
+    public boolean addSimpleEdge(SimpleEdge simpleEdge, boolean remote){
+        assert simpleEdge != null;
+        boolean success = allSimpleEdges.add(simpleEdge);
+        if(!remote){
+            remoteChanges.firePropertyChange(Constants.EdgeAdd, null, simpleEdge);
+        } else {
+            SimpleEdge.incrementObjectCount();
+        }
+        return success;
+    }
 
     /**
      * Removes a Node from the graph.
@@ -135,6 +169,34 @@ public class Graph implements Serializable, PropertyChangeListener {
         return allSketches.remove(s);
     }
 
+    /**
+     * Removes a Bubble from the Graph.
+     * @param b, Bubble to be removed.
+     * @param remote, true if change comes from a remote server
+     * @return true if the Bubble is successfully removed.
+     */
+    public boolean removeBubble(Bubble b, boolean remote) {
+        assert b != null;
+        if(!remote){
+            remoteChanges.firePropertyChange(Constants.BubbleRemove, null, b.getId());
+        }
+        return allBubbles.remove(b);
+    }
+
+    /**
+     * Removes a Simple Edge from the Graph.
+     * @param simpleEdge, Edge to be removed.
+     * @param remote, true if change comes from a remote server
+     * @return true if the Edge is successfully removed.
+     */
+    public boolean removeSimpleEdge(SimpleEdge simpleEdge, boolean remote) {
+        assert simpleEdge != null;
+        if(!remote){
+            remoteChanges.firePropertyChange(Constants.EdgeRemove, null, simpleEdge.getId());
+        }
+        return allSimpleEdges.remove(simpleEdge);
+    }
+
     public List<AbstractNode> getAllNodes() {
         return allNodes;
     }
@@ -147,11 +209,21 @@ public class Graph implements Serializable, PropertyChangeListener {
         return allSketches;
     }
 
+    public List<Bubble> getAllBubbles() {
+        return allBubbles;
+    }
+
+    public List<SimpleEdge> getAllSimpleEdges() {
+        return allSimpleEdges;
+    }
+
     public List<GraphElement> getAllGraphElements() {
         ArrayList list = new ArrayList();
         list.addAll(allNodes);
         list.addAll(allEdges);
         list.addAll(allSketches);
+        list.addAll(allBubbles);
+        list.addAll(allSimpleEdges);
         return list;
     }
 
@@ -213,6 +285,16 @@ public class Graph implements Serializable, PropertyChangeListener {
         this.allSketches.addAll(allSketches);
     }
 
+    public void setAllBubbles(List<Bubble> allBubbles) {
+        this.allBubbles.clear();
+        this.allBubbles.addAll(allBubbles);
+    }
+
+    public void setAllSimpleEdges(List<SimpleEdge> allSimpleEdges) {
+        this.allSimpleEdges.clear();
+        this.allSimpleEdges.addAll(allSimpleEdges);
+    }
+
     public String getId(){
         return "GRAPH_" + id;
     }
@@ -231,7 +313,6 @@ public class Graph implements Serializable, PropertyChangeListener {
         } else if (e instanceof Sketch){
             ((Sketch) e).addPropertyChangeListener(this);
         }
-
     }
 
     /**

@@ -156,3 +156,24 @@
 .menu-bar:focused {
     -fx-background-color: #3F4144
 }
+
+.region {
+    -fx-background-color: transparent;
+    -fx-border-color: #01B3E3;;
+    -fx-border-width: 2px;
+}
+
+.in-region {
+    -fx-background-color: transparent;
+    -fx-border-color: #FE7155;
+    -fx-border-width: 2px;
+}
+
+
+
+
+
+
+
+
+

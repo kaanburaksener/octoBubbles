@@ -9,6 +9,7 @@ import com.kaanburaksener.octoUML.src.util.NetworkUtils;
 import com.kaanburaksener.octoUML.src.util.commands.*;
 import com.kaanburaksener.octoUML.src.util.insertIMG.InsertIMG;
 import com.kaanburaksener.octoUML.src.util.persistence.PersistenceManager;
+import com.kaanburaksener.octoUML.src.view.BubbleView;
 import com.kaanburaksener.octoUML.src.view.edges.*;
 import com.kaanburaksener.octoUML.src.view.nodes.*;
 
@@ -75,8 +76,11 @@ public abstract class AbstractDiagramController {
     ArrayList<Sketch> selectedSketches = new ArrayList<>();
     ArrayList<AbstractNodeView> allNodeViews = new ArrayList<>();
     ArrayList<AbstractEdgeView> allEdgeViews = new ArrayList<>();
+    ArrayList<SimpleEdgeView> allSimpleEdgeViews = new ArrayList<>();
+    ArrayList<BubbleView> allBubbleViews = new ArrayList<>();
     ArrayList<AnchorPane> allDialogs = new ArrayList<>();
     HashMap<AbstractNodeView, AbstractNode> nodeMap = new HashMap<>();
+    HashMap<BubbleView, Bubble> bubbleMap = new HashMap<>();
 
     ArrayList<ServerController> serverControllers = new ArrayList<>();
     ArrayList<ClientController> clientControllers = new ArrayList<>();
@@ -94,7 +98,7 @@ public abstract class AbstractDiagramController {
     //Tool
     protected ToolEnum tool = ToolEnum.CREATE_CLASS;
     protected enum ToolEnum {
-        CREATE_CLASS, CREATE_ENUM, SELECT, DRAW, CREATE_PACKAGE, EDGE, MOVE_SCENE
+        CREATE_CLASS, CREATE_ENUM, SELECT, DRAW, CREATE_PACKAGE, EDGE, MOVE_SCENE, DISPLAY_CODE
     }
 
     //Views
@@ -152,10 +156,12 @@ public abstract class AbstractDiagramController {
 
     abstract void initNodeActions(AbstractNodeView nodeView);
 
+    abstract void initBubbleActions(BubbleView bubble);
+
     //----------------- DELETING ----------------------------------------
 
     /**
-     * Deletes all selected nodes, edges and sketches.
+     * Deletes all selected bubbles, nodes, edges and sketches.
      */
     void deleteSelected() {
         CompoundCommand command = new CompoundCommand();
@@ -172,6 +178,36 @@ public abstract class AbstractDiagramController {
         selectedEdges.clear();
         selectedSketches.clear();
         undoManager.add(command);
+    }
+
+    /**
+     * Deletes bubbles and its associated edges
+     *
+     * @param bubbleView
+     * @param pCommand Compound command from deleting all selected, if null we create our own command.
+     * @param undo     If true this is an undo and no command should be created
+     * @param remote, If true this command was received from a remote server.
+     */
+    public void deleteBubbleView(BubbleView bubbleView, CompoundCommand pCommand, boolean undo, boolean remote) {
+        CompoundCommand command = null;
+        if (pCommand == null && !undo) {
+            command = new CompoundCommand();
+        } else if (!undo) {
+            command = pCommand;
+        }
+
+        Bubble bubble = bubbleMap.get(bubbleView);
+        deleteBubbleEdges(bubble, command, undo, remote);
+        getGraphModel().removeBubble(bubble, remote);
+        drawPane.getChildren().remove(bubbleView);
+        allBubbleViews.remove(bubbleView);
+
+        if (!undo) {
+            command.add(new AddDeleteBubbleCommand(this, graph, bubbleView, bubble, false));
+        }
+        if (pCommand == null && !undo) {
+            undoManager.add(command);
+        }
     }
 
     /**
@@ -236,6 +272,32 @@ public abstract class AbstractDiagramController {
         }
     }
 
+    /**
+     * Deletes given simple edge from graph
+     *
+     * @param simpleEdgeView
+     * @param pCommand  CompoundCommand from deleting all selected, if null we create our own command.
+     * @param remote    True if change comes from a remote server
+     * @param undo      If true this is an undo and no command should be created
+     */
+    public void deleteSimpleEdgeView(SimpleEdgeView simpleEdgeView, CompoundCommand pCommand, boolean undo, boolean remote) {
+        CompoundCommand command = null;
+
+        if (pCommand != null && !undo) {
+            command = pCommand;
+        }
+
+        SimpleEdge edge = simpleEdgeView.getRefEdge();
+        graph.removeSimpleEdge(edge, remote);
+        drawPane.getChildren().remove(simpleEdgeView);
+        simpleEdgeView.setSelected(false);
+        allSimpleEdgeViews.remove(simpleEdgeView);
+
+        if (pCommand == null && !undo) { //If this is not part of a compoundcommand we add this directly to the UndoManager
+            undoManager.add(command);
+        }
+    }
+
     public void addSketch(Sketch sketch, boolean isImport, boolean remote){
         initSketchActions(sketch);
         drawPane.getChildren().add(sketch.getPath());
@@ -271,6 +333,31 @@ public abstract class AbstractDiagramController {
         for (AbstractEdgeView edgeView : allEdgeViews) {
             edge = edgeView.getRefEdge();
             if (edge.getEndNode().equals(node) || edge.getStartNode().equals(node)) {
+                getGraphModel().removeEdge(edgeView.getRefEdge(), remote);
+                drawPane.getChildren().remove(edgeView);
+                selectedEdges.remove(edgeView);
+                edgeViewsToBeDeleted.add(edgeView);
+                if (!undo && command != null) {
+                    command.add(new AddDeleteEdgeCommand(this, edgeView, edgeView.getRefEdge(), false));
+                }
+            }
+        }
+        allEdgeViews.removeAll(edgeViewsToBeDeleted);
+    }
+
+    /**
+     * Deletes all edges associated with the node
+     *
+     * @param bubble
+     * @param command
+     * @param remote, true if change comes from a remote server
+     */
+    public void deleteBubbleEdges(Bubble bubble, CompoundCommand command, boolean undo, boolean remote) {
+        AbstractEdge edge;
+        ArrayList<AbstractEdgeView> edgeViewsToBeDeleted = new ArrayList<>();
+        for (AbstractEdgeView edgeView : allEdgeViews) {
+            edge = edgeView.getRefEdge();
+            if (edge.getEndNode().equals(bubble) || edge.getStartNode().equals(bubble)) {
                 getGraphModel().removeEdge(edgeView.getRefEdge(), remote);
                 drawPane.getChildren().remove(edgeView);
                 selectedEdges.remove(edgeView);
@@ -649,6 +736,39 @@ public abstract class AbstractDiagramController {
     }
 
     /**
+     * Creates  a new NodeView from the given node and adds them to the graph.
+     *
+     * @param bubble - Any Bubble
+     * @return the created AbstractNodeView
+     */
+    public BubbleView createBubbleView(Bubble bubble, boolean remote) {
+        BubbleView newBubbleView = new BubbleView(bubble);
+
+        if(!graph.getAllBubbles().contains(bubble)){
+            graph.addBubble(bubble, remote);
+            undoManager.add(new AddDeleteBubbleCommand(AbstractDiagramController.this, graph, newBubbleView, bubble, true));
+        }
+
+        return addBubbleView(newBubbleView, bubble);
+    }
+
+    /**
+     * Adds a BubbleView to the graph
+     *
+     * @param bubble
+     * @return
+     */
+    public BubbleView addBubbleView(BubbleView bubbleView, Bubble bubble) {
+        drawPane.getChildren().add(bubbleView);
+        initBubbleActions(bubbleView);
+        bubbleMap.put(bubbleView, bubble);
+        allBubbleViews.add(bubbleView);
+        bubbleView.toFront();
+
+        return bubbleView;
+    }
+
+    /**
      * Creates a new picture node from the given image and position and adds it to the graph.
      * @param view
      * @param image
@@ -779,10 +899,18 @@ public abstract class AbstractDiagramController {
                     sketch.remoteSetTranslateY(Double.parseDouble(dataArray[2]));
                 }
             }
-        } else if (dataArray[0].equals(Constants.changeEnumerationNodeValues)){
+        } else if (dataArray[0].equals(Constants.changeEnumerationNodeValues)) {
             for(AbstractNode node : graph.getAllNodes()){
                 if(dataArray[1].equals(node.getId())){
                     ((EnumerationNode)node).remoteSetValues(dataArray[2]);
+                    break;
+                }
+            }
+        } else if (dataArray[0].equals(Constants.changeBubbleSourceCode) || dataArray[0].equals(Constants.changeBubbleType)) {
+            for(Bubble bubble : graph.getAllBubbles()){
+                if(dataArray[1].equals(bubble.getId())){
+                    bubble.remoteSetType(dataArray[2]);
+                    bubble.remoteSetSourceCodeText(dataArray[3]);
                     break;
                 }
             }
@@ -872,12 +1000,42 @@ public abstract class AbstractDiagramController {
     }
 
     /**
+     * Creates and adds a new EdgeView
+     *
+     * @param edge
+     * @param startNodeView
+     * @param endNodeView
+     * @return
+     */
+    public SimpleEdgeView createSimpleEdgeView(SimpleEdge edge, AbstractNodeView startNodeView, BubbleView endNodeView) {
+        SimpleEdgeView edgeView = new SimpleEdgeView(edge, startNodeView, endNodeView);
+        return addSimpleEdgeView(edgeView);
+    }
+
+    /**
+     * Adds an EdgeView
+     *
+     * @param edgeView
+     * @return
+     */
+    public SimpleEdgeView addSimpleEdgeView(SimpleEdgeView edgeView) {
+        if (edgeView != null) {
+            drawPane.getChildren().add(edgeView);
+            graph.addSimpleEdge(edgeView.getRefEdge(), false);
+            allSimpleEdgeViews.add(edgeView);
+        }
+
+        return edgeView;
+    }
+
+    /**
      * Resets the program, removes everything on the canvas
      */
     private void reset() {
         graph = new Graph();
         drawPane.getChildren().clear();
         nodeMap.clear();
+        bubbleMap.clear();
         allNodeViews.clear();
         zoomSlider.setValue(zoomSlider.getMax() / 2);
         undoManager = new UndoManager();
@@ -917,7 +1075,6 @@ public abstract class AbstractDiagramController {
     //------------------------ Zoom-feature -------------------------------------
 
     private void initZoomSlider() {
-
         zoomSlider.valueProperty().addListener((ov, old_val, new_val) -> {
             if (zoomSlider.isValueChanging()) {
                 graphController.zoomPane(new_val.doubleValue());
@@ -982,6 +1139,10 @@ public abstract class AbstractDiagramController {
         return nodeMap;
     }
 
+    HashMap<BubbleView, Bubble> getBubbleMap() {
+        return bubbleMap;
+    }
+
     public Graph getGraphModel() {
         return graph;
     }
@@ -1040,7 +1201,7 @@ public abstract class AbstractDiagramController {
      * @param refNode
      * @return the node if found, otherwise null.
      */
-    public NodeView findSelectedNodeView(AbstractNode refNode) {
+    public AbstractNodeView findSelectedNodeView(AbstractNode refNode) {
         for (AbstractNodeView nodeView : selectedNodes){
             if(nodeView.getRefNode().equals(refNode)) {
                 return nodeView;
@@ -1048,5 +1209,28 @@ public abstract class AbstractDiagramController {
         }
 
         return null;
+    }
+
+    /**
+     * Returns the simple edge view given a node where it's located.
+     * @param refNode
+     * @return the simple edge if found, otherwise null.
+     */
+    public SimpleEdgeView findSimpleEdgeView(BubbleView refNode) {
+        for (SimpleEdgeView simpleEdgeView : allSimpleEdgeViews){
+            if(simpleEdgeView.getEndNode().equals(refNode)) {
+                return simpleEdgeView;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns all Bubbles
+     * @return allBubbleViews, otherwise null.
+     */
+    public ArrayList<BubbleView> getAllBubbleViews() {
+        return allBubbleViews;
     }
 }

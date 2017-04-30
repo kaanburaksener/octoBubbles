@@ -65,6 +65,19 @@ public class AbstractStructure {
         this.compilationUnit = compilationUnit;
     }
 
+    public double calculateHeight() {
+        int totalNumberOfLine = compilationUnit.getRange().get().end.line;
+        double coefficient = 20.0;
+
+        double total = totalNumberOfLine * coefficient;
+
+        if(total > 450.0) {
+            total = 450.0;
+        }
+
+        return total;
+    }
+
     public void printStructure() {
         System.out.print("Modifiers: ");
         accessModifiers.stream().forEach(am-> {
