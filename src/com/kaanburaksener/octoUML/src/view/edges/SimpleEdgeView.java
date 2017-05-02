@@ -24,8 +24,7 @@ public class SimpleEdgeView extends Group implements EdgeView, PropertyChangeLis
     protected SimpleEdge refEdge;
     protected AbstractNodeView startNode;
     protected BubbleView endNode;
-    protected boolean selected = false;
-    public final double STROKE_WIDTH = 3;
+    public final double STROKE_WIDTH = 5;
 
     public enum Position{
         ABOVE, BELOW, RIGHT, LEFT, NONE
@@ -40,7 +39,7 @@ public class SimpleEdgeView extends Group implements EdgeView, PropertyChangeLis
     public SimpleEdgeView(SimpleEdge edge, AbstractNodeView startNode, BubbleView endNode) {
         super();
 
-        setId("VIEWASSOCIATION_" + ++objectCounter);
+        setId("SIMPLEVIEWASSOCIATION_" + ++objectCounter);
 
         this.refEdge = edge;
         this.startNode = startNode;
@@ -60,9 +59,11 @@ public class SimpleEdgeView extends Group implements EdgeView, PropertyChangeLis
         }
         endNode.getRefNode().addPropertyChangeListener(this);
 
-        this.setStroke(Color.ROYALBLUE);
+        startLine.setStroke(Color.ROYALBLUE);
+        middleLine.setStroke(Color.ROYALBLUE);
+        endLine.setStroke(Color.ROYALBLUE);
+
         setPosition();
-        setSelected(selected);
     }
 
     public SimpleEdge getRefEdge() {
@@ -103,23 +104,6 @@ public class SimpleEdgeView extends Group implements EdgeView, PropertyChangeLis
 
     public Line getEndLine() {
         return endLine;
-    }
-
-    public boolean isSelected() {
-        return selected;
-    }
-
-    public void setSelected(boolean selected){
-        this.selected = selected;
-        if (selected){
-            startLine.setStroke(Constants.selected_color);
-            middleLine.setStroke(Constants.selected_color);
-            endLine.setStroke(Constants.selected_color);
-        } else {
-            startLine.setStroke(Color.ROYALBLUE);
-            middleLine.setStroke(Color.ROYALBLUE);
-            endLine.setStroke(Color.ROYALBLUE);
-        }
     }
 
     public Position getPosition() {

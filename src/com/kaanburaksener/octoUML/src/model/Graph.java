@@ -171,16 +171,16 @@ public class Graph implements Serializable, PropertyChangeListener {
 
     /**
      * Removes a Bubble from the Graph.
-     * @param b, Bubble to be removed.
+     * @param bubble, Bubble to be removed.
      * @param remote, true if change comes from a remote server
      * @return true if the Bubble is successfully removed.
      */
-    public boolean removeBubble(Bubble b, boolean remote) {
-        assert b != null;
+    public boolean removeBubble(Bubble bubble, boolean remote) {
+        assert bubble != null;
         if(!remote){
-            remoteChanges.firePropertyChange(Constants.BubbleRemove, null, b.getId());
+            remoteChanges.firePropertyChange(Constants.BubbleRemove, null, bubble.getId());
         }
-        return allBubbles.remove(b);
+        return allBubbles.remove(bubble);
     }
 
     /**

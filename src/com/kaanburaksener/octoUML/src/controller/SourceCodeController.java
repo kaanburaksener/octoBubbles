@@ -17,10 +17,6 @@ import com.kaanburaksener.octoUML.src.view.nodes.ClassNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.EnumerationNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.NodeView;
 
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +25,7 @@ import java.util.List;
  */
 public class SourceCodeController {
     private final String CSS = "com/kaanburaksener/octoUML/src/view/fxml/main.css";
-    private Pane aDrawPane;
+    private final String path = "test-source-code";
     private AbstractDiagramController diagramController;
     private Graph graph;
     private List<AbstractStructure> existingNodes;
@@ -37,8 +33,7 @@ public class SourceCodeController {
     private List<Region> regionsInBorder;
     private double borderX, borderY, borderWidth, borderHeight;
 
-    public SourceCodeController(Pane pDrawPane, AbstractDiagramController pController) {
-        aDrawPane = pDrawPane;
+    public SourceCodeController(AbstractDiagramController pController) {
         diagramController = pController;
         graph = diagramController.getGraphModel();
     }
@@ -46,24 +41,25 @@ public class SourceCodeController {
     public synchronized void recognize(ArrayList<AbstractNodeView> selectedNodes) {
         recognizedNodes = new ArrayList<>();
 
-        //Perform matching between selected nodes and their views
         for(AbstractNodeView selectedNode : selectedNodes) {
-            if(selectedNode instanceof ClassNodeView) {
-                recognizedNodes.add((ClassNode) selectedNode.getRefNode());
-            } else if(selectedNode instanceof EnumerationNodeView) {
-                recognizedNodes.add((EnumerationNode) selectedNode.getRefNode());
+            if(diagramController.findBubbleView(selectedNode.getRefNode()) == null) {
+                if(selectedNode instanceof ClassNodeView) {
+                    recognizedNodes.add((ClassNode) selectedNode.getRefNode());
+                } else if(selectedNode instanceof EnumerationNodeView) {
+                    recognizedNodes.add((EnumerationNode) selectedNode.getRefNode());
+                }
             }
         }
 
         drawBorders();
         createRegionsInBorder();
         match();
+        rescaleView();
     }
     /**
-     * Matches the UML diagram with the existing source codes in the target folder
+     * Matches the UML model with the existing source codes in the target folder
      */
     private void match() {
-        final String path = "test-source-code";
         NodeController nodeController = new NodeController(path);
         nodeController.initialize();
 
@@ -73,8 +69,7 @@ public class SourceCodeController {
             existingNodes.stream().forEach(existingNode -> {
                 if(graphNode.getType().equals(existingNode.getType())) {
                     if(graphNode.getTitle().equals(existingNode.getName())) {
-                        existingNode.setId(graphNode.getId());// These two nodes get connected by id
-
+                        existingNode.setRefNode(graphNode);
                         AbstractNodeView nodeView = diagramController.findSelectedNodeView(graphNode);
                         Region region = checkIntersectionAreaInBorder(nodeView);
                         findAvailableSpace(region, nodeView, graphNode, existingNode);
@@ -89,16 +84,14 @@ public class SourceCodeController {
      */
     private void drawBorders() {
         final double MARGIN = 50.0;
-        double xMin, yMin, xMax, yMax;
 
         AbstractNode firstNode = graph.getAllNodes().get(0);
 
-        xMin = firstNode.getX();
-        yMin = firstNode.getY();
-        xMax = firstNode.getWidth() + firstNode.getX();
-        yMax = firstNode.getHeight() + firstNode.getY();
+        double xMin = firstNode.getX();
+        double yMin = firstNode.getY();
+        double xMax = firstNode.getWidth() + firstNode.getX();
+        double yMax = firstNode.getHeight() + firstNode.getY();
 
-        //Go through all sketches to find Nodes.
         for (AbstractNode graphNode: graph.getAllNodes()) {
             if((graphNode.getX() + graphNode.getWidth()) > xMax) {
                 xMax = graphNode.getX() + graphNode.getWidth();
@@ -121,60 +114,12 @@ public class SourceCodeController {
         borderY = yMin - MARGIN;
         borderHeight = yMax - yMin + (MARGIN * 2);
         borderWidth = xMax - xMin + (MARGIN * 2);
-
-        Rectangle rectangle = new Rectangle();
-        rectangle.setX(borderX);
-        rectangle.setY(borderY);
-        rectangle.setHeight(borderHeight);
-        rectangle.setWidth(borderWidth);
-        rectangle.setStroke(Color.GOLD);
-        rectangle.setStrokeWidth(10);
-        rectangle.setFill(Color.TRANSPARENT);
-        rectangle.toBack();
-
-        aDrawPane.getChildren().add(rectangle);
     }
 
     /**
      * Divides the whole model into following four parts: Top Left, Top Right, Bottom Left, Bottom Right
      */
     private void createRegionsInBorder() {
-        Pane tL = new Pane();
-        tL.setLayoutX(borderX);
-        tL.setLayoutY(borderY);
-        tL.setPrefHeight(borderHeight/2);
-        tL.setPrefWidth(borderWidth/2);
-        tL.getStyleClass().add("in-region");
-        tL.getStylesheets().add(CSS);
-        tL.toBack();
-
-        Pane tR = new Pane();
-        tR.setLayoutX(borderX + (borderWidth/2));
-        tR.setLayoutY(borderY);
-        tR.setPrefHeight(borderHeight/2);
-        tR.setPrefWidth(borderWidth/2);
-        tR.getStyleClass().add("in-region");
-        tR.getStylesheets().add(CSS);
-        tR.toBack();
-
-        Pane bL = new Pane();
-        bL.setLayoutX(borderX);
-        bL.setLayoutY(borderY + (borderHeight/2));
-        bL.setPrefHeight(borderHeight/2);
-        bL.setPrefWidth(borderWidth/2);
-        bL.getStyleClass().add("in-region");
-        bL.getStylesheets().add(CSS);
-        bL.toBack();
-
-        Pane bR = new Pane();
-        bR.setLayoutX(borderX + (borderWidth/2));
-        bR.setLayoutY(borderY + (borderHeight/2));
-        bR.setPrefHeight(borderHeight/2);
-        bR.setPrefWidth(borderWidth/2);
-        bR.getStyleClass().add("in-region");
-        bR.getStylesheets().add(CSS);
-        bR.toBack();
-
         Region topLeft = new Region(borderX, borderY, borderWidth/2, borderHeight/2, "top-left");
         Region topRight = new Region(borderX + (borderWidth/2), borderY, borderWidth/2, borderHeight/2, "top-right");
         Region bottomLeft = new Region(borderX, borderY + (borderHeight/2), borderWidth/2, borderHeight/2, "bottom-left");
@@ -185,8 +130,6 @@ public class SourceCodeController {
         regionsInBorder.add(topRight);
         regionsInBorder.add(bottomLeft);
         regionsInBorder.add(bottomRight);
-
-        aDrawPane.getChildren().addAll(tL, tR, bL, bR);
     }
 
     /**
@@ -416,7 +359,7 @@ public class SourceCodeController {
                 break;
         }
 
-        Bubble bubble = new Bubble(bubbleX, bubbleY, bubbleWidth, bubbleHeight, existingNode.getName(), existingNode.getCompilationUnit());
+        Bubble bubble = new Bubble(bubbleX, bubbleY, bubbleWidth, bubbleHeight, existingNode.getName(), existingNode.getCompilationUnit(), graphNode);
         BubbleView bubbleView = diagramController.createBubbleView(bubble, false);
         SimpleEdge edge = new SimpleEdge(graphNode, bubble);
         diagramController.createSimpleEdgeView(edge, nodeView, bubbleView);
@@ -435,7 +378,6 @@ public class SourceCodeController {
         boolean result = true;
 
         List<BubbleView> bubbleViews = new ArrayList<>(diagramController.getAllBubbleViews());
-
         if(bubbleViews.size() > 0) {
             for(int i = 0; i < bubbleViews.size() && result; i++) {
                 if(!isOverlapping(x1, y1, w1, h1, bubbleViews.get(i).getX(), bubbleViews.get(i).getY(), bubbleViews.get(i).getWidth(), bubbleViews.get(i).getHeight())) {
@@ -470,5 +412,51 @@ public class SourceCodeController {
         }
 
         return true;
+    }
+
+
+    /**
+     * Rescale viewport to show all the UML model and bubbles together
+     */
+    private void rescaleView() {
+        double MARGIN = 5.0;
+
+        List<BubbleView> bubbleViews = new ArrayList<>(diagramController.getAllBubbleViews());
+
+        if(bubbleViews.size() > 0) {
+            double xMin = bubbleViews.get(0).getX();
+            double yMin = bubbleViews.get(0).getY();
+            double xMax = bubbleViews.get(0).getX() + bubbleViews.get(0).getWidth();
+            double yMax = bubbleViews.get(0).getY() + bubbleViews.get(0).getHeight();
+
+            for(int i = 1; i < bubbleViews.size(); i++) {
+                if((bubbleViews.get(i).getX() + bubbleViews.get(i).getWidth()) > xMax) {
+                    xMax = bubbleViews.get(i).getX() + bubbleViews.get(i).getWidth();
+                }
+
+                if(bubbleViews.get(i).getX() < xMin) {
+                    xMin = bubbleViews.get(i).getX();
+                }
+
+                if((bubbleViews.get(i).getY() + bubbleViews.get(i).getHeight()) > yMax) {
+                    yMax = bubbleViews.get(i).getY() + bubbleViews.get(i).getHeight();
+                }
+
+                if(bubbleViews.get(i).getY() < yMin) {
+                    yMin = bubbleViews.get(i).getY();
+                }
+            }
+
+            final double scrollPaneWidth = diagramController.getScrollPane().getWidth();
+            final double scrollPaneHeight = diagramController.getScrollPane().getHeight();
+            final double contentsWidth = xMax - xMin;
+            final double contentsHeight = yMax - yMin;
+            double toBeScaled = Math.min(scrollPaneHeight / contentsHeight, scrollPaneWidth / contentsWidth) * 100;
+
+            diagramController.getGraphController().zoomPane(toBeScaled - MARGIN);
+            diagramController.zoomSlider.setValue(toBeScaled - MARGIN);
+            diagramController.getGraphController().ensureVisible((xMax + xMin) / 2, (yMax + yMin) / 2);
+            diagramController.getGraphController().simplesEdgesToBack();
+        }
     }
 }

@@ -98,7 +98,7 @@ public abstract class AbstractDiagramController {
     //Tool
     protected ToolEnum tool = ToolEnum.CREATE_CLASS;
     protected enum ToolEnum {
-        CREATE_CLASS, CREATE_ENUM, SELECT, DRAW, CREATE_PACKAGE, EDGE, MOVE_SCENE, DISPLAY_CODE
+        CREATE_CLASS, CREATE_ENUM, SELECT, DRAW, CREATE_PACKAGE, EDGE, MOVE_SCENE
     }
 
     //Views
@@ -133,7 +133,7 @@ public abstract class AbstractDiagramController {
         edgeController = new EdgeController(drawPane, this);
         sketchController = new SketchController(drawPane, this);
         recognizeController = new RecognizeController(drawPane, this);
-        sourceCodeController = new SourceCodeController(drawPane, this);
+        sourceCodeController = new SourceCodeController(this);
         selectController = new SelectController(drawPane, this);
         copyPasteController = new CopyPasteController(drawPane, this);
         voiceController = new VoiceController(this);
@@ -197,7 +197,6 @@ public abstract class AbstractDiagramController {
         }
 
         Bubble bubble = bubbleMap.get(bubbleView);
-        deleteBubbleEdges(bubble, command, undo, remote);
         getGraphModel().removeBubble(bubble, remote);
         drawPane.getChildren().remove(bubbleView);
         allBubbleViews.remove(bubbleView);
@@ -211,7 +210,7 @@ public abstract class AbstractDiagramController {
     }
 
     /**
-     * Deletes nodes and its associated edges
+     * Deletes nodes and its associated edges and bubble
      *
      * @param nodeView
      * @param pCommand Compound command from deleting all selected, if null we create our own command.
@@ -228,7 +227,13 @@ public abstract class AbstractDiagramController {
         }
 
         AbstractNode node = nodeMap.get(nodeView);
+
         deleteNodeEdges(node, command, undo, remote);
+
+        if(findBubbleView(node) != null) {
+            deleteNodeBubble(node, command, undo, remote);
+        }
+
         getGraphModel().removeNode(node, remote);
         drawPane.getChildren().remove(nodeView);
         allNodeViews.remove(nodeView);
@@ -290,7 +295,6 @@ public abstract class AbstractDiagramController {
         SimpleEdge edge = simpleEdgeView.getRefEdge();
         graph.removeSimpleEdge(edge, remote);
         drawPane.getChildren().remove(simpleEdgeView);
-        simpleEdgeView.setSelected(false);
         allSimpleEdgeViews.remove(simpleEdgeView);
 
         if (pCommand == null && !undo) { //If this is not part of a compoundcommand we add this directly to the UndoManager
@@ -346,28 +350,21 @@ public abstract class AbstractDiagramController {
     }
 
     /**
-     * Deletes all edges associated with the node
+     * Deletes the bubble associated with the node
      *
-     * @param bubble
+     * @param node
      * @param command
      * @param remote, true if change comes from a remote server
      */
-    public void deleteBubbleEdges(Bubble bubble, CompoundCommand command, boolean undo, boolean remote) {
-        AbstractEdge edge;
-        ArrayList<AbstractEdgeView> edgeViewsToBeDeleted = new ArrayList<>();
-        for (AbstractEdgeView edgeView : allEdgeViews) {
-            edge = edgeView.getRefEdge();
-            if (edge.getEndNode().equals(bubble) || edge.getStartNode().equals(bubble)) {
-                getGraphModel().removeEdge(edgeView.getRefEdge(), remote);
-                drawPane.getChildren().remove(edgeView);
-                selectedEdges.remove(edgeView);
-                edgeViewsToBeDeleted.add(edgeView);
-                if (!undo && command != null) {
-                    command.add(new AddDeleteEdgeCommand(this, edgeView, edgeView.getRefEdge(), false));
-                }
-            }
+    public void deleteNodeBubble(AbstractNode node, CompoundCommand command, boolean undo, boolean remote) {
+        BubbleView bubbleView = findBubbleView(node);
+
+        deleteSimpleEdgeView(findSimpleEdgeView(bubbleView), command, false, false);
+        deleteBubbleView(bubbleView, command, false, false);
+
+        if (!undo && command != null) {
+            command.add(new AddDeleteBubbleCommand(this, graph, bubbleView, bubbleView.getRefNode(), false));
         }
-        allEdgeViews.removeAll(edgeViewsToBeDeleted);
     }
 
     /**
@@ -626,7 +623,7 @@ public abstract class AbstractDiagramController {
     }
 
     public void closeClients(){
-        for(ClientController client : clientControllers){
+        for(ClientController client : clientControllers) {
             client.closeClient();
         }
     }
@@ -650,7 +647,6 @@ public abstract class AbstractDiagramController {
         sp.setViewport(new Rectangle2D(Math.abs(bounds.getMinX()), Math.abs(bounds.getMinY()), bounds.getWidth(), bounds.getHeight()));
         return drawPane.snapshot(sp, new WritableImage((int)bounds.getWidth(),(int)bounds.getHeight()));
     }
-
 
     //------------------------- Context Menu ---------------------------------
     private void initContextMenu() {
@@ -736,7 +732,7 @@ public abstract class AbstractDiagramController {
     }
 
     /**
-     * Creates  a new NodeView from the given node and adds them to the graph.
+     * Creates  a new BubbleView from the given node and adds them to the graph.
      *
      * @param bubble - Any Bubble
      * @return the created AbstractNodeView
@@ -744,7 +740,7 @@ public abstract class AbstractDiagramController {
     public BubbleView createBubbleView(Bubble bubble, boolean remote) {
         BubbleView newBubbleView = new BubbleView(bubble);
 
-        if(!graph.getAllBubbles().contains(bubble)){
+        if(!graph.getAllBubbles().contains(bubble)) {
             graph.addBubble(bubble, remote);
             undoManager.add(new AddDeleteBubbleCommand(AbstractDiagramController.this, graph, newBubbleView, bubble, true));
         }
@@ -806,19 +802,16 @@ public abstract class AbstractDiagramController {
                     sketch.addPointRemote(Double.parseDouble(dataArray[2]), Double.parseDouble(dataArray[3]));
                 }
             }
-        }
-        else if (dataArray[0].equals(Constants.changeSketchStart)){
+        } else if (dataArray[0].equals(Constants.changeSketchStart)){
             for(Sketch sketch : graph.getAllSketches()){
                 if(dataArray[1].equals(sketch.getId())){
                     sketch.setStartRemote(Double.parseDouble(dataArray[2]), Double.parseDouble(dataArray[3]));
                     sketch.setColor(Color.web(dataArray[4]));
                 }
             }
-        }
-        else if (dataArray[0].equals(Constants.sketchAdd)){
+        } else if (dataArray[0].equals(Constants.sketchAdd)){
             addSketch(new Sketch(), false, true);
-        }
-        else if (dataArray[0].equals(Constants.sketchRemove)){
+        } else if (dataArray[0].equals(Constants.sketchRemove)){
             Sketch sketchToBeDeleted = null;
             for(Sketch sketch : graph.getAllSketches()){
                 if(dataArray[1].equals(sketch.getId())){
@@ -827,8 +820,7 @@ public abstract class AbstractDiagramController {
                 }
             }
             deleteSketch(sketchToBeDeleted, null, true);
-        }
-        else if(dataArray[0].equals(Constants.changeNodeTranslateY) || dataArray[0].equals(Constants.changeNodeTranslateX)){
+        } else if(dataArray[0].equals(Constants.changeNodeTranslateY) || dataArray[0].equals(Constants.changeNodeTranslateX)){
             for(AbstractNode node : graph.getAllNodes()){
                 if(dataArray[1].equals(node.getId())){
                     node.remoteSetTranslateX(Double.parseDouble(dataArray[2]));
@@ -925,8 +917,7 @@ public abstract class AbstractDiagramController {
      * @param endNodeView
      * @return
      */
-    public AbstractEdgeView createEdgeView(AbstractEdge edge, AbstractNodeView startNodeView,
-                                           AbstractNodeView endNodeView) {
+    public AbstractEdgeView createEdgeView(AbstractEdge edge, AbstractNodeView startNodeView, AbstractNodeView endNodeView) {
         AbstractEdgeView edgeView;
         if (edge instanceof AssociationEdge) {
             edgeView = new AssociationEdgeView(edge, startNodeView, endNodeView);
@@ -956,6 +947,7 @@ public abstract class AbstractDiagramController {
             graph.addEdge(edgeView.getRefEdge(), false);
             allEdgeViews.add(edgeView);
         }
+
         undoManager.add(new AddDeleteEdgeCommand(AbstractDiagramController.this, edgeView, edgeView.getRefEdge(), true));
         return edgeView;
     }
@@ -969,6 +961,7 @@ public abstract class AbstractDiagramController {
         AbstractNodeView startNodeView = null;
         AbstractNodeView endNodeView = null;
         AbstractNode tempNode;
+
         for (AbstractNodeView nodeView : allNodeViews) {
             tempNode = nodeMap.get(nodeView);
             if (edge.getStartNode().getId().equals(tempNode.getId())) {
@@ -979,6 +972,7 @@ public abstract class AbstractDiagramController {
                 endNodeView = nodeView;
             }
         }
+
         AbstractEdgeView edgeView;
         if (edge instanceof AggregationEdge){
             edgeView = new AggregationEdgeView(edge, startNodeView, endNodeView);
@@ -991,11 +985,14 @@ public abstract class AbstractDiagramController {
         } else { //Association
             edgeView = new AssociationEdgeView(edge, startNodeView, endNodeView);
         }
+
         allEdgeViews.add(edgeView);
         drawPane.getChildren().add(edgeView);
+
         if(!graph.getAllEdges().contains(edge)){
             graph.addEdge(edge, remote);
         }
+
         return edgeView;
     }
 
@@ -1020,6 +1017,7 @@ public abstract class AbstractDiagramController {
      */
     public SimpleEdgeView addSimpleEdgeView(SimpleEdgeView edgeView) {
         if (edgeView != null) {
+            edgeView.toBack();
             drawPane.getChildren().add(edgeView);
             graph.addSimpleEdge(edgeView.getRefEdge(), false);
             allSimpleEdgeViews.add(edgeView);
@@ -1227,10 +1225,33 @@ public abstract class AbstractDiagramController {
     }
 
     /**
-     * Returns all Bubbles
+     * Returns the bubble view of the given node
+     * @param refNode
+     * @return the bubble view if found, otherwise null.
+     */
+    public BubbleView findBubbleView(AbstractNode refNode) {
+        for (BubbleView bubbleView : allBubbleViews){
+            if(bubbleView.getRefNode().getRefNode().equals(refNode)) {
+                return bubbleView;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns all bubbles
      * @return allBubbleViews, otherwise null.
      */
     public ArrayList<BubbleView> getAllBubbleViews() {
         return allBubbleViews;
+    }
+
+    /**
+     * Returns all simple edges
+     * @return allSimpleEdges, otherwise null.
+     */
+    public ArrayList<SimpleEdgeView> getAllSimpleEdgeViews() {
+        return allSimpleEdgeViews;
     }
 }

@@ -2,6 +2,7 @@ package com.kaanburaksener.ast.model.nodes;
 
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.Modifier;
+import com.kaanburaksener.octoUML.src.model.nodes.AbstractNode;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  */
 public class AbstractStructure {
     private static final String type = "ABSTRACT";
-    private String id;
+    private AbstractNode refNode;
     private List<Modifier> accessModifiers;
     private String name;
     private String path;
@@ -21,12 +22,12 @@ public class AbstractStructure {
         this.path = path;
     }
 
-    public String getId() {
-        return id;
+    public AbstractNode getRefNode() {
+        return refNode;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setRefNode(AbstractNode refNode) {
+        this.refNode = refNode;
     }
 
     public List<Modifier> getAccessModifiers() {

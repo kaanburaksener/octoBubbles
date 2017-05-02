@@ -15,8 +15,9 @@ public class Bubble extends AbstractNode implements Serializable {
     private CompilationUnit sourceCode;
     private double x, y, width, height, translateX, translateY;
     protected static int objectCount = 0; //Used to ID instance
+    private AbstractNode refNode;
 
-    public Bubble(double x, double y, double width, double height, String title, CompilationUnit sourceCode)
+    public Bubble(double x, double y, double width, double height, String title, CompilationUnit sourceCode, AbstractNode refNode)
     {
         super(x, y, width, height);
         this.x = x;
@@ -26,6 +27,7 @@ public class Bubble extends AbstractNode implements Serializable {
         this.title = title;
         this.sourceCode = sourceCode;
         this.setSourceCodeText(sourceCode.toString());
+        this.refNode = refNode;
     }
 
     public void setSourceCodeText(String sourceCodeText){
@@ -70,6 +72,8 @@ public class Bubble extends AbstractNode implements Serializable {
     public String getType() {
         return type;
     }
+
+    public AbstractNode getRefNode() { return refNode; }
 
     public void setX(double x){
         this.x = x;

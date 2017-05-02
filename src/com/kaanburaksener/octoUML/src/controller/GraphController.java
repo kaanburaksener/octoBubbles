@@ -2,6 +2,8 @@ package com.kaanburaksener.octoUML.src.controller;
 
 import com.kaanburaksener.octoUML.src.model.Sketch;
 import com.kaanburaksener.octoUML.src.util.Constants;
+import com.kaanburaksener.octoUML.src.view.edges.SimpleEdgeView;
+
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -24,8 +26,7 @@ public class GraphController {
     private ArrayList<Line> grid = new ArrayList<>();
     private boolean isGridVisible = true;
 
-    GraphController(Pane pDrawPane, AbstractDiagramController pDiagramController, ScrollPane pScrollPane)
-    {
+    GraphController(Pane pDrawPane, AbstractDiagramController pDiagramController, ScrollPane pScrollPane) {
         aDrawPane = pDrawPane;
         diagramController = pDiagramController;
         aScrollPane = pScrollPane;
@@ -35,45 +36,44 @@ public class GraphController {
         aScrollPane.setVvalue(aScrollPane.getVmin() + (aScrollPane.getVmax() - aScrollPane.getVmin()) / 2);
         aScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         aScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-
     }
 
-    void movePaneStart(MouseEvent event)
-        {
-
+    void movePaneStart(MouseEvent event) {
         initMoveX = event.getSceneX();
         initMoveY = event.getSceneY();
-
     }
 
-    void movePane(MouseEvent event)
-    {
+    void movePane(MouseEvent event) {
         ScrollPane scrollPane = diagramController.getScrollPane();
         double xScroll =  (initMoveX - event.getSceneX())/8000; //8000 is the size of aDrawPane set in view.classDiagramView.fxml
         double yScroll = (initMoveY - event.getSceneY())/8000;
-
-
-
 
         scrollPane.setHvalue(scrollPane.getHvalue() + xScroll);
         scrollPane.setVvalue(scrollPane.getVvalue() + yScroll);
 
         initMoveX = event.getSceneX();
         initMoveY = event.getSceneY();
-
     }
 
-    void movePaneFinished()
-    {
+    void movePaneFinished() {
         initMoveX = 0;
         initMoveY = 0;
     }
 
-    void zoomPane(double newZoom)
-    {
+    void zoomPane(double newZoom) {
         double scale = newZoom/100;
         aDrawPane.setScaleX(scale);
         aDrawPane.setScaleY(scale);
+    }
+
+    void ensureVisible(double x, double y) {
+        ScrollPane scrollPane = diagramController.getScrollPane();
+
+        double xScroll = (x - scrollPane.getWidth() / 2) / (8000 - scrollPane.getWidth());
+        double yScroll = (y - scrollPane.getHeight() / 2) / (8000 - scrollPane.getHeight());
+
+        scrollPane.setHvalue(xScroll);
+        scrollPane.setVvalue(yScroll);
     }
 
     //------------------------------------ GRID -------------------------------
@@ -112,6 +112,15 @@ public class GraphController {
     public void sketchesToFront() {
         for (Sketch sketch : diagramController.getGraphModel().getAllSketches()) {
             sketch.getPath().toFront();
+        }
+    }
+
+    /**
+     * It send all the simple edges to back of the UML model and bubbles
+     */
+    public void simplesEdgesToBack() {
+        for (SimpleEdgeView simpleEdgeView : diagramController.getAllSimpleEdgeViews()) {
+            simpleEdgeView.toBack();
         }
     }
 }
