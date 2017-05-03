@@ -6,12 +6,16 @@
 <?import java.lang.String?>
 
 <!-- prefHeight was 224.0 -->
-<AnchorPane prefHeight="254.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.kaanburaksener.octoUML.src.controller.dialog.NodeEditDialogController">
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.kaanburaksener.octoUML.src.controller.dialog.NodeEditDialogController">
     <children>
-        <GridPane prefHeight="164.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <GridPane prefHeight="300.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <children>
-                <Label text="Edit Node" style="-fx-font: 16px Tahoma; -fx-stroke-width: 3;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <ComboBox fx:id="typeComboBox" prefWidth="200.0"  prefHeight="25.0" promptText="Select Type">
+                <Label text="Edit Node" style="-fx-font: 13px Tahoma; -fx-font-weight: bold;" prefWidth="125.0" prefHeight="15.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label text="Type" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label text="Title" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <Label text="Attributes" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <Label text="Operations" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <ComboBox fx:id="typeComboBox" prefWidth="125.0" prefHeight="25.0" promptText="Select Type" GridPane.columnIndex="1" GridPane.rowIndex="1" >
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="CLASS" />
@@ -19,12 +23,9 @@
                         </FXCollections>
                     </items>
                 </ComboBox>
-                <Label text="Title" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <Label text="Attributes" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                <Label text="Operations" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                <TextField fx:id="titleField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <TextArea fx:id="attributesArea" prefWidth="200.0" prefHeight="50" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <TextArea fx:id="operationsArea" prefWidth="200.0" prefHeight="50" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="titleField" prefWidth="275.0" prefHeight="25.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextArea fx:id="attributesArea" prefWidth="275.0" prefHeight="80.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextArea fx:id="operationsArea" prefWidth="275.0" prefHeight="80.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             </children>
 
             <rowConstraints>

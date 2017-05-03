@@ -60,17 +60,6 @@
     -fx-background-radius: 2em;
 }
 
-.bubble .extend-button {
-    -fx-min-height: 24px;
-    -fx-min-width: 24px;
-    -fx-background-image: url("../../icons/extend-icon.png");
-    -fx-background-size: 24px 24px;
-    -fx-background-repeat: no-repeat;
-    -fx-background-color: transparent;
-    -fx-background-position: center center;
-    -fx-padding: 3 5 3 5;
-}
-
 .bubble .cancel-button {
     -fx-min-height: 24px;
     -fx-min-width: 24px;
@@ -79,6 +68,28 @@
     -fx-background-position: center center;
     -fx-background-repeat: no-repeat;
     -fx-background-color: transparent;
+    -fx-padding: 3 5 3 5;
+}
+
+.bubble .edit-button {
+    -fx-min-height: 24px;
+    -fx-min-width: 24px;
+    -fx-background-image: url("../../icons/edit-icon.png");
+    -fx-background-size: 24px 24px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: transparent;
+    -fx-background-position: center center;
+    -fx-padding: 3 5 3 5;
+}
+
+.bubble .extend-button {
+    -fx-min-height: 24px;
+    -fx-min-width: 24px;
+    -fx-background-image: url("../../icons/extend-icon.png");
+    -fx-background-size: 24px 24px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: transparent;
+    -fx-background-position: center center;
     -fx-padding: 3 5 3 5;
 }
 
@@ -93,12 +104,16 @@
     -fx-padding: 3 5 3 5;
 }
 
-.bubble .extend-button:hover {
-    -fx-background-image: url("../../icons/extend-icon-hover.png");
-}
-
 .bubble .cancel-button:hover {
     -fx-background-image: url("../../icons/cancel-icon-hover.png");
+}
+
+.bubble .edit-button:hover {
+    -fx-background-image: url("../../icons/edit-icon-hover.png");
+}
+
+.bubble .extend-button:hover {
+    -fx-background-image: url("../../icons/extend-icon-hover.png");
 }
 
 .bubble .save-button:hover {

@@ -1,5 +1,8 @@
 package com.kaanburaksener.octoUML.src.controller;
 
+import com.github.javaparser.JavaParser;
+import com.github.javaparser.ast.CompilationUnit;
+import com.kaanburaksener.ast.util.BubbleParser;
 import com.kaanburaksener.octoUML.src.model.Sketch;
 import com.kaanburaksener.octoUML.src.util.commands.CompoundCommand;
 import com.kaanburaksener.octoUML.src.util.commands.MoveGraphElementCommand;
@@ -7,6 +10,8 @@ import com.kaanburaksener.octoUML.src.view.BubbleView;
 import com.kaanburaksener.octoUML.src.view.nodes.AbstractNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.PackageNodeView;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 
 import javafx.scene.Cursor;
@@ -468,6 +473,24 @@ public class ClassDiagramController extends AbstractDiagramController {
             if(getAllBubbleViews().size() == 0) {
                 mode = Mode.NO_MODE;
                 setButtonClicked(selectBtn);
+            }
+        });
+
+        bubbleView.getSaveButton().setOnAction(event -> {
+
+        });
+
+        bubbleView.getTextArea().textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
+                bubbleView.getSaveButton().setOnAction(event -> {
+                    bubbleView.arrangeLayoutAfterChange();
+
+                    if(!newValue.equals(oldValue)) {
+                        CompilationUnit compilationUnit = JavaParser.parse(newValue);
+                        BubbleParser bubbleParser = new BubbleParser(compilationUnit, bubbleView.getRefNode(), astNodeController.getNodeHolder());
+                    }
+                });
             }
         });
 

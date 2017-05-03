@@ -8,13 +8,13 @@ import java.io.File;
 /**
  * Created by kaanburaksener on 09/02/17.
  */
-public class NodeController {
+public class ASTNodeController {
     private String path;
     private NodeHolder nodeHolder;
     private NodeParser nodeParser;
     private File projectDir;
 
-    public NodeController(String path) {
+    public ASTNodeController(String path) {
         this.path = path;
         this.projectDir = new File(this.path);
     }

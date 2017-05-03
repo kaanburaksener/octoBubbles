@@ -10,10 +10,10 @@ import com.github.javaparser.ast.Modifier;
 
 import com.kaanburaksener.ast.model.*;
 import com.kaanburaksener.ast.model.nodes.AbstractStructure;
-import com.kaanburaksener.ast.helper.DirExplorer;
 import com.kaanburaksener.ast.model.nodes.ClassStructure;
 import com.kaanburaksener.ast.model.nodes.EnumerationStructure;
 import com.kaanburaksener.ast.model.nodes.InterfaceStructure;
+import com.kaanburaksener.ast.helper.DirExplorer;
 
 import java.io.File;
 import java.io.IOException;
@@ -123,7 +123,7 @@ public class NodeParser {
     /***
      * Simple visitor implementation for visiting MethodDeclaration nodes
      */
-    private static class MethodVisitor extends VoidVisitorAdapter<Void> {
+    public static class MethodVisitor extends VoidVisitorAdapter<Void> {
         private AbstractStructure abstractStructure;
 
         public MethodVisitor(AbstractStructure abstractStructure) {

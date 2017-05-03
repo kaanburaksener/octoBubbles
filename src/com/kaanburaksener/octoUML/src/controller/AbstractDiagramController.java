@@ -1,5 +1,6 @@
 package com.kaanburaksener.octoUML.src.controller;
 
+import com.kaanburaksener.ast.controller.ASTNodeController;
 import com.kaanburaksener.octoUML.src.model.Graph;
 import com.kaanburaksener.octoUML.src.model.Sketch;
 import com.kaanburaksener.octoUML.src.model.edges.*;
@@ -53,12 +54,16 @@ public abstract class AbstractDiagramController {
     protected Graph graph;
     protected Stage aStage;
 
+    //Target folder path for source codes
+    private final String path = "test-source-code";
+
     //Set to true for allowing classes & packages & sketches to be created with the mouse.
     // With this set to false, multiple users can create these elements while interacting with a touch screen at the same time
     //TODO Implement multi-touch support for more actions (e.g. creating edges)
     static boolean mouseCreationActivated = false;
 
     //Controllers
+    ASTNodeController astNodeController;
     CreateNodeController createNodeController;
     NodeController nodeController;
     EdgeController edgeController;
@@ -127,13 +132,14 @@ public abstract class AbstractDiagramController {
 
         graph = new Graph();
 
+        astNodeController = new ASTNodeController(path);
         createNodeController = new CreateNodeController(drawPane, this);
         nodeController = new NodeController(drawPane, this);
         graphController = new GraphController(drawPane, this, scrollPane);
         edgeController = new EdgeController(drawPane, this);
         sketchController = new SketchController(drawPane, this);
         recognizeController = new RecognizeController(drawPane, this);
-        sourceCodeController = new SourceCodeController(this);
+        sourceCodeController = new SourceCodeController(this, astNodeController);
         selectController = new SelectController(drawPane, this);
         copyPasteController = new CopyPasteController(drawPane, this);
         voiceController = new VoiceController(this);

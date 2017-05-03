@@ -42,6 +42,18 @@ public class AttributeStructure {
         return parameterStructure.name;
     }
 
+    public List<Modifier> getAccessModifiers() {
+        return accessModifiers;
+    }
+
+    public String castAttributeToUMLNotation() {
+        StringBuilder attribute = new StringBuilder();
+
+        attribute.append(parameterStructure.name + " : " + parameterStructure.dataType);
+
+        return attribute.toString();
+    }
+
     public void printAttributeDeclaration() {
         accessModifiers.stream().forEach(am -> {
             System.out.print(am + " ");

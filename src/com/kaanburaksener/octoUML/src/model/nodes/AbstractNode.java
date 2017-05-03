@@ -1,5 +1,6 @@
 package com.kaanburaksener.octoUML.src.model.nodes;
 
+import com.kaanburaksener.ast.model.nodes.AbstractStructure;
 import com.kaanburaksener.octoUML.src.util.Constants;
 import javafx.geometry.Rectangle2D;
 
@@ -31,6 +32,7 @@ public abstract class AbstractNode implements Node, Serializable
     protected String aTitle;
     protected double x, y, width, height, translateX, translateY, scaleX, scaleY;
     protected boolean aIsChild;
+    protected AbstractStructure refExistingNode;
 
     public AbstractNode(double x, double y, double width, double height){
         this.x = x;
@@ -91,6 +93,10 @@ public abstract class AbstractNode implements Node, Serializable
         this.aTitle = pTitle;
         changes.firePropertyChange(Constants.changeNodeTitle, null, aTitle);
         remoteChanges.firePropertyChange(Constants.changeNodeTitle, null, aTitle);
+    }
+
+    public void setRefExistingNode(AbstractStructure refExistingNode) {
+        this.refExistingNode = refExistingNode;
     }
 
     @Override
@@ -208,6 +214,9 @@ public abstract class AbstractNode implements Node, Serializable
         return new Rectangle2D(x, y, width, height);
     }
 
+    public AbstractStructure getRefExistingNode() {
+        return refExistingNode;
+    }
 
     public abstract AbstractNode copy();
 

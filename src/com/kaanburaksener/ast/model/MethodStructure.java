@@ -12,7 +12,7 @@ public class MethodStructure {
     private List<Modifier> accessModifiers;
     private String returnType;
     private String name;
-    private List<ParameterStructure> parameters;
+    private List<ParameterStructure> parameters = new ArrayList<>();
 
     /**
      * @param accessModifiers
@@ -25,7 +25,6 @@ public class MethodStructure {
         this.accessModifiers = accessModifiers;
         this.returnType = returnType;
         this.name = name;
-        this.parameters = new ArrayList<ParameterStructure>();
     }
 
     /**
@@ -38,8 +37,32 @@ public class MethodStructure {
         this.accessModifiers = accessModifiers;
         this.returnType = returnType;
         this.name = name;
-        this.parameters = new ArrayList<ParameterStructure>();
         this.parameters = parameters;
+    }
+
+    public List<Modifier> getAccessModifiers() {
+        return accessModifiers;
+    }
+
+    public String castMethodToUMLNotation() {
+        StringBuilder method = new StringBuilder();
+
+        method.append(name + " ( ");
+
+        if(parameters.size() > 0) {
+            for(int i = 0; i < parameters.size() - 1; i++) {
+                method.append(parameters.get(i).name + " : " + parameters.get(i).dataType + " , ");
+            }
+            method.append(parameters.get(parameters.size() - 1).name + " : " + parameters.get(parameters.size() - 1).dataType);
+        }
+
+        method.append(" )");
+
+        if(!returnType.equals("void")) {
+            method.append(" : " + returnType);
+        }
+
+        return method.toString();
     }
 
     public void printMethodDeclaration() {

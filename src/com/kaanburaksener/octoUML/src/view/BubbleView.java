@@ -2,8 +2,6 @@ package com.kaanburaksener.octoUML.src.view;
 
 import com.kaanburaksener.octoUML.src.model.nodes.Bubble;
 import com.kaanburaksener.octoUML.src.util.Constants;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 
 import javafx.geometry.Bounds;
 
@@ -20,18 +18,18 @@ import java.beans.PropertyChangeListener;
  */
 public class BubbleView extends GridPane implements PropertyChangeListener {
     private final String CSS = "com/kaanburaksener/octoUML/src/view/fxml/bubble.css";
+
     private static int objectCounter = 0;
 
     private Label title;
 
     private TextArea textArea;
 
-    protected Button closeBtn, cancelBtn, saveBtn, extendBtn;
+    protected Button cancelBtn, closeBtn, editBtn, extendBtn, saveBtn;
 
     private Bubble refNode;
 
-    private double x;
-    private double y;
+    private double x, y;
 
     public BubbleView(Bubble bubble) {
         this.setId("VIEWBUBBLE_" + objectCounter);
@@ -76,59 +74,54 @@ public class BubbleView extends GridPane implements PropertyChangeListener {
         add(textArea, 0, 2, 4, 1);
         add(cancelBtn, 0, 3, 1, 1);
         add(saveBtn, 1, 3, 2, 1);
-        add(extendBtn, 0, 3, 1, 1);
+        add(editBtn, 0, 3, 1, 1);
+        add(extendBtn, 1, 3, 2, 1);
     }
 
     //------------ Init Buttons -------------------------------------------
     private void initBubbleActions() {
-        textArea = new TextArea();
+        cancelBtn = new Button("");
+        cancelBtn.getStyleClass().add("cancel-button");
+        cancelBtn.setVisible(false);
 
         closeBtn = new Button("");
         closeBtn.getStyleClass().add("cancel-button");
         closeBtn.setVisible(true);
 
+        editBtn = new Button("");
+        editBtn.getStyleClass().add("edit-button");
+        editBtn.setVisible(true);
+
         extendBtn = new Button("");
         extendBtn.getStyleClass().add("extend-button");
         extendBtn.setVisible(true);
-
-        cancelBtn = new Button("");
-        cancelBtn.getStyleClass().add("cancel-button");
-        cancelBtn.setVisible(false);
 
         saveBtn = new Button("");
         saveBtn.getStyleClass().add("save-button");
         saveBtn.setVisible(false);
 
+        textArea = new TextArea();
+
         //---------------------- Actions for buttons ----------------------------
-        /*closeBtn.setOnAction(event -> {
 
-        });*/
+        cancelBtn.setOnAction(event ->  {
+            textArea.setEditable(false);
+            cancelBtn.setVisible(false);
+            saveBtn.setVisible(false);
+            editBtn.setVisible(true);
+            extendBtn.setVisible(true);
+        });
 
-        extendBtn.setOnAction(event ->  {
+        editBtn.setOnAction(event ->  {
             textArea.setEditable(true);
             cancelBtn.setVisible(true);
             saveBtn.setVisible(true);
             extendBtn.setVisible(false);
+            editBtn.setVisible(false);
         });
 
-        cancelBtn.setOnAction(event ->  {
-            textArea.setEditable(false);
-            extendBtn.setVisible(true);
-            cancelBtn.setVisible(false);
-            saveBtn.setVisible(false);
-        });
-
-        textArea.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
-                saveBtn.setOnAction(event -> {
-                    textArea.setEditable(false);
-                    extendBtn.setVisible(true);
-                    cancelBtn.setVisible(false);
-                    saveBtn.setVisible(false);
-                    textArea.setText(newValue);
-                });
-            }
+        extendBtn.setOnAction(event ->  {
+            //TODO OPEN A NEW BIG BUBBLE TO SEE THE CODE BETTER
         });
     }
 
@@ -156,11 +149,25 @@ public class BubbleView extends GridPane implements PropertyChangeListener {
         return title.getText();
     }
 
+    public void arrangeLayoutAfterChange() {
+        textArea.setEditable(false);
+        cancelBtn.setVisible(false);
+        saveBtn.setVisible(false);
+        editBtn.setVisible(true);
+        extendBtn.setVisible(true);
+    }
+
     private void changeBubbleHeight(double height) {
         setHeight(height);
         setPrefHeight(height);
-        textArea.setPrefHeight(height - 90.0);
-        textArea.setMaxHeight(height - 90.0);
+
+        if(height > 200.0) {
+            textArea.setPrefHeight(height - 90.0);
+            textArea.setMaxHeight(height - 90.0);
+        } else {
+            textArea.setPrefHeight(height - 50.0);
+            textArea.setMaxHeight(height - 50.0);
+        }
     }
 
     private void changeBubbleWidth(double width) {
@@ -170,8 +177,24 @@ public class BubbleView extends GridPane implements PropertyChangeListener {
         textArea.setMaxWidth(width);
     }
 
+    public Button getCancelButton () {
+        return closeBtn;
+    }
+
     public Button getCloseButton () {
         return closeBtn;
+    }
+
+    public Button getEditButton () {
+        return editBtn;
+    }
+
+    public Button getSaveButton () {
+        return saveBtn;
+    }
+
+    public TextArea getTextArea () {
+        return textArea;
     }
 
     public boolean contains(double x, double y) {

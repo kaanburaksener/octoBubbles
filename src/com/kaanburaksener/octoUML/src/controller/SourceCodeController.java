@@ -1,6 +1,6 @@
 package com.kaanburaksener.octoUML.src.controller;
 
-import com.kaanburaksener.ast.controller.NodeController;
+import com.kaanburaksener.ast.controller.ASTNodeController;
 import com.kaanburaksener.ast.model.nodes.AbstractStructure;
 
 import com.kaanburaksener.octoUML.src.model.Graph;
@@ -24,18 +24,18 @@ import java.util.List;
  * Created by kaanburaksener on 19/02/17.
  */
 public class SourceCodeController {
-    private final String CSS = "com/kaanburaksener/octoUML/src/view/fxml/main.css";
-    private final String path = "test-source-code";
     private AbstractDiagramController diagramController;
+    private ASTNodeController astNodeController;
     private Graph graph;
     private List<AbstractStructure> existingNodes;
     private List<AbstractNode> recognizedNodes;
     private List<Region> regionsInBorder;
     private double borderX, borderY, borderWidth, borderHeight;
 
-    public SourceCodeController(AbstractDiagramController pController) {
+    public SourceCodeController(AbstractDiagramController pController, ASTNodeController astNodeController) {
         diagramController = pController;
         graph = diagramController.getGraphModel();
+        this.astNodeController = astNodeController;
     }
 
     public synchronized void recognize(ArrayList<AbstractNodeView> selectedNodes) {
@@ -60,16 +60,14 @@ public class SourceCodeController {
      * Matches the UML model with the existing source codes in the target folder
      */
     private void match() {
-        NodeController nodeController = new NodeController(path);
-        nodeController.initialize();
-
-        existingNodes = nodeController.getNodeHolder().getAllNodes();
+        astNodeController.initialize();
+        existingNodes = astNodeController.getNodeHolder().getAllNodes();
 
         for (AbstractNode graphNode: recognizedNodes) {
             existingNodes.stream().forEach(existingNode -> {
                 if(graphNode.getType().equals(existingNode.getType())) {
                     if(graphNode.getTitle().equals(existingNode.getName())) {
-                        existingNode.setRefNode(graphNode);
+                        graphNode.setRefExistingNode(existingNode);
                         AbstractNodeView nodeView = diagramController.findSelectedNodeView(graphNode);
                         Region region = checkIntersectionAreaInBorder(nodeView);
                         findAvailableSpace(region, nodeView, graphNode, existingNode);
