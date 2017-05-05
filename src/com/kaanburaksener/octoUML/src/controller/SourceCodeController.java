@@ -2,6 +2,7 @@ package com.kaanburaksener.octoUML.src.controller;
 
 import com.kaanburaksener.ast.controller.ASTNodeController;
 import com.kaanburaksener.ast.model.nodes.AbstractStructure;
+import com.kaanburaksener.ast.util.BubbleParser;
 
 import com.kaanburaksener.octoUML.src.model.Graph;
 import com.kaanburaksener.octoUML.src.model.edges.SimpleEdge;
@@ -10,12 +11,13 @@ import com.kaanburaksener.octoUML.src.model.nodes.Bubble;
 import com.kaanburaksener.octoUML.src.model.nodes.ClassNode;
 import com.kaanburaksener.octoUML.src.model.nodes.EnumerationNode;
 import com.kaanburaksener.octoUML.src.model.Region;
-
 import com.kaanburaksener.octoUML.src.view.BubbleView;
 import com.kaanburaksener.octoUML.src.view.nodes.AbstractNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.ClassNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.EnumerationNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.NodeView;
+
+import javafx.application.Platform;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,11 +53,13 @@ public class SourceCodeController {
             }
         }
 
+        match();
         drawBorders();
         createRegionsInBorder();
-        match();
+        createBubbles();
         rescaleView();
     }
+
     /**
      * Matches the UML model with the existing source codes in the target folder
      */
@@ -63,17 +67,27 @@ public class SourceCodeController {
         astNodeController.initialize();
         existingNodes = astNodeController.getNodeHolder().getAllNodes();
 
-        for (AbstractNode graphNode: recognizedNodes) {
+        for(AbstractNode graphNode: recognizedNodes) {
             existingNodes.stream().forEach(existingNode -> {
                 if(graphNode.getType().equals(existingNode.getType())) {
                     if(graphNode.getTitle().equals(existingNode.getName())) {
                         graphNode.setRefExistingNode(existingNode);
-                        AbstractNodeView nodeView = diagramController.findSelectedNodeView(graphNode);
-                        Region region = checkIntersectionAreaInBorder(nodeView);
-                        findAvailableSpace(region, nodeView, graphNode, existingNode);
+                        BubbleParser bubbleParser = new BubbleParser(existingNode.getCompilationUnit(), graphNode, astNodeController);
+                        bubbleParser.projectChangesInBubble();
                     }
                 }
             });
+        }
+    }
+
+    /**
+     * Matches the UML model with the existing source codes in the target folder
+     */
+    private void createBubbles() {
+        for(AbstractNode graphNode: recognizedNodes) {
+            AbstractNodeView nodeView = diagramController.findSelectedNodeView(graphNode);
+            Region region = checkIntersectionAreaInBorder(nodeView);
+            findAvailableSpace(region, nodeView, graphNode, graphNode.getRefExistingNode());
         }
     }
 
@@ -144,7 +158,7 @@ public class SourceCodeController {
         Region intersected = null;
         boolean fullIntersection = false;
 
-        for(int i = 0; i<regionsInBorder.size() && !fullIntersection; i++) {
+        for(int i = 0; i < regionsInBorder.size() && !fullIntersection; i++) {
             Region region = regionsInBorder.get(i);
 
             double xL = Math.max(node.getX(), region.getXStart());

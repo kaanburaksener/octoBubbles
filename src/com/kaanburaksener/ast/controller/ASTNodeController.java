@@ -2,6 +2,7 @@ package com.kaanburaksener.ast.controller;
 
 import com.kaanburaksener.ast.util.NodeParser;
 import com.kaanburaksener.ast.model.NodeHolder;
+import com.kaanburaksener.octoUML.src.controller.AbstractDiagramController;
 
 import java.io.File;
 
@@ -13,10 +14,12 @@ public class ASTNodeController {
     private NodeHolder nodeHolder;
     private NodeParser nodeParser;
     private File projectDir;
+    private AbstractDiagramController diagramController;
 
-    public ASTNodeController(String path) {
+    public ASTNodeController(String path, AbstractDiagramController diagramController) {
         this.path = path;
         this.projectDir = new File(this.path);
+        this.diagramController = diagramController;
     }
 
     public void initialize() {
@@ -32,5 +35,9 @@ public class ASTNodeController {
 
     public NodeHolder getNodeHolder() {
         return nodeHolder;
+    }
+
+    public AbstractDiagramController getDiagramController() {
+        return diagramController;
     }
 }

@@ -132,7 +132,7 @@ public abstract class AbstractDiagramController {
 
         graph = new Graph();
 
-        astNodeController = new ASTNodeController(path);
+        astNodeController = new ASTNodeController(path, this);
         createNodeController = new CreateNodeController(drawPane, this);
         nodeController = new NodeController(drawPane, this);
         graphController = new GraphController(drawPane, this, scrollPane);
@@ -208,7 +208,9 @@ public abstract class AbstractDiagramController {
         allBubbleViews.remove(bubbleView);
 
         if (!undo) {
+            SimpleEdgeView simpleEdgeView = findSimpleEdgeView(bubbleView);
             command.add(new AddDeleteBubbleCommand(this, graph, bubbleView, bubble, false));
+            command.add(new AddDeleteSimpleEdgeCommand(this, simpleEdgeView, simpleEdgeView.getRefEdge(), false));
         }
         if (pCommand == null && !undo) {
             undoManager.add(command);
@@ -303,6 +305,9 @@ public abstract class AbstractDiagramController {
         drawPane.getChildren().remove(simpleEdgeView);
         allSimpleEdgeViews.remove(simpleEdgeView);
 
+        if (!undo) {
+            command.add(new AddDeleteSimpleEdgeCommand(this, simpleEdgeView, edge, false));
+        }
         if (pCommand == null && !undo) { //If this is not part of a compoundcommand we add this directly to the UndoManager
             undoManager.add(command);
         }
@@ -367,10 +372,14 @@ public abstract class AbstractDiagramController {
 
         deleteSimpleEdgeView(findSimpleEdgeView(bubbleView), command, false, false);
         deleteBubbleView(bubbleView, command, false, false);
+        SimpleEdgeView simpleEdgeView = findSimpleEdgeView(bubbleView);
 
         if (!undo && command != null) {
             command.add(new AddDeleteBubbleCommand(this, graph, bubbleView, bubbleView.getRefNode(), false));
+            command.add(new AddDeleteSimpleEdgeCommand(this, simpleEdgeView, simpleEdgeView.getRefEdge(), false));
         }
+
+        allSimpleEdgeViews.remove(simpleEdgeView);
     }
 
     /**
@@ -1029,6 +1038,8 @@ public abstract class AbstractDiagramController {
             allSimpleEdgeViews.add(edgeView);
         }
 
+        undoManager.add(new AddDeleteSimpleEdgeCommand(this, edgeView, edgeView.getRefEdge(), true));
+
         return edgeView;
     }
 
@@ -1159,7 +1170,7 @@ public abstract class AbstractDiagramController {
         return allNodeViews;
     }
 
-    ArrayList<AbstractEdgeView> getAllEdgeViews() {
+    public ArrayList<AbstractEdgeView> getAllEdgeViews() {
         return allEdgeViews;
     }
 
@@ -1198,6 +1209,69 @@ public abstract class AbstractDiagramController {
 
     public GraphController getGraphController(){
         return graphController;
+    }
+
+    public ASTNodeController getAstNodeController(){
+        return astNodeController;
+    }
+
+    /**
+     * Clean the edges of the given NodeView, where the starting node is itself.
+     * @param startNodeView
+     * @return the node if found, otherwise null.
+     */
+    public void cleanNodeEdges(AbstractNodeView startNodeView) {
+        for (AbstractEdgeView edgeView : allEdgeViews){
+            if(edgeView.getStartNode().equals(startNodeView)) {
+                //System.out.println("Existing edge: " + edgeView.getStartNode().getRefNode().getTitle() + " -> " + edgeView.getEndNode().getRefNode().getTitle() + " (" + edgeView.getRefEdge().getType() + " )" );
+                deleteEdgeView(edgeView, null, false, false);
+            }
+        }
+    }
+
+    /**
+     * Returns the edge view given start and end node.
+     * @param startNodeView
+     * @return the simple edge if found, otherwise null.
+     */
+    public AbstractEdge findEdge(AbstractNodeView startNodeView, AbstractNodeView endNodeView) {
+        for (AbstractEdgeView edgeView : allEdgeViews){
+            if(edgeView.getStartNode().equals(startNodeView) && edgeView.getEndNode().equals(endNodeView)) {
+                return edgeView.getRefEdge();
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns the Node given title.
+     * @param title
+     * @return the node if found, otherwise null.
+     */
+    public AbstractNode findNode(String title) {
+        for (AbstractNodeView nodeView : allNodeViews){
+            if(nodeView.getRefNode().getTitle().equals(title)) {
+                return nodeView.getRefNode();
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns the NodeView given AbstractNode as a reference.
+     * @param refNode
+     * @return the node if found, otherwise null.
+     */
+    public AbstractNodeView findNodeView(AbstractNode refNode) {
+        for (AbstractNodeView nodeView : allNodeViews){
+            if(nodeView.getRefNode().equals(refNode)) {
+                return nodeView;
+            }
+        }
+
+        return null;
     }
 
     /**

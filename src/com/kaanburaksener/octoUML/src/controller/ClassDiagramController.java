@@ -488,7 +488,7 @@ public class ClassDiagramController extends AbstractDiagramController {
 
                     if(!newValue.equals(oldValue)) {
                         CompilationUnit compilationUnit = JavaParser.parse(newValue);
-                        BubbleParser bubbleParser = new BubbleParser(compilationUnit, bubbleView.getRefNode(), astNodeController.getNodeHolder());
+                        BubbleParser bubbleParser = new BubbleParser(compilationUnit, bubbleView.getRefNode().getRefNode(), astNodeController);
                     }
                 });
             }

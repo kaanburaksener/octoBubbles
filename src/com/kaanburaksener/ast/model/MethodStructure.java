@@ -44,6 +44,18 @@ public class MethodStructure {
         return accessModifiers;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getReturnType() {
+        return returnType;
+    }
+
+    public List<ParameterStructure> getParameters() {
+        return parameters;
+    }
+
     public String castMethodToUMLNotation() {
         StringBuilder method = new StringBuilder();
 

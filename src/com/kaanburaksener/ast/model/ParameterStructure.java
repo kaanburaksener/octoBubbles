@@ -11,4 +11,12 @@ public class ParameterStructure {
         this.dataType = dataType;
         this.name = name;
     }
+
+    public String getDataType() {
+        return dataType;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

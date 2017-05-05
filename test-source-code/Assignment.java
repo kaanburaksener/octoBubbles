@@ -70,4 +70,8 @@ public class Assignment {
 	public void setDescription(String description){
 		this.description = description;
 	}
+
+	public void doSomething(String description, String abc){
+		this.description = description;
+	}
 }

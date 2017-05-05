@@ -1,5 +1,6 @@
 package com.kaanburaksener.octoUML.src.controller;
 
+import com.kaanburaksener.ast.util.NodeViewParser;
 import com.kaanburaksener.octoUML.src.controller.dialog.EnumerationNodeEditDialogController;
 import com.kaanburaksener.octoUML.src.controller.dialog.NodeEditDialogController;
 import com.kaanburaksener.octoUML.src.model.nodes.AbstractNode;
@@ -471,6 +472,8 @@ public class NodeController {
             controller.getOkButton().setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+                    boolean attributesChanged = controller.hasAttributesChanged();
+                    boolean operationsChanged = controller.hasOperationsChanged();
                     CompoundCommand command = new CompoundCommand();
                     if(controller.hasTitledChanged()){
                         command.add(new SetNodeTitleCommand(node, controller.getTitle(), node.getTitle()));
@@ -493,6 +496,19 @@ public class NodeController {
                     }
                     aDrawPane.getChildren().remove(dialog);
                     diagramController.removeDialog(dialog);
+                    if(attributesChanged && operationsChanged) {
+                        System.out.println("*** Both of them");
+                        NodeViewParser nodeViewParser = new NodeViewParser(controller.getOperations(), controller.getAttributes(), node, diagramController.getAstNodeController());
+                        nodeViewParser.projectChangesInNodeView();
+                    } else if(attributesChanged) {
+                        System.out.println("*** Only attributes");
+                        NodeViewParser nodeViewParser = new NodeViewParser(null, controller.getAttributes(), node, diagramController.getAstNodeController());
+                        nodeViewParser.projectChangesInNodeView();
+                    } else if(operationsChanged) {
+                        System.out.println("*** Only operations");
+                        NodeViewParser nodeViewParser = new NodeViewParser(controller.getOperations(), null, node, diagramController.getAstNodeController());
+                        nodeViewParser.projectChangesInNodeView();
+                    }
                 }
             });
 

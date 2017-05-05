@@ -6,24 +6,20 @@ import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.*;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
 
-import com.kaanburaksener.ast.model.AssociationType;
-import com.kaanburaksener.ast.model.AttributeStructure;
-import com.kaanburaksener.ast.model.MethodStructure;
-import com.kaanburaksener.ast.model.NodeHolder;
+import com.kaanburaksener.ast.controller.ASTNodeController;
+import com.kaanburaksener.ast.model.*;
 import com.kaanburaksener.ast.model.nodes.AbstractStructure;
 import com.kaanburaksener.ast.model.nodes.ClassStructure;
 import com.kaanburaksener.ast.model.nodes.EnumerationStructure;
 import com.kaanburaksener.ast.model.nodes.InterfaceStructure;
 
+import com.kaanburaksener.octoUML.src.controller.AbstractDiagramController;
+import com.kaanburaksener.octoUML.src.model.edges.*;
 import com.kaanburaksener.octoUML.src.model.nodes.AbstractNode;
-import com.kaanburaksener.octoUML.src.model.nodes.Bubble;
 import com.kaanburaksener.octoUML.src.model.nodes.ClassNode;
 import com.kaanburaksener.octoUML.src.model.nodes.EnumerationNode;
-
-import com.kaanburaksener.octoUML.src.util.commands.CompoundCommand;
-import com.kaanburaksener.octoUML.src.util.commands.SetNodeAttributeCommand;
-import com.kaanburaksener.octoUML.src.util.commands.SetNodeOperationsCommand;
-import com.kaanburaksener.octoUML.src.util.commands.SetNodeValuesCommand;
+import com.kaanburaksener.octoUML.src.util.commands.*;
+import com.kaanburaksener.octoUML.src.view.nodes.AbstractNodeView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,26 +29,29 @@ import java.util.regex.Pattern;
 /**
  * Created by kaanburaksener on 03/05/17.
  *
- * This class projects any changes in the source code of bubble to the UML diagram
+ * This class projects any changes in the source code of bubble to the UML diagram.
  */
 public class BubbleParser {
-    private static final double CLASS_MIN_HEIGHT = 100;
-    private static final double LINE_HEIGHT = 19.0;
+    private static final double CLASS_MIN_WIDTH = 120;
+    private static final double CLASS_MIN_HEIGHT = 120.0;
+    private static final double LINE_HEIGHT_CLASS = 20.0;
+    private static final double LINE_HEIGHT_ENUM = 22.50;
     private AbstractStructure existingAbstractStructure;
     private AbstractStructure newAbstractStructure;
     private CompilationUnit compilationUnit;
-    private Bubble refNode;
+    private AbstractNode refNode;
     private NodeHolder nodeHolder;
+    private AbstractDiagramController diagramController;
 
-    public BubbleParser(CompilationUnit compilationUnit, Bubble refNode, NodeHolder nodeHolder) {
+    public BubbleParser(CompilationUnit compilationUnit, AbstractNode refNode, ASTNodeController astNodeController) {
         this.compilationUnit = compilationUnit;
         this.refNode = refNode;
-        this.nodeHolder = nodeHolder;
-        projectChangesInBubble();
+        this.nodeHolder = astNodeController.getNodeHolder();
+        this.diagramController = astNodeController.getDiagramController();
     }
 
-    private void projectChangesInBubble() {
-        this.existingAbstractStructure = refNode.getRefNode().getRefExistingNode();
+    public void projectChangesInBubble() {
+        this.existingAbstractStructure = refNode.getRefExistingNode();
         if(existingAbstractStructure instanceof ClassStructure || existingAbstractStructure instanceof InterfaceStructure) {
             if(existingAbstractStructure instanceof ClassStructure) {
                 newAbstractStructure = new ClassStructure(existingAbstractStructure.getName(), existingAbstractStructure.getPath());
@@ -66,7 +65,7 @@ public class BubbleParser {
             loadBubbleRelations();
             newAbstractStructure.printStructure();
             updateNodeView();
-        } else if(refNode.getRefNode() instanceof EnumerationNode) {
+        } else if(refNode instanceof EnumerationNode) {
             newAbstractStructure = new EnumerationStructure(existingAbstractStructure.getName(), existingAbstractStructure.getPath());
             newAbstractStructure.setCompilationUnit(compilationUnit);
             initializeBubblesModifiers();
@@ -76,7 +75,7 @@ public class BubbleParser {
     }
 
     /**
-     * This method lists all the methods in a given class or interface
+     * This method lists all the methods in a given class or interface.
      */
     private void loadBubbleMethods() {
         try {
@@ -89,7 +88,7 @@ public class BubbleParser {
     }
 
     /**
-     * This method lists all the attributes in a given class or interface
+     * This method lists all the attributes in a given class or interface.
      */
     private void loadBubbleAttributes() {
         try {
@@ -120,7 +119,7 @@ public class BubbleParser {
     }
 
     /**
-     * This method lists all the values in a given enumeration
+     * This method lists all the values in a given enumeration.
      */
     private void loadBubbleValues() {
         try {
@@ -136,7 +135,7 @@ public class BubbleParser {
     }
 
     /**
-     * This methods lists the relations (extends, implements) between Classes and Interfaces
+     * This methods lists the relations (extends, implements) between classes and interfaces.
      */
     private void loadBubbleRelations() {
         try {
@@ -168,7 +167,7 @@ public class BubbleParser {
     }
 
     /**
-     * This methods lists the relations (aggregation) between Classes
+     * This methods lists the relations (aggregation) between classes.
      */
     private void checkAggregationAssociation() {
         ((ClassStructure)newAbstractStructure).getAllAttributes().stream().forEach(a -> {
@@ -183,7 +182,7 @@ public class BubbleParser {
     }
 
     /**
-     * This methods lists the relations (aggregation, composition) between Classes
+     * This methods lists the relations (aggregation, composition) between classes.
      */
     private void checkCompositionAssociation(AbstractStructure abstractStructure, List<String> bodyOfConstructors) {
         boolean isFound = false;
@@ -233,9 +232,12 @@ public class BubbleParser {
     }
 
     /**
-     * It updates the NodeView with according to the edited source code
+     * It updates the NodeView with according to the edited source code.
      */
     private void updateNodeView() {
+        double newWidth = 0.0;
+        final double COEFFICIENT_FOR_LETTER = 7.50;
+
         StringBuilder attributes = new StringBuilder();
         StringBuilder operations = new StringBuilder();
 
@@ -252,35 +254,50 @@ public class BubbleParser {
 
         List<MethodStructure> allMethods = ((ClassStructure)newAbstractStructure).getAllMethods();
         if(allMethods.size() > 1) {
+            newWidth = (allMethods.get(0).castMethodToUMLNotation().length()) * COEFFICIENT_FOR_LETTER;
             for(int i = 0; i < allMethods.size() - 1; i++) {
+                double tempNewWidth = (allMethods.get(0).castMethodToUMLNotation().length()) * COEFFICIENT_FOR_LETTER;
                 MethodStructure methodStructure = allMethods.get(i);
                 operations.append(getSignOfAccessModifier(methodStructure.getAccessModifiers()) + " " + methodStructure.castMethodToUMLNotation() + "\r\n");
+
+                if(tempNewWidth > newWidth) {
+                    newWidth = tempNewWidth;
+                }
             }
             operations.append(getSignOfAccessModifier(allMethods.get(allMethods.size() - 1).getAccessModifiers()) + " " + allMethods.get(allMethods.size() - 1).castMethodToUMLNotation());
         } else if(allMethods.size() == 1) {
             operations.append(getSignOfAccessModifier(allMethods.get(0).getAccessModifiers()) + " " + allMethods.get(0).castMethodToUMLNotation());
         }
 
-        AbstractNode node = refNode.getRefNode();
-
         CompoundCommand command = new CompoundCommand();
 
         String attr = attributes.toString();
-        command.add(new SetNodeAttributeCommand(((ClassNode)node), attr, attr));
-        ((ClassNode)node).setAttributes(attr);
+        command.add(new SetNodeAttributeCommand(((ClassNode)refNode), attr, attr));
+        ((ClassNode)refNode).setAttributes(attr);
 
         String oprt = operations.toString();
-        command.add(new SetNodeOperationsCommand(((ClassNode)node), oprt, oprt));
-        ((ClassNode) node).setOperations(oprt);
+        command.add(new SetNodeOperationsCommand(((ClassNode)refNode), oprt, oprt));
+        ((ClassNode)refNode).setOperations(oprt);
 
-        double newHeight = (allAttributes.size() * LINE_HEIGHT) + (allMethods.size() * LINE_HEIGHT);
+        double newHeight = (allAttributes.size() * LINE_HEIGHT_CLASS) + (allMethods.size() * LINE_HEIGHT_CLASS);
+
         if(newHeight > CLASS_MIN_HEIGHT) {
-            node.setHeight((allAttributes.size() * LINE_HEIGHT) + (allMethods.size() * LINE_HEIGHT));
+            refNode.setHeight(newHeight);
+        } else {
+            refNode.setHeight(CLASS_MIN_HEIGHT);
         }
+
+        if(newWidth > CLASS_MIN_WIDTH) {
+            refNode.setWidth(newWidth);
+        }
+
+        System.out.println(refNode.getTitle() + " calculated height" + newHeight);
+
+        updateClassNodeAssociations();
     }
 
     /**
-     * It updates the EnumerationNodeView with according to the edited source code
+     * It updates the EnumerationNodeView with according to the edited source code.
      */
     private void updateEnumerationNodeView() {
         StringBuilder values = new StringBuilder();
@@ -295,17 +312,45 @@ public class BubbleParser {
             values.append(allValues.get(0));
         }
 
-        AbstractNode node = refNode.getRefNode();
-
         CompoundCommand command = new CompoundCommand();
 
         String vls = values.toString();
-        command.add(new SetNodeValuesCommand(((EnumerationNode)node), vls, vls));
-        ((EnumerationNode)node).setValues(vls);
+        command.add(new SetNodeValuesCommand(((EnumerationNode)refNode), vls, vls));
+        ((EnumerationNode)refNode).setValues(vls);
 
-        double newHeight = (allValues.size() * LINE_HEIGHT) + LINE_HEIGHT;
+        double newHeight = allValues.size() * LINE_HEIGHT_ENUM;
         if(newHeight > CLASS_MIN_HEIGHT) {
-            node.setHeight((allValues.size() * LINE_HEIGHT) + LINE_HEIGHT);
+            refNode.setHeight(newHeight);
+        }
+    }
+
+    /**
+     * Updates the associations between Classes and Interfaces.
+     */
+    private void updateClassNodeAssociations() {
+        AbstractNodeView startNodeView = diagramController.findNodeView(refNode);
+        diagramController.cleanNodeEdges(startNodeView);
+
+        List<AssociationStructure> allAssociations = ((ClassStructure)newAbstractStructure).getAllAssociations();
+        if(allAssociations.size() > 0) {
+            for (AssociationStructure associationStructure : allAssociations) {
+                AbstractNode endNode = diagramController.findNode(associationStructure.getAssociatedClassName());
+                if (endNode != null) {
+                    AbstractNodeView endNodeView = diagramController.findNodeView(endNode);
+                    AbstractEdge newEdge = null;
+                    if (associationStructure.getType().equals(AssociationType.AGGREGATION)) {
+                        newEdge = new AggregationEdge(refNode, endNode);
+                    } else if (associationStructure.getType().equals(AssociationType.COMPOSITION)) {
+                        newEdge = new CompositionEdge(refNode, endNode);
+                    } else if (associationStructure.getType().equals(AssociationType.IMPLEMENTATION)) {
+                        newEdge = new RealizationEdge(refNode, endNode);
+                    } else if (associationStructure.getType().equals(AssociationType.INHERITENCE)) {
+                        newEdge = new InheritanceEdge(refNode, endNode);
+                    }
+                    newEdge.setDirection(AbstractEdge.Direction.START_TO_END);
+                    diagramController.createEdgeView(newEdge, startNodeView, endNodeView);
+                }
+            }
         }
     }
 
@@ -325,5 +370,9 @@ public class BubbleParser {
         }
 
         return sign;
+    }
+
+    public AbstractNode getUpdatedNode() {
+        return refNode;
     }
 }
