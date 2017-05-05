@@ -79,7 +79,7 @@ public class BubbleParser {
      */
     private void loadBubbleMethods() {
         try {
-            compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
+            compilationUnit.getChildNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
                 new NodeParser.MethodVisitor(newAbstractStructure).visit(c,null);
             });
         } catch (Exception e) {
@@ -92,7 +92,7 @@ public class BubbleParser {
      */
     private void loadBubbleAttributes() {
         try {
-            compilationUnit.getNodesByType(FieldDeclaration.class).stream().forEach(field -> {
+            compilationUnit.getChildNodesByType(FieldDeclaration.class).stream().forEach(field -> {
                 List<VariableDeclarator> variableDeclarators = field.getVariables();
                 variableDeclarators.stream().forEach(vd -> {
                     AttributeStructure attributeStructure;
@@ -123,7 +123,7 @@ public class BubbleParser {
      */
     private void loadBubbleValues() {
         try {
-            compilationUnit.getNodesByType(EnumDeclaration.class).stream().forEach(enumeration -> {
+            compilationUnit.getChildNodesByType(EnumDeclaration.class).stream().forEach(enumeration -> {
                 List<EnumConstantDeclaration> enumValues = enumeration.getEntries();
                 enumValues.stream().forEach(ev -> {
                     ((EnumerationStructure)newAbstractStructure).addValue(ev.getNameAsString());
@@ -139,7 +139,7 @@ public class BubbleParser {
      */
     private void loadBubbleRelations() {
         try {
-            compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
+            compilationUnit.getChildNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
                 List<ClassOrInterfaceType> implementsList = c.getImplementedTypes();
                 List<ClassOrInterfaceType> extendsList = c.getExtendedTypes();
 
@@ -152,7 +152,7 @@ public class BubbleParser {
             });
 
             List<String> bodyOfConstructors = new ArrayList<String>();
-            compilationUnit.getNodesByType(ConstructorDeclaration.class).stream().forEach(cnstr -> {
+            compilationUnit.getChildNodesByType(ConstructorDeclaration.class).stream().forEach(cnstr -> {
                 bodyOfConstructors.add(cnstr.getBody().toString());
             });
 
@@ -219,11 +219,11 @@ public class BubbleParser {
      */
     private void initializeBubblesModifiers() {
         try {
-            compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
+            compilationUnit.getChildNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
                 newAbstractStructure.setAccessModifiers(NodeParser.castStringToModifiers(c.getModifiers().toString()));
             });
 
-            compilationUnit.getNodesByType(EnumDeclaration.class).stream().forEach(c -> {
+            compilationUnit.getChildNodesByType(EnumDeclaration.class).stream().forEach(c -> {
                 newAbstractStructure.setAccessModifiers(NodeParser.castStringToModifiers(c.getModifiers().toString()));
             });
         } catch (Exception e) {

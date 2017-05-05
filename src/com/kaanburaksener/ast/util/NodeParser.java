@@ -110,7 +110,7 @@ public class NodeParser {
         for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
             if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
                 try {
-                    abstractStructure.getCompilationUnit().getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
+                    abstractStructure.getCompilationUnit().getChildNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
                         new MethodVisitor(abstractStructure).visit(c,null);
                     });
                 } catch (Exception e) {
@@ -163,7 +163,7 @@ public class NodeParser {
 
             if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
                 try {
-                    compilationUnit.getNodesByType(FieldDeclaration.class).stream().forEach(field -> {
+                    compilationUnit.getChildNodesByType(FieldDeclaration.class).stream().forEach(field -> {
                         List<VariableDeclarator> variableDeclarators = field.getVariables();
                         variableDeclarators.stream().forEach(vd -> {
                             AttributeStructure attributeStructure;
@@ -189,7 +189,7 @@ public class NodeParser {
                 }
             } else if(abstractStructure instanceof EnumerationStructure) {
                 try {
-                    compilationUnit.getNodesByType(EnumDeclaration.class).stream().forEach(enumeration -> {
+                    compilationUnit.getChildNodesByType(EnumDeclaration.class).stream().forEach(enumeration -> {
                         List<EnumConstantDeclaration> enumValues = enumeration.getEntries();
                         enumValues.stream().forEach(ev -> {
                             ((EnumerationStructure)abstractStructure).addValue(ev.getNameAsString());
@@ -211,7 +211,7 @@ public class NodeParser {
                 try {
                     CompilationUnit compilationUnit =  abstractStructure.getCompilationUnit();
 
-                    compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
+                    compilationUnit.getChildNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
                         List<ClassOrInterfaceType> implementsList = c.getImplementedTypes();
                         List<ClassOrInterfaceType> extendsList = c.getExtendedTypes();
 
@@ -224,7 +224,7 @@ public class NodeParser {
                     });
 
                     List<String> bodyOfConstructors = new ArrayList<String>();
-                    compilationUnit.getNodesByType(ConstructorDeclaration.class).stream().forEach(cnstr -> {
+                    compilationUnit.getChildNodesByType(ConstructorDeclaration.class).stream().forEach(cnstr -> {
                         bodyOfConstructors.add(cnstr.getBody().toString());
                     });
 
@@ -294,11 +294,11 @@ public class NodeParser {
             try {
                 CompilationUnit compilationUnit =  abstractStructure.getCompilationUnit();
 
-                compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
+                compilationUnit.getChildNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
                     abstractStructure.setAccessModifiers(castStringToModifiers(c.getModifiers().toString()));
                 });
 
-                compilationUnit.getNodesByType(EnumDeclaration.class).stream().forEach(c -> {
+                compilationUnit.getChildNodesByType(EnumDeclaration.class).stream().forEach(c -> {
                     abstractStructure.setAccessModifiers(castStringToModifiers(c.getModifiers().toString()));
                 });
             } catch (Exception e) {

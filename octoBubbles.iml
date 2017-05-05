@@ -7,8 +7,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="com.github.javaparser:javaparser-core:3.0.1" level="project" />
     <orderEntry type="library" exported="" name="com.google.guava:guava:12.0" level="project" />
     <orderEntry type="library" exported="" name="asm-5.0.4" level="project" />
+    <orderEntry type="library" exported="" name="javaparser-core-3.2.3" level="project" />
   </component>
 </module>
