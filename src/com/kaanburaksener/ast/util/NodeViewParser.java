@@ -77,7 +77,7 @@ public class NodeViewParser {
      */
     private void loadBubbleViewMethods() {
         try {
-            compilationUnit.getNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
+            compilationUnit.getChildNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
                 new NodeParser.MethodVisitor(newAbstractStructure).visit(c,null);
             });
         } catch (Exception e) {
@@ -90,7 +90,7 @@ public class NodeViewParser {
      */
     private void loadBubbleViewAttributes() {
         try {
-            compilationUnit.getNodesByType(FieldDeclaration.class).stream().forEach(field -> {
+            compilationUnit.getChildNodesByType(FieldDeclaration.class).stream().forEach(field -> {
                 List<VariableDeclarator> variableDeclarators = field.getVariables();
                 variableDeclarators.stream().forEach(vd -> {
                     AttributeStructure attributeStructure;
