@@ -2,46 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee14513c-d92a-4c6d-b29b-881028f6d4ba" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test-source-code/Assignment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test-source-code/support/SupportFile.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/controller/ASTNodeController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/controller/ASTNodeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/model/nodes/AbstractStructure.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/model/nodes/AbstractStructure.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/model/nodes/ClassStructure.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/model/nodes/ClassStructure.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/model/nodes/EnumerationStructure.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/model/nodes/EnumerationStructure.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/BubbleParser.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/BubbleParser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/NodeParser$MethodVisitor.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/NodeParser$MethodVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/NodeParser.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/NodeParser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/NodeViewParser.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/NodeViewParser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/ClassDiagramController$1.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/ClassDiagramController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$3.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$4.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$5.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$6.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/SourceCodeController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/SourceCodeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/view/nodes/ClassNodeView.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/view/nodes/ClassNodeView.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/javaparser-core-3.0.1.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/controller/ASTNodeController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/controller/ASTNodeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/AbstractStructure.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/AbstractStructure.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/ClassStructure.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/ClassStructure.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/EnumerationStructure.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/EnumerationStructure.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/BubbleParser.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/BubbleParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeParser.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeViewParser.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeViewParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/GraphController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/GraphController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/NodeController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/NodeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/SourceCodeController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/SourceCodeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/StartController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/StartController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/TabController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/TabController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/nodes/Bubble.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/nodes/Bubble.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/BubbleView.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/BubbleView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/mainView.fxml" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/mainView.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/startView.fxml" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/startView.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/nodes/ClassNodeView.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/nodes/ClassNodeView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-source-code/Assignment.java" afterPath="$PROJECT_DIR$/test-source-code/Assignment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-source-code/Course.java" afterPath="$PROJECT_DIR$/test-source-code/Course.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-source-code/Day.java" afterPath="$PROJECT_DIR$/test-source-code/Day.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-source-code/Employee.java" afterPath="$PROJECT_DIR$/test-source-code/Employee.java" />
@@ -65,7 +28,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -214,9 +177,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -229,212 +189,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test-source-code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaanburaksener" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoUML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaanburaksener" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoUML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaanburaksener" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoUML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fxml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaanburaksener" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoUML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaanburaksener" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoUML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaanburaksener" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ast" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="octoBubbles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kaanburaksener" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ast" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -443,7 +202,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.21724138" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
@@ -991,12 +750,14 @@
       <workItem from="1494151260266" duration="3929000" />
       <workItem from="1494196798468" duration="7816000" />
       <workItem from="1494232392941" duration="24227000" />
-      <workItem from="1494265153148" duration="6457000" />
+      <workItem from="1494265153148" duration="6568000" />
+      <workItem from="1494293167459" duration="1597000" />
+      <workItem from="1494329542978" duration="257000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="417373000" />
+    <option name="totallyTimeSpent" value="419338000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-174" y="-877" width="1600" height="877" extended-state="6" />
@@ -1012,14 +773,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17326732" sideWeight="0.41" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12153846" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17821783" sideWeight="0.59" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17821783" sideWeight="0.59" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910156" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.259375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.259375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08292079" sideWeight="0.420625" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1034,6 +794,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="PsiViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08292079" sideWeight="0.420625" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1125,11 +886,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#481#482#0" expanded="false" />
-            <element signature="e#544#545#0" expanded="false" />
-            <element signature="e#794#795#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1137,9 +893,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="200" column="0" lean-forward="false" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
-          <folding>
-            <element signature="e#6578#6579#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1147,11 +900,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="385">
           <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <element signature="e#1001#1002#0" expanded="false" />
-            <element signature="e#1031#1032#0" expanded="false" />
-            <element signature="e#1359#1360#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1187,7 +935,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5685">
           <caret line="445" column="0" lean-forward="false" selection-start-line="445" selection-start-column="0" selection-end-line="445" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1195,11 +942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
           <caret line="531" column="0" lean-forward="false" selection-start-line="531" selection-start-column="0" selection-end-line="531" selection-end-column="0" />
-          <folding>
-            <element signature="e#9723#9724#0" expanded="false" />
-            <element signature="e#9761#9762#0" expanded="false" />
-            <element signature="e#22759#22760#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1207,13 +949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <element signature="e#2069#2070#0" expanded="false" />
-            <element signature="e#2105#2106#0" expanded="false" />
-            <element signature="e#2138#2139#0" expanded="false" />
-            <element signature="e#2168#2169#0" expanded="false" />
-            <element signature="e#2195#2196#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1221,7 +956,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1229,9 +963,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="401" column="0" lean-forward="false" selection-start-line="401" selection-start-column="0" selection-end-line="401" selection-end-column="0" />
-          <folding>
-            <element signature="e#9981#9982#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1239,9 +970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="151" column="0" lean-forward="false" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
-          <folding>
-            <element signature="e#5810#5811#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1249,9 +977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding>
-            <element signature="e#2674#2675#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1259,9 +984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding>
-            <element signature="e#1518#1519#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1269,9 +991,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
-          <folding>
-            <element signature="e#5693#5694#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1279,12 +998,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="423" column="0" lean-forward="false" selection-start-line="423" selection-start-column="0" selection-end-line="423" selection-end-column="0" />
-          <folding>
-            <element signature="e#6120#6121#0" expanded="false" />
-            <element signature="e#6148#6149#0" expanded="false" />
-            <element signature="e#13479#13480#0" expanded="false" />
-            <element signature="e#13537#13538#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1292,7 +1005,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
           <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1300,7 +1012,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1308,7 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1316,9 +1026,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="38" lean-forward="false" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1326,7 +1033,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="55" lean-forward="true" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1334,10 +1040,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-139">
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding>
-            <element signature="e#832#833#0" expanded="false" />
-            <element signature="e#859#860#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1345,9 +1047,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#315#316#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1355,9 +1054,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="36" column="34" lean-forward="true" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1365,9 +1061,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5925">
           <caret line="403" column="5" lean-forward="false" selection-start-line="403" selection-start-column="5" selection-end-line="403" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1375,7 +1068,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="39" column="35" lean-forward="true" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1383,9 +1075,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4200">
           <caret line="280" column="99" lean-forward="false" selection-start-line="280" selection-start-column="99" selection-end-line="280" selection-end-column="99" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1411,7 +1100,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1419,7 +1107,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="116" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1437,9 +1124,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2730">
           <caret line="208" column="0" lean-forward="false" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
-          <folding>
-            <element signature="e#6478#6479#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1447,9 +1131,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="29" column="31" lean-forward="true" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1504,7 +1185,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2836">
           <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1517,14 +1197,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/mainView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="100" lean-forward="false" selection-start-line="16" selection-start-column="100" selection-end-line="16" selection-end-column="100" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/StartController.java">
@@ -1536,14 +1216,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/startView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
   </component>
@@ -1604,7 +1284,6 @@
             <option name="proportions">
               <list>
                 <option value="0.21724138" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
