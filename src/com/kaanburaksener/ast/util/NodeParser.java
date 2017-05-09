@@ -17,6 +17,7 @@ import com.kaanburaksener.ast.helper.DirExplorer;
 
 import java.io.File;
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -33,7 +34,6 @@ public class NodeParser {
         this.nodeHolder = nodeHolder;
         this.targetFolderName = targetFolderName;
     }
-
 
     /***
      * This methods return the content of any .java file
@@ -58,7 +58,7 @@ public class NodeParser {
      * @param projectDir
      */
     public void loadNodes(File projectDir) {
-        List<AbstractStructure> nodes = new ArrayList<AbstractStructure>();
+        List<AbstractStructure> nodes = new ArrayList<>();
 
         new DirExplorer((level, path, file) -> path.endsWith(".java"), (level, path, file) -> {
             try {
@@ -104,19 +104,27 @@ public class NodeParser {
     }
 
     /***
-     * This methods lists all the methods in a given class or interface
+     * This methods lists all the methods in given list of classes or interfaces.
      */
     public void loadNodesMethods() {
         for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
             if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
-                try {
-                    abstractStructure.getCompilationUnit().getChildNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
-                        new MethodVisitor(abstractStructure).visit(c,null);
-                    });
-                } catch (Exception e) {
-                    System.out.println("Error occured while opening the given file: " + e.getMessage());
-                }
+                loadNodeMethods(abstractStructure);
             }
+        }
+    }
+
+    /***
+     * This methods lists all the methods in a given class or interface
+     * @param abstractStructure
+     */
+    public static void loadNodeMethods(AbstractStructure abstractStructure) {
+        try {
+            abstractStructure.getCompilationUnit().getChildNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
+                new MethodVisitor(abstractStructure).visit(c,null);
+            });
+        } catch (Exception e) {
+            System.out.println("Error occured while opening the given file: " + e.getMessage());
         }
     }
 
@@ -135,7 +143,7 @@ public class NodeParser {
             MethodStructure methodStructure;
 
             if(n.getParameters().size() > 0) {
-                List<ParameterStructure> parameters = new ArrayList<ParameterStructure>();
+                List<ParameterStructure> parameters = new ArrayList<>();
 
                 NodeList<Parameter> unstructuredParameters = n.getParameters();
                 unstructuredParameters.forEach(up -> {
@@ -155,89 +163,104 @@ public class NodeParser {
     }
 
     /***
-     * This methods lists all the attributes in a given class or interface and all the values in a given enumeration
+     * This methods lists all the attributes in given list of classes, interfaces, or enumerations.
      */
     public void loadNodesAttributesOrValues() {
         for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
-            CompilationUnit compilationUnit =  abstractStructure.getCompilationUnit();
+            loadNodeAttributesOrValues(abstractStructure);
+        }
+    }
 
-            if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
-                try {
-                    compilationUnit.getChildNodesByType(FieldDeclaration.class).stream().forEach(field -> {
-                        List<VariableDeclarator> variableDeclarators = field.getVariables();
-                        variableDeclarators.stream().forEach(vd -> {
-                            AttributeStructure attributeStructure;
+    /***
+     * This methods lists all the attributes in a given class or interface and all the values in a given enumeration
+     * @param abstractStructure
+     */
+    public static void loadNodeAttributesOrValues(AbstractStructure abstractStructure) {
+        CompilationUnit compilationUnit =  abstractStructure.getCompilationUnit();
+        if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
+            try {
+                compilationUnit.getChildNodesByType(FieldDeclaration.class).stream().forEach(field -> {
+                    List<VariableDeclarator> variableDeclarators = field.getVariables();
+                    variableDeclarators.stream().forEach(vd -> {
+                        AttributeStructure attributeStructure;
 
-                            List<Modifier> modifiers = castStringToModifiers(field.getModifiers().toString());
-                            String type = vd.getType().toString();
-                            String name = vd.getNameAsString();
+                        List<Modifier> modifiers = castStringToModifiers(field.getModifiers().toString());
+                        String type = vd.getType().toString();
+                        String name = vd.getNameAsString();
 
-                            if(vd.getInitializer().toString().equals("Optional.empty")) {
-                                attributeStructure = new AttributeStructure(modifiers, type, name);
-                            } else {
-                                String unstructuredInitializer = vd.getInitializer().toString();
-                                String initializer = unstructuredInitializer.substring(unstructuredInitializer.indexOf("[") + 1, unstructuredInitializer.indexOf("]"));
-                                initializer = initializer.substring(1,initializer.length()-1);
-                                attributeStructure = new AttributeStructure(modifiers, type, name, initializer);
-                            }
+                        if(vd.getInitializer().toString().equals("Optional.empty")) {
+                            attributeStructure = new AttributeStructure(modifiers, type, name);
+                        } else {
+                            String unstructuredInitializer = vd.getInitializer().toString();
+                            String initializer = unstructuredInitializer.substring(unstructuredInitializer.indexOf("[") + 1, unstructuredInitializer.indexOf("]"));
+                            initializer = initializer.substring(1,initializer.length()-1);
+                            attributeStructure = new AttributeStructure(modifiers, type, name, initializer);
+                        }
 
-                            ((ClassStructure)abstractStructure).addAttribute(attributeStructure);
-                        });
+                        ((ClassStructure)abstractStructure).addAttribute(attributeStructure);
                     });
-                } catch (Exception e) {
-                    System.out.println("Error occured while opening the given file: " + e.getMessage());
-                }
-            } else if(abstractStructure instanceof EnumerationStructure) {
-                try {
-                    compilationUnit.getChildNodesByType(EnumDeclaration.class).stream().forEach(enumeration -> {
-                        List<EnumConstantDeclaration> enumValues = enumeration.getEntries();
-                        enumValues.stream().forEach(ev -> {
-                            ((EnumerationStructure)abstractStructure).addValue(ev.getNameAsString());
-                        });
+                });
+            } catch (Exception e) {
+                System.out.println("Error occured while opening the given file: " + e.getMessage());
+            }
+        } else if(abstractStructure instanceof EnumerationStructure) {
+            try {
+                compilationUnit.getChildNodesByType(EnumDeclaration.class).stream().forEach(enumeration -> {
+                    List<EnumConstantDeclaration> enumValues = enumeration.getEntries();
+                    enumValues.stream().forEach(ev -> {
+                        ((EnumerationStructure)abstractStructure).addValue(ev.getNameAsString());
                     });
-                } catch (Exception e) {
-                    System.out.println("Error occured while opening the given file: " + e.getMessage());
-                }
+                });
+            } catch (Exception e) {
+                System.out.println("Error occured while opening the given file: " + e.getMessage());
             }
         }
     }
 
     /***
-     * This methods lists the relations (extends, implements) between Classes and Interfaces
+     * This methods lists the relations (extends, implements) between Classes and Interfaces of given set of Classes and Interfaces.
      */
     public void loadRelations() {
         for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
-            if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
-                try {
-                    CompilationUnit compilationUnit =  abstractStructure.getCompilationUnit();
+            loadNodeRelations(abstractStructure);
+        }
+    }
 
-                    compilationUnit.getChildNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
-                        List<ClassOrInterfaceType> implementsList = c.getImplementedTypes();
-                        List<ClassOrInterfaceType> extendsList = c.getExtendedTypes();
+    /***
+     * This methods lists the relations (extends, implements) between Classes and Interfaces/
+     * @param abstractStructure
+     */
+    public void loadNodeRelations(AbstractStructure abstractStructure) {
+        if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
+            try {
+                CompilationUnit compilationUnit =  abstractStructure.getCompilationUnit();
 
-                        implementsList.stream().forEach(impl -> {
-                            ((ClassStructure)abstractStructure).addAssociation(AssociationType.IMPLEMENTATION, impl.getNameAsString());
-                        });
-                        extendsList.stream().forEach(extd -> {
-                            ((ClassStructure)abstractStructure).addAssociation(AssociationType.INHERITENCE, extd.getNameAsString());
-                        });
+                compilationUnit.getChildNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
+                    List<ClassOrInterfaceType> implementsList = c.getImplementedTypes();
+                    List<ClassOrInterfaceType> extendsList = c.getExtendedTypes();
+
+                    implementsList.stream().forEach(impl -> {
+                        ((ClassStructure)abstractStructure).addAssociation(AssociationType.IMPLEMENTATION, impl.getNameAsString());
                     });
-
-                    List<String> bodyOfConstructors = new ArrayList<String>();
-                    compilationUnit.getChildNodesByType(ConstructorDeclaration.class).stream().forEach(cnstr -> {
-                        bodyOfConstructors.add(cnstr.getBody().toString());
+                    extendsList.stream().forEach(extd -> {
+                        ((ClassStructure)abstractStructure).addAssociation(AssociationType.INHERITENCE, extd.getNameAsString());
                     });
+                });
 
-                    if(bodyOfConstructors.size() > 0) {
-                        // A class might have multiple constructors
-                        checkCompositionAssociation(abstractStructure, bodyOfConstructors);
-                    } else {
-                        // If there is no constructor, there is no possibility to have a composition association
-                        checkAggregationAssociation(abstractStructure);
-                    }
-                } catch (Exception e) {
-                    System.out.println("Error occured while opening the given file: " + e.getMessage());
+                List<String> bodyOfConstructors = new ArrayList<String>();
+                compilationUnit.getChildNodesByType(ConstructorDeclaration.class).stream().forEach(cnstr -> {
+                    bodyOfConstructors.add(cnstr.getBody().toString());
+                });
+
+                if(bodyOfConstructors.size() > 0) {
+                    // A class might have multiple constructors
+                    checkCompositionAssociation(abstractStructure, bodyOfConstructors);
+                } else {
+                    // If there is no constructor, there is no possibility to have a composition association
+                    checkAggregationAssociation(abstractStructure);
                 }
+            } catch (Exception e) {
+                System.out.println("Error occured while opening the given file: " + e.getMessage());
             }
         }
     }
@@ -287,23 +310,32 @@ public class NodeParser {
     }
 
     /***
-     * This method sets the modifiers into the nodes
+     * This method sets the modifiers into the given list of Classes, Interfaces, and Enumerations
      */
     public void initializeNodesModifiers() {
         for(AbstractStructure abstractStructure : nodeHolder.getAllNodes()) {
-            try {
-                CompilationUnit compilationUnit =  abstractStructure.getCompilationUnit();
+            initializeNodeModifiers(abstractStructure);
+        }
+    }
 
+    /***
+     * This method sets the modifiers into a given Class, Interface, and Enumeration
+     */
+    public void initializeNodeModifiers(AbstractStructure abstractStructure) {
+        try {
+            CompilationUnit compilationUnit =  abstractStructure.getCompilationUnit();
+
+            if(abstractStructure instanceof ClassStructure || abstractStructure instanceof InterfaceStructure) {
                 compilationUnit.getChildNodesByType(ClassOrInterfaceDeclaration.class).stream().forEach(c -> {
                     abstractStructure.setAccessModifiers(castStringToModifiers(c.getModifiers().toString()));
                 });
-
+            } else if(abstractStructure instanceof EnumerationStructure) {
                 compilationUnit.getChildNodesByType(EnumDeclaration.class).stream().forEach(c -> {
                     abstractStructure.setAccessModifiers(castStringToModifiers(c.getModifiers().toString()));
                 });
-            } catch (Exception e) {
-                System.out.println("Error occured while opening the given file: " + e.getMessage());
             }
+        } catch (Exception e) {
+            System.out.println("Error occured while opening the given file: " + e.getMessage());
         }
     }
 
@@ -333,7 +365,7 @@ public class NodeParser {
     /***
      * This methods return the equivalent access modifier in Modifier Class Type
      * @param modifier
-     * @return
+     * @return the given modifier in Modifier.Class format
      */
     public static Modifier getModifier(String modifier) {
         Modifier originalModifier = null;
@@ -369,12 +401,5 @@ public class NodeParser {
         }
 
         return originalModifier;
-    }
-
-    /***
-     * This method is used to control how accurately the source codes turned into structured node objects
-     */
-    public void testNodes() {
-        nodeHolder.printAllNodes();
     }
 }

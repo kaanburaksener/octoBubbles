@@ -496,18 +496,17 @@ public class NodeController {
                     }
                     aDrawPane.getChildren().remove(dialog);
                     diagramController.removeDialog(dialog);
-                    if(attributesChanged && operationsChanged) {
-                        System.out.println("*** Both of them");
-                        NodeViewParser nodeViewParser = new NodeViewParser(controller.getOperations(), controller.getAttributes(), node, diagramController.getAstNodeController());
-                        nodeViewParser.projectChangesInNodeView();
-                    } else if(attributesChanged) {
-                        System.out.println("*** Only attributes");
-                        NodeViewParser nodeViewParser = new NodeViewParser(null, controller.getAttributes(), node, diagramController.getAstNodeController());
-                        nodeViewParser.projectChangesInNodeView();
-                    } else if(operationsChanged) {
-                        System.out.println("*** Only operations");
-                        NodeViewParser nodeViewParser = new NodeViewParser(controller.getOperations(), null, node, diagramController.getAstNodeController());
-                        nodeViewParser.projectChangesInNodeView();
+                    if(node.getRefExistingNode() != null) {
+                        if (attributesChanged && operationsChanged) {
+                            NodeViewParser nodeViewParser = new NodeViewParser(controller.getOperations(), controller.getAttributes(), node, diagramController.getAstNodeController());
+                            nodeViewParser.projectChangesInNodeView();
+                        } else if (attributesChanged) {
+                            NodeViewParser nodeViewParser = new NodeViewParser(null, controller.getAttributes(), node, diagramController.getAstNodeController());
+                            nodeViewParser.projectChangesInNodeView();
+                        } else if (operationsChanged) {
+                            NodeViewParser nodeViewParser = new NodeViewParser(controller.getOperations(), null, node, diagramController.getAstNodeController());
+                            nodeViewParser.projectChangesInNodeView();
+                        }
                     }
                 }
             });
@@ -582,6 +581,7 @@ public class NodeController {
                 @Override
                 public void handle(ActionEvent event) {
                     CompoundCommand command = new CompoundCommand();
+                    boolean valuesChanged = controller.hasValuesChanged();
                     if(controller.hasTitledChanged()){
                         command.add(new SetNodeTitleCommand(node, controller.getTitle(), node.getTitle()));
                         node.setTitle(controller.getTitle());
@@ -595,6 +595,12 @@ public class NodeController {
                     }
                     aDrawPane.getChildren().remove(dialog);
                     diagramController.removeDialog(dialog);
+                    if(node.getRefExistingNode() != null) {
+                        if (valuesChanged) {
+                            NodeViewParser nodeViewParser = new NodeViewParser(controller.getValues(), node, diagramController.getAstNodeController());
+                            nodeViewParser.projectChangesInNodeView();
+                        }
+                    }
                 }
             });
 

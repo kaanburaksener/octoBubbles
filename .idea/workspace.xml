@@ -2,20 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee14513c-d92a-4c6d-b29b-881028f6d4ba" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/javaparser-core-3.2.3.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/javaparser_core_3_2_3.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/com_github_javaparser_javaparser_core_3_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test-source-code/Assignment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test-source-code/support/SupportFile.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/controller/ASTNodeController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/controller/ASTNodeController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/model/nodes/AbstractStructure.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/model/nodes/AbstractStructure.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/model/nodes/ClassStructure.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/model/nodes/ClassStructure.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/model/nodes/EnumerationStructure.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/model/nodes/EnumerationStructure.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/BubbleParser.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/BubbleParser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/NodeParser$MethodVisitor.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/NodeParser$MethodVisitor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/NodeParser.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/NodeParser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/NodeViewParser.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/ast/util/NodeViewParser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/ClassDiagramController$1.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/ClassDiagramController$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$3.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$4.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$5.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$6.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/NodeController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/SourceCodeController.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/controller/SourceCodeController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/view/nodes/ClassNodeView.class" afterPath="$PROJECT_DIR$/out/production/octoBubbles/com/kaanburaksener/octoUML/src/view/nodes/ClassNodeView.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/octoBubbles.iml" afterPath="$PROJECT_DIR$/octoBubbles.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/controller/ASTNodeController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/controller/ASTNodeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/AbstractStructure.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/AbstractStructure.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/ClassStructure.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/ClassStructure.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/EnumerationStructure.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/EnumerationStructure.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/BubbleParser.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/BubbleParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeParser.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeViewParser.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeViewParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/GraphController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/GraphController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/NodeController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/NodeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/SourceCodeController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/SourceCodeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/StartController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/StartController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/TabController.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/TabController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/nodes/Bubble.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/nodes/Bubble.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/BubbleView.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/BubbleView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/mainView.fxml" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/mainView.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/startView.fxml" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/startView.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/nodes/ClassNodeView.java" afterPath="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/nodes/ClassNodeView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-source-code/Course.java" afterPath="$PROJECT_DIR$/test-source-code/Course.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-source-code/Day.java" afterPath="$PROJECT_DIR$/test-source-code/Day.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-source-code/Employee.java" afterPath="$PROJECT_DIR$/test-source-code/Employee.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-source-code/Main.java" afterPath="$PROJECT_DIR$/test-source-code/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-source-code/NameOfInterface.java" afterPath="$PROJECT_DIR$/test-source-code/NameOfInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-source-code/Person.java" afterPath="$PROJECT_DIR$/test-source-code/Person.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-source-code/Student.java" afterPath="$PROJECT_DIR$/test-source-code/Student.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-source-code/Submission.java" afterPath="$PROJECT_DIR$/test-source-code/Submission.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-source-code/Teacher.java" afterPath="$PROJECT_DIR$/test-source-code/Teacher.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,27 +77,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>createBubb</find>
-      <find>initZoomSlider</find>
-      <find>mode</find>
-      <find>setM</find>
-      <find>aDrawPane</find>
-      <find>deleteNode</find>
-      <find>DRAG</find>
-      <find>middleLine</find>
-      <find>DISPLAY_SOURCE_CODE</find>
-      <find>PANE</find>
-      <find>removeBubble</find>
-      <find>bubble</find>
-      <find>deletenode</find>
-      <find>Todo</find>
       <find>CSS</find>
       <find>.split()</find>
       <find>deleteEdge</find>
       <find>getDiagramController</find>
       <find>replaceEdge</find>
       <find>astNodeController.getDiagramController()</find>
-      <find>refNode</find>
       <find>getAllEdgeViews</find>
       <find>astNodeController</find>
       <find>Type</find>
@@ -72,6 +92,21 @@
       <find>addSim</find>
       <find>getNodesByType</find>
       <find>getChildNodesByType</find>
+      <find>members</find>
+      <find>getType</find>
+      <find>newAbs</find>
+      <find>print</find>
+      <find>refNode</find>
+      <find>addMethod</find>
+      <find>newAbstractStructure</find>
+      <find>setCompilationUnit</find>
+      <find>nodeHolder</find>
+      <find>compilationUnit</find>
+      <find>association</find>
+      <find>methodsTo</find>
+      <find>loadNodeMethod</find>
+      <find>InterfaceStructure</find>
+      <find>SEQUence</find>
     </findStrings>
     <replaceStrings>
       <replace>Element</replace>
@@ -98,19 +133,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/controller/NodeController.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/SideBarView.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/sideBar.css" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/StartController.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/TabController.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/nodes/EnumerationNodeView.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/NodeBubbleEdgeView.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/edges/AggregationEdge.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/edges/NodeBubbleEdge.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/nodes/Region.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/SequenceDiagramController.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/util/commands/ResizeBubbleCommand.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/util/UMLDiagramLogger.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/Region.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/nodes/AbstractNodeView.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/nodes/NodeView.java" />
@@ -122,33 +144,46 @@
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/util/commands/MoveGraphElementCommand.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/util/commands/AddDeleteBubbleCommand.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/SelectController.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/nodes/Bubble.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/edges/SimpleEdgeView.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/Graph.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/GraphController.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/bubble.css" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/nodes/ClassNode.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/nodes/AbstractNode.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/AttributeStructure.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/nodeEditDialog.fxml" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/BubbleView.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/AbstractStructure.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/controller/ASTNodeController.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/nodes/ClassNodeView.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClientController.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ServerController.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/NodeController.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/MethodStructure.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/ParameterStructure.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/helper/ParameterComparator.java" />
         <option value="$PROJECT_DIR$/test-source-code/Assignment.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/SourceCodeController.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/util/commands/AddDeleteSimpleEdgeCommand.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.java" />
-        <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeViewParser.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/nodes/ClassNode.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/nodes/ClassNodeView.java" />
+        <option value="$PROJECT_DIR$/test-source-code/Animal.java" />
+        <option value="$PROJECT_DIR$/test-source-code/Puppy.java" />
+        <option value="$PROJECT_DIR$/test-source-code/Employee.java" />
+        <option value="$PROJECT_DIR$/test-source-code/Percolation.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/NodeController.java" />
+        <option value="$PROJECT_DIR$/test-source-code/Color.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/BubbleParser.java" />
+        <option value="$PROJECT_DIR$/test-source-code/Killable.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/controller/ASTNodeController.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/AbstractStructure.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/ClassStructure.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/EnumerationStructure.java" />
         <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeParser.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeViewParser.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeViewScratchParser.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/BubbleView.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/bubble.css" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/GraphController.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/nodes/Bubble.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/SourceCodeController.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/startView.fxml" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/StartController.java" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/mainView.fxml" />
+        <option value="$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/TabController.java" />
       </list>
     </option>
   </component>
@@ -159,10 +194,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-3" />
-    <option name="y" value="25" />
-    <option name="width" value="1926" />
-    <option name="height" value="1178" />
+    <option name="x" value="-174" />
+    <option name="y" value="-877" />
+    <option name="width" value="1600" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -180,6 +215,8 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -216,14 +253,188 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaanburaksener" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoUML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoBubbles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoBubbles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaanburaksener" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoUML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoBubbles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoBubbles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaanburaksener" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoUML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fxml" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoBubbles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoBubbles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaanburaksener" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoUML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoBubbles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoBubbles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaanburaksener" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoUML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoBubbles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoBubbles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaanburaksener" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoBubbles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="octoBubbles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaanburaksener" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -305,6 +516,61 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
     <configuration default="true" type="AntRunConfiguration" factoryName="Ant Target">
       <method />
     </configuration>
@@ -380,27 +646,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="INTERPRETER_PATH" value="/bin/bash" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="BatchConfigurationType" factoryName="Batch">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <module name="" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
       <method />
     </configuration>
     <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
@@ -541,13 +786,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
-      <node-interpreter value="project" />
-      <working-dir value="" />
-      <envs />
-      <scope-kind value="ALL" />
-      <method />
-    </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
       <config-file value="" />
       <node-interpreter value="project" />
@@ -555,6 +793,31 @@
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="octoBubbles" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="RemoteFlashRunConfigurationType" factoryName="Flash Remote Debug">
@@ -722,47 +985,55 @@
       <workItem from="1493886890122" duration="13428000" />
       <workItem from="1493964542264" duration="26909000" />
       <workItem from="1494022775420" duration="592000" />
+      <workItem from="1494024290631" duration="225000" />
+      <workItem from="1494024780285" duration="84000" />
+      <workItem from="1494071224382" duration="20877000" />
+      <workItem from="1494151260266" duration="3929000" />
+      <workItem from="1494196798468" duration="7816000" />
+      <workItem from="1494232392941" duration="24227000" />
+      <workItem from="1494265153148" duration="6457000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="353758000" />
+    <option name="totallyTimeSpent" value="417373000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3" y="25" width="1926" height="1178" extended-state="6" />
+    <frame x="-174" y="-877" width="1600" height="877" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32714844" sideWeight="0.4875" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32615384" sideWeight="0.4875" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17326732" sideWeight="0.41" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="PsiViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17821783" sideWeight="0.59" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32910156" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12153846" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17821783" sideWeight="0.59" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910156" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17235859" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.259375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09863281" sideWeight="0.420625" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08292079" sideWeight="0.420625" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24628712" sideWeight="0.521875" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25742576" sideWeight="0.521875" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920793" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="PsiViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -805,7 +1076,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="193" />
+      <option name="time" value="229" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -814,380 +1085,276 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/model/AttributeStructure.java">
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/ast/PackageDeclaration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        <state relative-caret-position="315">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/printer/PrettyPrinterConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/printer/SourcePrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/printer/PrettyPrintVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/printer/PrettyPrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-source-code/Kissable.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/model/NodeHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="e#481#482#0" expanded="false" />
+            <element signature="e#544#545#0" expanded="false" />
+            <element signature="e#794#795#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/Graph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="200" column="0" lean-forward="false" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+          <folding>
+            <element signature="e#6578#6579#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/nodes/AbstractNodeView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding>
+            <element signature="e#1001#1002#0" expanded="false" />
+            <element signature="e#1031#1032#0" expanded="false" />
+            <element signature="e#1359#1360#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/eawt/_AppEventHandler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/Providers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/utils/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="65">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/GeneratedJavaParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/ast/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5685">
+          <caret line="445" column="0" lean-forward="false" selection-start-line="445" selection-start-column="0" selection-end-line="445" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/helper/ParameterComparator.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/model/ParameterStructure.java">
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/JavaParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="263">
+          <caret line="531" column="0" lean-forward="false" selection-start-line="531" selection-start-column="0" selection-end-line="531" selection-end-column="0" />
           <folding>
-            <element signature="e#354#355#0" expanded="false" />
-            <element signature="e#385#386#0" expanded="false" />
-            <element signature="e#412#413#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/ast/nodeTypes/NodeWithMembers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="187" column="30" lean-forward="false" selection-start-line="187" selection-start-column="30" selection-end-line="187" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/ast/body/MethodDeclaration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="123" column="38" lean-forward="true" selection-start-line="123" selection-start-column="38" selection-end-line="123" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/ast/type/VoidType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="37" column="39" lean-forward="false" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/ast/type/Type.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="36" column="22" lean-forward="false" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-source-code/Teacher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="46" column="21" lean-forward="true" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-source-code/Submission.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-source-code/Course.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-235">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/ast/body/Parameter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="152" column="21" lean-forward="false" selection-start-line="152" selection-start-column="21" selection-end-line="152" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/ast/NodeList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/utils/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/StringProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/Providers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/ParserConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/eawt/_AppEventHandler.class" />
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/JavaParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="293" column="0" lean-forward="false" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/ast/body/VariableDeclarator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="55" column="11" lean-forward="false" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/ast/nodeTypes/NodeWithVariables.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="45" column="14" lean-forward="false" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/ast/CompilationUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="152" column="30" lean-forward="false" selection-start-line="152" selection-start-column="30" selection-end-line="152" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/ast/body/TypeDeclaration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-465">
-          <caret line="47" column="22" lean-forward="false" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/ast/body/ClassOrInterfaceDeclaration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="63" column="18" lean-forward="true" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/model/MethodStructure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding>
-            <element signature="e#1224#1225#0" expanded="false" />
-            <element signature="e#1262#1263#0" expanded="false" />
-            <element signature="e#1390#1391#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/controller/ASTNodeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding>
-            <element signature="e#1152#1153#0" expanded="true" />
-            <element signature="e#1185#1186#0" expanded="true" />
-            <element signature="e#1288#1289#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/javafx-src.zip!/javafx/application/Platform.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/EnumerationStructure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="e#766#767#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/InterfaceStructure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#405#406#0" expanded="false" />
+            <element signature="e#9723#9724#0" expanded="false" />
+            <element signature="e#9761#9762#0" expanded="false" />
+            <element signature="e#22759#22760#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/nodes/ClassNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/ClassStructure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+        <state relative-caret-position="100">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding>
-            <element signature="e#1983#1984#0" expanded="false" />
+            <element signature="e#2069#2070#0" expanded="false" />
+            <element signature="e#2105#2106#0" expanded="false" />
+            <element signature="e#2138#2139#0" expanded="false" />
+            <element signature="e#2168#2169#0" expanded="false" />
+            <element signature="e#2195#2196#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/nodes/AbstractNode.java">
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/model/ParameterStructure.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="222" column="13" lean-forward="true" selection-start-line="222" selection-start-column="13" selection-end-line="222" selection-end-column="13" />
+        <state relative-caret-position="180">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1-sources.jar!/com/github/javaparser/ast/Node.java">
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/ast/NodeList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="186" column="0" lean-forward="false" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
+        <state relative-caret-position="190">
+          <caret line="401" column="0" lean-forward="false" selection-start-line="401" selection-start-column="0" selection-end-line="401" selection-end-column="0" />
+          <folding>
+            <element signature="e#9981#9982#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/ast/body/TypeDeclaration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="151" column="0" lean-forward="false" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+          <folding>
+            <element signature="e#5810#5811#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/ast/expr/SimpleName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding>
+            <element signature="e#2674#2675#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/ast/nodeTypes/NodeWithSimpleName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <element signature="e#1518#1519#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/ast/body/ClassOrInterfaceDeclaration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+          <folding>
+            <element signature="e#5693#5694#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/ast/CompilationUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="423" column="0" lean-forward="false" selection-start-line="423" selection-start-column="0" selection-end-line="423" selection-end-column="0" />
+          <folding>
+            <element signature="e#6120#6121#0" expanded="false" />
+            <element signature="e#6148#6149#0" expanded="false" />
+            <element signature="e#13479#13480#0" expanded="false" />
+            <element signature="e#13537#13538#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/model/MethodStructure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-source-code/Color.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-source-code/Killable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/AbstractStructure.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/Region.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/nodes/AbstractNodeView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding>
-            <element signature="e#1335#1336#0" expanded="false" />
-            <element signature="e#1359#1360#0" expanded="false" />
-            <element signature="e#1471#1472#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/SourceCodeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3000">
-          <caret line="97" column="32" lean-forward="false" selection-start-line="97" selection-start-column="32" selection-end-line="97" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/util/commands/AddDeleteSimpleEdgeCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="61" column="7" lean-forward="true" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
+        <state relative-caret-position="420">
+          <caret line="28" column="38" lean-forward="false" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/util/commands/AddDeleteEdgeCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/ClassStructure.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+        <state relative-caret-position="90">
+          <caret line="6" column="55" lean-forward="true" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/util/commands/ReplaceEdgeCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/EnumerationStructure.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12480">
-          <caret line="381" column="50" lean-forward="true" selection-start-line="381" selection-start-column="50" selection-end-line="381" selection-end-column="50" />
+        <state relative-caret-position="-139">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#44442#44443#0" expanded="true" />
-            <element signature="e#44470#44471#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="false" />
+            <element signature="e#859#860#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/util/commands/UndoManager.java">
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/model/nodes/InterfaceStructure.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-813">
-          <caret line="52" column="7" lean-forward="true" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/RecognizeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="999">
-          <caret line="91" column="61" lean-forward="true" selection-start-line="91" selection-start-column="61" selection-end-line="91" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-source-code/Assignment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="688">
-          <caret line="69" column="49" lean-forward="false" selection-start-line="69" selection-start-column="49" selection-end-line="69" selection-end-column="49" />
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <element signature="e#1447#1448#0" expanded="false" />
-            <element signature="e#1484#1485#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.0.1.jar!/com/github/javaparser/ast/Node.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="214" column="36" lean-forward="false" selection-start-line="214" selection-start-column="36" selection-end-line="214" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javaparser-core-3.2.3-sources.jar!/com/github/javaparser/ast/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="381" column="42" lean-forward="false" selection-start-line="381" selection-start-column="23" selection-end-line="381" selection-end-column="42" />
-          <folding>
-            <element signature="e#13634#13635#0" expanded="true" />
-            <element signature="e#13683#13684#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeViewParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1264">
-          <caret line="92" column="47" lean-forward="false" selection-start-line="92" selection-start-column="47" selection-end-line="92" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#315#316#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/util/BubbleParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="225" column="28" lean-forward="false" selection-start-line="225" selection-start-column="28" selection-end-line="225" selection-end-column="28" />
+        <state relative-caret-position="315">
+          <caret line="36" column="34" lean-forward="true" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1196,26 +1363,187 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="300" column="32" lean-forward="false" selection-start-line="300" selection-start-column="32" selection-end-line="300" selection-end-column="32" />
-          <folding />
+        <state relative-caret-position="5925">
+          <caret line="403" column="5" lean-forward="false" selection-start-line="403" selection-start-column="5" selection-end-line="403" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/dialog/EdgeEditDialogController.java">
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeViewParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="69" column="68" lean-forward="false" selection-start-line="69" selection-start-column="68" selection-end-line="69" selection-end-column="68" />
+        <state relative-caret-position="255">
+          <caret line="39" column="35" lean-forward="true" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml">
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/util/NodeViewScratchParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4200">
+          <caret line="280" column="99" lean-forward="false" selection-start-line="280" selection-start-column="99" selection-end-line="280" selection-end-column="99" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/AbstractDiagramController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14400">
+          <caret line="1167" column="16" lean-forward="true" selection-start-line="1167" selection-start-column="16" selection-end-line="1167" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/CreateNodeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-853">
+          <caret line="78" column="16" lean-forward="false" selection-start-line="78" selection-start-column="16" selection-end-line="78" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-source-code/Assignment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/bubble.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="116" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/ast/controller/ASTNodeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-821">
+          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/nodes/AbstractNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2730">
+          <caret line="208" column="0" lean-forward="false" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
+          <folding>
+            <element signature="e#6478#6479#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/model/nodes/Bubble.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="31" lean-forward="true" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/BubbleView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2222">
+          <caret line="206" column="12" lean-forward="false" selection-start-line="206" selection-start-column="12" selection-end-line="206" selection-end-column="12" />
+          <folding>
+            <element signature="e#4734#4735#0" expanded="true" />
+            <element signature="e#4776#4777#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/ClassDiagramController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6045">
+          <caret line="403" column="13" lean-forward="true" selection-start-line="403" selection-start-column="13" selection-end-line="403" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/GraphController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="683">
+          <caret line="82" column="92" lean-forward="true" selection-start-line="82" selection-start-column="92" selection-end-line="82" selection-end-column="92" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/NodeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3120">
+          <caret line="44" column="43" lean-forward="true" selection-start-line="44" selection-start-column="43" selection-end-line="44" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/SourceCodeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6736">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/nodes/ClassNodeView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2836">
+          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/TabController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="20" lean-forward="true" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/mainView.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="100" lean-forward="false" selection-start-line="16" selection-start-column="100" selection-end-line="16" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/controller/StartController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="43" column="1" lean-forward="false" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/kaanburaksener/octoUML/src/view/fxml/startView.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
   </component>

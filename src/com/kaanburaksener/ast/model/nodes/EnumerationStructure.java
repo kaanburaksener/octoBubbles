@@ -1,5 +1,9 @@
 package com.kaanburaksener.ast.model.nodes;
 
+import com.github.javaparser.ast.CompilationUnit;
+
+import com.kaanburaksener.ast.util.NodeParser;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +20,7 @@ public class EnumerationStructure extends AbstractStructure {
      */
     public EnumerationStructure(String name, String path) {
         super(name, path);
-        this.values = new ArrayList<String>();
+        this.values = new ArrayList<>();
     }
 
     public List<String> getAllValues() {
@@ -33,6 +37,20 @@ public class EnumerationStructure extends AbstractStructure {
 
     public String getType(){
         return type;
+    }
+
+    public void updateCompilationUnit(CompilationUnit compilationUnit) {
+        super.updateCompilationUnit(compilationUnit);
+        clearEnumerationStructureMembers();
+        reloadEnumerationStructureMembers();
+    }
+
+    public void clearEnumerationStructureMembers() {
+        values.clear();
+    }
+
+    public void reloadEnumerationStructureMembers() {
+        NodeParser.loadNodeAttributesOrValues(this);
     }
 
     @Override

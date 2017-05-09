@@ -4,11 +4,15 @@ import com.kaanburaksener.octoUML.src.model.Sketch;
 import com.kaanburaksener.octoUML.src.util.Constants;
 import com.kaanburaksener.octoUML.src.view.edges.SimpleEdgeView;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 
@@ -31,7 +35,6 @@ public class GraphController {
         diagramController = pDiagramController;
         aScrollPane = pScrollPane;
 
-        // center the scroll contents.
         aScrollPane.setHvalue(aScrollPane.getHmin() + (aScrollPane.getHmax() - aScrollPane.getHmin()) / 2);
         aScrollPane.setVvalue(aScrollPane.getVmin() + (aScrollPane.getVmax() - aScrollPane.getVmin()) / 2);
         aScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -45,8 +48,8 @@ public class GraphController {
 
     void movePane(MouseEvent event) {
         ScrollPane scrollPane = diagramController.getScrollPane();
-        double xScroll =  (initMoveX - event.getSceneX())/8000; //8000 is the size of aDrawPane set in view.classDiagramView.fxml
-        double yScroll = (initMoveY - event.getSceneY())/8000;
+        double xScroll =  (initMoveX - event.getSceneX()) / 8000; //8000 is the size of aDrawPane set in view.classDiagramView.fxml
+        double yScroll = (initMoveY - event.getSceneY()) / 8000;
 
         scrollPane.setHvalue(scrollPane.getHvalue() + xScroll);
         scrollPane.setVvalue(scrollPane.getVvalue() + yScroll);
@@ -60,10 +63,17 @@ public class GraphController {
         initMoveY = 0;
     }
 
+    //------------------------------------ MAKE VIEWPORT CENTER AFTER BUBBLES APPEARED -------------------------------
+
     void zoomPane(double newZoom) {
-        double scale = newZoom/100;
-        aDrawPane.setScaleX(scale);
-        aDrawPane.setScaleY(scale);
+        double scale = newZoom / 100;
+
+        final Timeline timeline = new Timeline();
+        final KeyValue kv1 = new KeyValue(aDrawPane.scaleXProperty(), scale);
+        final KeyValue kv2 = new KeyValue(aDrawPane.scaleYProperty(), scale);
+        final KeyFrame kf = new KeyFrame(Duration.millis(100), kv1, kv2);
+        timeline.getKeyFrames().add(kf);
+        timeline.play();
     }
 
     void ensureVisible(double x, double y) {
@@ -72,8 +82,15 @@ public class GraphController {
         double xScroll = (x - scrollPane.getWidth() / 2) / (8000 - scrollPane.getWidth());
         double yScroll = (y - scrollPane.getHeight() / 2) / (8000 - scrollPane.getHeight());
 
-        scrollPane.setHvalue(xScroll);
-        scrollPane.setVvalue(yScroll);
+        final Timeline timeline = new Timeline();
+        final KeyValue kv1 = new KeyValue(scrollPane.hvalueProperty(), xScroll);
+        final KeyValue kv2 = new KeyValue(scrollPane.vvalueProperty(), yScroll);
+        final KeyFrame kf = new KeyFrame(Duration.millis(100), kv1, kv2);
+        timeline.getKeyFrames().add(kf);
+        timeline.play();
+
+        aScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        aScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
     }
 
     //------------------------------------ GRID -------------------------------

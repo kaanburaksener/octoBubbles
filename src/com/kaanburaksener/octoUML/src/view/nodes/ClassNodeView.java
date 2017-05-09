@@ -211,6 +211,14 @@ public class ClassNodeView extends AbstractNodeView implements NodeView {
 
     public String getTitle() { return title.getText(); }
 
+    public boolean isAnInterface() {
+        if(type.getText().indexOf("<") != -1) {
+            return true;
+        }
+
+        return false;
+    }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         super.propertyChange(evt);

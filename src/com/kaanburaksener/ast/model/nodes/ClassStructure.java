@@ -1,9 +1,12 @@
 package com.kaanburaksener.ast.model.nodes;
 
+import com.github.javaparser.ast.CompilationUnit;
+
 import com.kaanburaksener.ast.model.AssociationStructure;
 import com.kaanburaksener.ast.model.AssociationType;
 import com.kaanburaksener.ast.model.AttributeStructure;
 import com.kaanburaksener.ast.model.MethodStructure;
+import com.kaanburaksener.ast.util.NodeParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +26,9 @@ public class ClassStructure extends AbstractStructure {
      */
     public ClassStructure(String name, String path) {
         super(name, path);
-        this.methods = new ArrayList<MethodStructure>();
-        this.attributes = new ArrayList<AttributeStructure>();
-        this.associationList = new ArrayList<AssociationStructure>();
+        this.methods = new ArrayList<>();
+        this.attributes = new ArrayList<>();
+        this.associationList = new ArrayList<>();
     }
 
     public void addAssociation(AssociationType type, String className) {
@@ -68,6 +71,23 @@ public class ClassStructure extends AbstractStructure {
         return type;
     }
 
+    public void updateCompilationUnit(CompilationUnit compilationUnit) {
+        super.updateCompilationUnit(compilationUnit);
+        clearClassStructureMembers();
+        reloadClassStructureMembers();
+    }
+
+    public void clearClassStructureMembers() {
+        methods.clear();
+        attributes.clear();
+        associationList.clear();
+    }
+
+    public void reloadClassStructureMembers() {
+        NodeParser.loadNodeAttributesOrValues(this);
+        NodeParser.loadNodeMethods(this);
+    }
+
     @Override
     public void printStructure() {
         super.printStructure();
@@ -78,8 +98,6 @@ public class ClassStructure extends AbstractStructure {
 
     public void printAssociations() {
         if(associationList.size() > 0) {
-            System.out.print("Associations -> ");
-
             associationList.stream().forEach(a -> {
                 System.out.println(a.getAssociatedClassName() + " (" + a.getType() + "), ");
             });

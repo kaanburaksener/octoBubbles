@@ -355,18 +355,18 @@ public class ClassDiagramController extends AbstractDiagramController {
 
         //---------------------- Actions for buttons ----------------------------
         createBtn.setOnAction(event -> {
-                tool = ToolEnum.CREATE_CLASS;
-                setButtonClicked(createBtn);
+            tool = ToolEnum.CREATE_CLASS;
+            setButtonClicked(createBtn);
         });
 
         enumBtn.setOnAction(event -> {
-                tool = ToolEnum.CREATE_ENUM;
-                setButtonClicked(enumBtn);
+            tool = ToolEnum.CREATE_ENUM;
+            setButtonClicked(enumBtn);
         });
 
         packageBtn.setOnAction(event -> {
-                tool = ToolEnum.CREATE_PACKAGE;
-                setButtonClicked(packageBtn);
+            tool = ToolEnum.CREATE_PACKAGE;
+            setButtonClicked(packageBtn);
         });
 
         edgeBtn.setOnAction(event -> {
@@ -380,8 +380,8 @@ public class ClassDiagramController extends AbstractDiagramController {
         });
 
         drawBtn.setOnAction(event -> {
-                tool = ToolEnum.DRAW;
-                setButtonClicked(drawBtn);
+            tool = ToolEnum.DRAW;
+            setButtonClicked(drawBtn);
         });
 
         moveBtn.setOnAction(event -> {
@@ -400,7 +400,7 @@ public class ClassDiagramController extends AbstractDiagramController {
         sourceCodeBtn.setOnAction(event -> {
             if(!selectedNodes.isEmpty()) {
                 setButtonClicked(sourceCodeBtn);
-                sourceCodeController.recognize(selectedNodes);
+                sourceCodeController.performSynchronization(selectedNodes);
             }
         });
 
@@ -474,11 +474,11 @@ public class ClassDiagramController extends AbstractDiagramController {
                 mode = Mode.NO_MODE;
                 setButtonClicked(selectBtn);
             }
+
+            event.consume();
         });
 
-        bubbleView.getSaveButton().setOnAction(event -> {
-
-        });
+        //////////////////////////// Actions for buttons in case of change in source code of a bubbleView
 
         bubbleView.getTextArea().textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -489,17 +489,29 @@ public class ClassDiagramController extends AbstractDiagramController {
                     if(!newValue.equals(oldValue)) {
                         CompilationUnit compilationUnit = JavaParser.parse(newValue);
                         BubbleParser bubbleParser = new BubbleParser(compilationUnit, bubbleView.getRefNode().getRefNode(), astNodeController);
+                        bubbleParser.projectChangesInBubble();
                     }
+                });
+
+                bubbleView.getCancelButton().setOnAction(event -> {
+                    bubbleView.arrangeLayoutAfterChange();
+                    bubbleView.revertChangeInSourceCode(bubbleView.getRefNode().getSourceCodeText());
                 });
             }
         });
 
         //////////////////////////////////////////////////////////////// For touch screen
 
-        bubbleView.setOnTouchPressed(event -> {});
+        bubbleView.setOnTouchPressed(event -> {
+            //TODO - Bubbles should be dragged by touch screen
+        });
 
-        bubbleView.setOnTouchMoved(event -> {});
+        bubbleView.setOnTouchMoved(event -> {
+            //TODO - Bubbles should be dragged by touch screen
+        });
 
-        bubbleView.setOnTouchReleased(event -> {});
+        bubbleView.setOnTouchReleased(event -> {
+            //TODO - Bubbles should be dragged by touch screen
+        });
     }
 }

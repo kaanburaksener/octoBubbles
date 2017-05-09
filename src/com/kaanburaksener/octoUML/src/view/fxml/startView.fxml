@@ -14,8 +14,7 @@
             </top>
             <center>
                 <VBox alignment="CENTER">
-                    <Label text="OctoUML" fx:id="titleLabel"/>
-                    <Label text="Choose diagram type" fx:id="subTitleLabel"/>
+                    <Label text="OctoBubbles" fx:id="titleLabel"/>
                 </VBox>
             </center>
         </BorderPane>
@@ -23,8 +22,6 @@
     <center>
         <HBox alignment="CENTER" spacing="10">
             <Button fx:id="classDiagramButton" text="New Class Diagram" onAction="#handleActionNewClassDiagram"/>
-            <Button fx:id="sequenceDiagramButton" text="New Sequence Diagram" onAction="#handleActionNewSequenceDiagram"/>
         </HBox>
     </center>
-
 </BorderPane>

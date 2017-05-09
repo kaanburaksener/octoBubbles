@@ -17,8 +17,6 @@ import com.kaanburaksener.octoUML.src.view.nodes.ClassNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.EnumerationNodeView;
 import com.kaanburaksener.octoUML.src.view.nodes.NodeView;
 
-import javafx.application.Platform;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,13 +33,25 @@ public class SourceCodeController {
     private double borderX, borderY, borderWidth, borderHeight;
 
     public SourceCodeController(AbstractDiagramController pController, ASTNodeController astNodeController) {
-        diagramController = pController;
-        graph = diagramController.getGraphModel();
+        this.diagramController = pController;
+        this.graph = diagramController.getGraphModel();
         this.astNodeController = astNodeController;
     }
 
-    public synchronized void recognize(ArrayList<AbstractNodeView> selectedNodes) {
-        recognizedNodes = new ArrayList<>();
+    public synchronized void performSynchronization(ArrayList<AbstractNodeView> selectedNodes) {
+        recognize(selectedNodes);
+        match();
+        drawBorders();
+        createRegionsInBorder();
+        createBubbles();
+        rescaleView();
+    }
+
+    /**
+     * Recognizes all type of nodes in the UML diagram
+     */
+    private void recognize(ArrayList<AbstractNodeView> selectedNodes) {
+        this.recognizedNodes = new ArrayList<>();
 
         for(AbstractNodeView selectedNode : selectedNodes) {
             if(diagramController.findBubbleView(selectedNode.getRefNode()) == null) {
@@ -52,12 +62,6 @@ public class SourceCodeController {
                 }
             }
         }
-
-        match();
-        drawBorders();
-        createRegionsInBorder();
-        createBubbles();
-        rescaleView();
     }
 
     /**
@@ -67,16 +71,26 @@ public class SourceCodeController {
         astNodeController.initialize();
         existingNodes = astNodeController.getNodeHolder().getAllNodes();
 
+        boolean isFound;
+        BubbleParser bubbleParser;
+
         for(AbstractNode graphNode: recognizedNodes) {
-            existingNodes.stream().forEach(existingNode -> {
+            isFound = false;
+
+            for (AbstractStructure existingNode : existingNodes) {
                 if(graphNode.getType().equals(existingNode.getType())) {
                     if(graphNode.getTitle().equals(existingNode.getName())) {
                         graphNode.setRefExistingNode(existingNode);
-                        BubbleParser bubbleParser = new BubbleParser(existingNode.getCompilationUnit(), graphNode, astNodeController);
+                        bubbleParser = new BubbleParser(existingNode.getCompilationUnit(), graphNode, astNodeController);
                         bubbleParser.projectChangesInBubble();
+                        isFound = true;
                     }
                 }
-            });
+            }
+
+            if(!isFound) {
+                astNodeController.createNewJavaFile(graphNode); //AbstractNode doesn't exist in the target folder, needs to be created
+            }
         }
     }
 
@@ -210,7 +224,7 @@ public class SourceCodeController {
                 tempFirst = nodeView.getX() - borderX; //x-axis through left
                 tempSecond = nodeView.getY() - borderY; //y-axis through top
 
-                if(tempFirst <= tempSecond) {//Closest Direction is LEFT
+                if(tempFirst <= tempSecond) { //Closest Direction is LEFT
                     closestDirectionX = borderX - margin;
                     closestDirectionY = nodeView.getY() + (nodeView.getHeight() / 2);
 
@@ -227,7 +241,7 @@ public class SourceCodeController {
                             bubbleX -= shiftingPortion;
                         }
                     }
-                } else {//Closest Direction is TOP
+                } else { //Closest Direction is TOP
                     closestDirectionX = nodeView.getX() + (nodeView.getWidth() / 2);
                     closestDirectionY = borderY - margin;
 
@@ -250,7 +264,7 @@ public class SourceCodeController {
                 tempFirst = (borderX + borderWidth) - (nodeView.getX() + nodeView.getWidth()); //x-axis through right
                 tempSecond = nodeView.getY() - borderY; //y-axis through top
 
-                if(tempFirst <= tempSecond) {//Closest Direction is RIGHT
+                if(tempFirst <= tempSecond) { //Closest Direction is RIGHT
                     closestDirectionX = borderX + borderWidth + margin;
                     closestDirectionY = nodeView.getY() + (nodeView.getHeight() / 2);
 
@@ -267,7 +281,7 @@ public class SourceCodeController {
                             bubbleX += shiftingPortion;
                         }
                     }
-                } else {//Closest Direction is TOP
+                } else { //Closest Direction is TOP
                     closestDirectionX = nodeView.getX() + (nodeView.getWidth() / 2);
                     closestDirectionY = borderY - margin;
 
@@ -290,7 +304,7 @@ public class SourceCodeController {
                 tempFirst = (borderX + borderWidth) - (nodeView.getX() + nodeView.getWidth()); //x-axis through right
                 tempSecond = (borderY + borderHeight) - (nodeView.getY() + nodeView.getHeight()); //y-axis through bottom
 
-                if(tempFirst <= tempSecond) {//Closest Direction is RIGHT
+                if(tempFirst <= tempSecond) { //Closest Direction is RIGHT
                     closestDirectionX = borderX + borderWidth + margin;
                     closestDirectionY = nodeView.getY() + (nodeView.getHeight() / 2);
 
@@ -307,7 +321,7 @@ public class SourceCodeController {
                             bubbleX += shiftingPortion;
                         }
                     }
-                } else {//Closest Direction is BOTTOM
+                } else { //Closest Direction is BOTTOM
                     closestDirectionX = nodeView.getX() + (nodeView.getWidth() / 2);
                     closestDirectionY = borderY + borderHeight + margin;
 
@@ -330,7 +344,7 @@ public class SourceCodeController {
                 tempFirst = nodeView.getX() - borderX; //x-axis through left
                 tempSecond = (borderY + borderHeight) - (nodeView.getY() + nodeView.getHeight()); //y-axis through bottom
 
-                if(tempFirst <= tempSecond) {//Closest Direction is LEFT
+                if(tempFirst <= tempSecond) { //Closest Direction is LEFT
                     closestDirectionX = borderX - margin;
                     closestDirectionY = nodeView.getY() + (nodeView.getHeight() / 2);
 
@@ -348,7 +362,7 @@ public class SourceCodeController {
                             bubbleX -= shiftingPortion;
                         }
                     }
-                } else {//Closest Direction is BOTTOM
+                } else { //Closest Direction is BOTTOM
                     closestDirectionX = nodeView.getX() + (nodeView.getWidth() / 2);
                     closestDirectionY = borderY + borderHeight + margin;
 
@@ -431,9 +445,11 @@ public class SourceCodeController {
      * Rescale viewport to show all the UML model and bubbles together
      */
     private void rescaleView() {
-        double MARGIN = 5.0;
+        final double MARGIN = 50.0;
+        final double MARGIN_SCALE = 5.0;
 
         List<BubbleView> bubbleViews = new ArrayList<>(diagramController.getAllBubbleViews());
+        List<AbstractNodeView> nodeViews = new ArrayList<>(diagramController.getAllNodeViews());
 
         if(bubbleViews.size() > 0) {
             double xMin = bubbleViews.get(0).getX();
@@ -441,32 +457,50 @@ public class SourceCodeController {
             double xMax = bubbleViews.get(0).getX() + bubbleViews.get(0).getWidth();
             double yMax = bubbleViews.get(0).getY() + bubbleViews.get(0).getHeight();
 
-            for(int i = 1; i < bubbleViews.size(); i++) {
+            for(int i = 1; i < bubbleViews.size(); i++) { //Check all bubbleViews
                 if((bubbleViews.get(i).getX() + bubbleViews.get(i).getWidth()) > xMax) {
                     xMax = bubbleViews.get(i).getX() + bubbleViews.get(i).getWidth();
                 }
-
                 if(bubbleViews.get(i).getX() < xMin) {
                     xMin = bubbleViews.get(i).getX();
                 }
-
                 if((bubbleViews.get(i).getY() + bubbleViews.get(i).getHeight()) > yMax) {
                     yMax = bubbleViews.get(i).getY() + bubbleViews.get(i).getHeight();
                 }
-
                 if(bubbleViews.get(i).getY() < yMin) {
                     yMin = bubbleViews.get(i).getY();
                 }
             }
 
+            for(int i = 0; i < nodeViews.size(); i++) { //Check all nodeViews
+                if((nodeViews.get(i).getX() + nodeViews.get(i).getWidth()) > xMax) {
+                    xMax = nodeViews.get(i).getX() + nodeViews.get(i).getWidth();
+                }
+                if(nodeViews.get(i).getX() < xMin) {
+                    xMin = nodeViews.get(i).getX();
+                }
+                if((nodeViews.get(i).getY() + nodeViews.get(i).getHeight()) > yMax) {
+                    yMax = nodeViews.get(i).getY() + nodeViews.get(i).getHeight();
+                }
+                if(nodeViews.get(i).getY() < yMin) {
+                    yMin = nodeViews.get(i).getY();
+                }
+            }
+
+            xMin -= MARGIN;
+            yMin -= MARGIN;
+            xMax += MARGIN;
+            yMax += MARGIN;
+
             final double scrollPaneWidth = diagramController.getScrollPane().getWidth();
             final double scrollPaneHeight = diagramController.getScrollPane().getHeight();
             final double contentsWidth = xMax - xMin;
             final double contentsHeight = yMax - yMin;
+
             double toBeScaled = Math.min(scrollPaneHeight / contentsHeight, scrollPaneWidth / contentsWidth) * 100;
 
-            diagramController.getGraphController().zoomPane(toBeScaled - MARGIN);
-            diagramController.zoomSlider.setValue(toBeScaled - MARGIN);
+            diagramController.getGraphController().zoomPane(toBeScaled - MARGIN_SCALE);
+            diagramController.zoomSlider.setValue(toBeScaled - MARGIN_SCALE);
             diagramController.getGraphController().ensureVisible((xMax + xMin) / 2, (yMax + yMin) / 2);
             diagramController.getGraphController().simplesEdgesToBack();
         }

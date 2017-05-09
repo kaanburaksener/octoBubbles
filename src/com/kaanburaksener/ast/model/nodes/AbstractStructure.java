@@ -2,7 +2,14 @@ package com.kaanburaksener.ast.model.nodes;
 
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.Modifier;
-import com.kaanburaksener.octoUML.src.model.nodes.AbstractNode;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
+
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import java.util.List;
 
@@ -10,8 +17,10 @@ import java.util.List;
  * Created by kaanburaksener on 16/02/17.
  */
 public class AbstractStructure {
+    private static final double MAX_BUBBLE_HEIGHT = 475.0;
+    private static final double MIN_BUBBLE_HEIGHT = 200.0;
+    private final String targetFolderPath = "test-source-code";
     private static final String type = "ABSTRACT";
-    private AbstractNode refNode;
     private List<Modifier> accessModifiers;
     private String name;
     private String path;
@@ -20,14 +29,6 @@ public class AbstractStructure {
     public AbstractStructure(String name, String path) {
         this.name = name;
         this.path = path;
-    }
-
-    public AbstractNode getRefNode() {
-        return refNode;
-    }
-
-    public void setRefNode(AbstractNode refNode) {
-        this.refNode = refNode;
     }
 
     public List<Modifier> getAccessModifiers() {
@@ -64,16 +65,38 @@ public class AbstractStructure {
 
     public void setCompilationUnit(CompilationUnit compilationUnit) {
         this.compilationUnit = compilationUnit;
+        overwrite();
+    }
+
+    public void updateCompilationUnit(CompilationUnit compilationUnit) {
+        this.compilationUnit = compilationUnit;
+        overwrite();
+    }
+
+    public void overwrite() {
+        try {
+            Path javaFilePath = Paths.get(this.targetFolderPath + path);
+            try (BufferedWriter writer = Files.newBufferedWriter(javaFilePath, StandardCharsets.UTF_8)) {
+                writer.write(compilationUnit.toString());
+            } catch (IOException x) {
+                System.err.format("IOException: %s%n", x);
+            }
+        } catch (Exception e) {
+            System.out.println("Error occured while opening the given file: " + e.getMessage());
+        }
     }
 
     public double calculateHeight() {
+        final double COEFFICIENT = 20.0;
         int totalNumberOfLine = compilationUnit.getRange().get().end.line;
-        double coefficient = 20.0;
+        double total = totalNumberOfLine * COEFFICIENT;
 
-        double total = totalNumberOfLine * coefficient;
+        if(total > MAX_BUBBLE_HEIGHT || total == 1) { //After we create the compilation unit from scratch, somehow end of line returns as 1
+            total = MAX_BUBBLE_HEIGHT;
+        }
 
-        if(total > 450.0) {
-            total = 450.0;
+        if(total < MIN_BUBBLE_HEIGHT) {
+            total = MIN_BUBBLE_HEIGHT;
         }
 
         return total;

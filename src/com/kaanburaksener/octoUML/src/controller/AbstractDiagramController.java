@@ -210,7 +210,6 @@ public abstract class AbstractDiagramController {
         if (!undo) {
             SimpleEdgeView simpleEdgeView = findSimpleEdgeView(bubbleView);
             command.add(new AddDeleteBubbleCommand(this, graph, bubbleView, bubble, false));
-            command.add(new AddDeleteSimpleEdgeCommand(this, simpleEdgeView, simpleEdgeView.getRefEdge(), false));
         }
         if (pCommand == null && !undo) {
             undoManager.add(command);
@@ -376,7 +375,6 @@ public abstract class AbstractDiagramController {
 
         if (!undo && command != null) {
             command.add(new AddDeleteBubbleCommand(this, graph, bubbleView, bubbleView.getRefNode(), false));
-            command.add(new AddDeleteSimpleEdgeCommand(this, simpleEdgeView, simpleEdgeView.getRefEdge(), false));
         }
 
         allSimpleEdgeViews.remove(simpleEdgeView);
@@ -1223,7 +1221,6 @@ public abstract class AbstractDiagramController {
     public void cleanNodeEdges(AbstractNodeView startNodeView) {
         for (AbstractEdgeView edgeView : allEdgeViews){
             if(edgeView.getStartNode().equals(startNodeView)) {
-                //System.out.println("Existing edge: " + edgeView.getStartNode().getRefNode().getTitle() + " -> " + edgeView.getEndNode().getRefNode().getTitle() + " (" + edgeView.getRefEdge().getType() + " )" );
                 deleteEdgeView(edgeView, null, false, false);
             }
         }

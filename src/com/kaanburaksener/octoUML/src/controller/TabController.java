@@ -43,7 +43,6 @@ public class TabController {
     private Map<Tab, AbstractDiagramController> tabMap = new HashMap<>();
 
     public static final String CLASS_DIAGRAM_VIEW_PATH = "com/kaanburaksener/octoUML/src/view/fxml/classDiagramView.fxml";
-    public static final String SEQUENCE_DIAGRAM_VIEW_PATH = "com/kaanburaksener/octoUML/src/view/fxml/sequenceDiagramView.fxml";
 
     @FXML
     public void initialize() {
@@ -75,11 +74,7 @@ public class TabController {
         tab.setContent(canvasView);
         tabMap.put(tab, diagramController);
 
-        if(diagramController instanceof ClassDiagramController){
-            tab.setText("Class Diagram " + tabMap.size());
-        } else {
-            tab.setText("Sequence Diagram " + tabMap.size());
-        }
+        tab.setText("Class Diagram " + tabMap.size());
 
         tabPane.getTabs().add(tab);
         diagramController.setStage(stage);
@@ -89,15 +84,19 @@ public class TabController {
     public void handleMenuActionUML() {
         tabMap.get(tabPane.getSelectionModel().getSelectedItem()).handleMenuActionUML();
     }
+
     public void handleMenuActionSketches() {
         tabMap.get(tabPane.getSelectionModel().getSelectedItem()).handleMenuActionSketches();
     }
+
     public void handleMenuActionGrid() {
         tabMap.get(tabPane.getSelectionModel().getSelectedItem()).handleMenuActionGrid();
     }
+
     public void handleMenuActionMouse() {
         tabMap.get(tabPane.getSelectionModel().getSelectedItem()).handleMenuActionMouse();
     }
+
     public void handleMenuActionExit() {
         Platform.exit();
     }
@@ -105,18 +104,16 @@ public class TabController {
     public void handleMenuActionSave() {
         tabMap.get(tabPane.getSelectionModel().getSelectedItem()).handleMenuActionSave();
     }
+
     public void handleMenuActionLoad() {
         Tab tab = addTab(CLASS_DIAGRAM_VIEW_PATH);
         tabPane.getSelectionModel().select(tab);
         tabMap.get(tab).handleMenuActionLoad();
         tab.setText(tabMap.get(tab).getGraphModel().getName());
     }
+
     public void handleMenuActionNewClassDiagram() {
         Tab tab = addTab(CLASS_DIAGRAM_VIEW_PATH);
-        tabPane.getSelectionModel().select(tab);
-    }
-    public void handleMenuActionNewSequenceDiagram() {
-        Tab tab = addTab(SEQUENCE_DIAGRAM_VIEW_PATH);
         tabPane.getSelectionModel().select(tab);
     }
 

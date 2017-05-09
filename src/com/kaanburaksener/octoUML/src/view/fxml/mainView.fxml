@@ -15,7 +15,6 @@
             <Menu text="File">
                 <items>
                     <MenuItem text="New Class Diagram" onAction="#handleMenuActionNewClassDiagram"/>
-                    <MenuItem text="New Sequence Diagram" onAction="#handleMenuActionNewSequenceDiagram"/>
                     <MenuItem text="Open" onAction="#handleMenuActionLoad"/>
                     <MenuItem text="Save as XMI" onAction="#handleMenuActionSave"/>
                     <MenuItem text="Save as Image" onAction="#handleMenuActionImage"/>

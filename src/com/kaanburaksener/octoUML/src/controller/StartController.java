@@ -16,10 +16,10 @@ import javafx.scene.text.FontWeight;
 public class StartController {
 
     @FXML
-    Button classDiagramButton, sequenceDiagramButton;
+    Button classDiagramButton;
 
     @FXML
-    Label titleLabel, subTitleLabel;
+    Label titleLabel;
 
     TabController tabController;
 
@@ -29,24 +29,13 @@ public class StartController {
         classDiagramButton.setGraphic(new ImageView(icon));
         classDiagramButton.setContentDisplay(ContentDisplay.BOTTOM);
 
-        icon = new Image("com/kaanburaksener/octoUML/src/icons/sequenceDiagram.PNG");
-        sequenceDiagramButton.setGraphic(new ImageView(icon));
-        sequenceDiagramButton.setContentDisplay(ContentDisplay.BOTTOM);
-
         titleLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 60));
         titleLabel.setTextFill(Color.web("#3F4144"));
-
-        subTitleLabel.setFont(Font.font("Verdana", 30));
     }
 
     public void handleActionNewClassDiagram(){
         tabController.getTabPane().getTabs().clear();
         tabController.addTab(TabController.CLASS_DIAGRAM_VIEW_PATH);
-    }
-
-    public void handleActionNewSequenceDiagram(){
-        tabController.getTabPane().getTabs().clear();
-        tabController.addTab(TabController.SEQUENCE_DIAGRAM_VIEW_PATH);
     }
 
     public void setTabController(TabController tc){

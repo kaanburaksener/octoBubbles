@@ -25,7 +25,7 @@ public class BubbleView extends GridPane implements PropertyChangeListener {
 
     private TextArea textArea;
 
-    protected Button cancelBtn, closeBtn, editBtn, extendBtn, saveBtn;
+    protected Button cancelBtn, closeBtn, editBtn, saveBtn;
 
     private Bubble refNode;
 
@@ -75,7 +75,6 @@ public class BubbleView extends GridPane implements PropertyChangeListener {
         add(cancelBtn, 0, 3, 1, 1);
         add(saveBtn, 1, 3, 2, 1);
         add(editBtn, 0, 3, 1, 1);
-        add(extendBtn, 1, 3, 2, 1);
     }
 
     //------------ Init Buttons -------------------------------------------
@@ -92,10 +91,6 @@ public class BubbleView extends GridPane implements PropertyChangeListener {
         editBtn.getStyleClass().add("edit-button");
         editBtn.setVisible(true);
 
-        extendBtn = new Button("");
-        extendBtn.getStyleClass().add("extend-button");
-        extendBtn.setVisible(true);
-
         saveBtn = new Button("");
         saveBtn.getStyleClass().add("save-button");
         saveBtn.setVisible(false);
@@ -109,19 +104,13 @@ public class BubbleView extends GridPane implements PropertyChangeListener {
             cancelBtn.setVisible(false);
             saveBtn.setVisible(false);
             editBtn.setVisible(true);
-            extendBtn.setVisible(true);
         });
 
         editBtn.setOnAction(event ->  {
             textArea.setEditable(true);
             cancelBtn.setVisible(true);
             saveBtn.setVisible(true);
-            extendBtn.setVisible(false);
             editBtn.setVisible(false);
-        });
-
-        extendBtn.setOnAction(event ->  {
-            //TODO OPEN A NEW BIG BUBBLE TO SEE THE CODE BETTER
         });
     }
 
@@ -154,7 +143,6 @@ public class BubbleView extends GridPane implements PropertyChangeListener {
         cancelBtn.setVisible(false);
         saveBtn.setVisible(false);
         editBtn.setVisible(true);
-        extendBtn.setVisible(true);
     }
 
     private void changeBubbleHeight(double height) {
@@ -178,7 +166,7 @@ public class BubbleView extends GridPane implements PropertyChangeListener {
     }
 
     public Button getCancelButton () {
-        return closeBtn;
+        return cancelBtn;
     }
 
     public Button getCloseButton () {
@@ -195,6 +183,10 @@ public class BubbleView extends GridPane implements PropertyChangeListener {
 
     public TextArea getTextArea () {
         return textArea;
+    }
+
+    public void revertChangeInSourceCode(String oldValue) {
+        textArea.setText(oldValue);
     }
 
     public boolean contains(double x, double y) {
