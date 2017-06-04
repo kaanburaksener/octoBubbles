@@ -8,5 +8,5 @@ OctoBubbles tool supports reverse and round-trip engineering features in Java pr
 
 # Documentation
 
-UML model of OctoBubbles tool can be seen at [I'm an inline-style link](https://www.dropbox.com/s/thgk6a8r58uidk6/uml_diagram_octoBubbles.png)
+UML model of OctoBubbles tool can be seen at [link](https://www.dropbox.com/s/thgk6a8r58uidk6/uml_diagram_octoBubbles.png)
 
