@@ -1,5 +1,7 @@
 package com.kaanburaksener.octoUML.src.controller;
 
+import com.github.javaparser.JavaParser;
+import com.github.javaparser.ast.CompilationUnit;
 import com.kaanburaksener.octoUML.src.controller.dialog.GithubLoginDialogController;
 import com.kaanburaksener.octoUML.src.controller.dialog.GithubRepoDialogController;
 import javafx.application.Platform;
@@ -7,13 +9,11 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.CheckMenuItem;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
@@ -24,16 +24,19 @@ import org.eclipse.jgit.api.errors.TransportException;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * The class controlling the top menu and the tabs.
  */
 public class TabController {
-
     @FXML
     private CheckMenuItem umlMenuItem, sketchesMenuItem, mouseMenuItem, gridMenuItem, snapToGridMenuItem, snapIndicatorsMenuItem;
 
@@ -43,6 +46,8 @@ public class TabController {
     private Map<Tab, AbstractDiagramController> tabMap = new HashMap<>();
 
     public static final String CLASS_DIAGRAM_VIEW_PATH = "com/kaanburaksener/octoUML/src/view/fxml/classDiagramView.fxml";
+    private final String PATH = "test-source-code";
+    private final String PACKAGE_NAME = "com.kaanburaksener";
 
     @FXML
     public void initialize() {
@@ -141,6 +146,17 @@ public class TabController {
 
     public void handleMenuActionSnapIndicators() {
         tabMap.get(tabPane.getSelectionModel().getSelectedItem()).handleMenuActionSnapIndicators(snapIndicatorsMenuItem.isSelected());
+    }
+
+    public void handleMenuActionImportCode() {
+        final FileChooser fileChooser = new FileChooser();
+        configureFileChooser(fileChooser);
+        List<File> list = fileChooser.showOpenMultipleDialog(stage);
+        if (list != null) {
+            for (File file : list) {
+                saveFile(file);
+            }
+        }
     }
 
     public void stop(){
@@ -271,6 +287,36 @@ public class TabController {
         }
 
         return controller;
+    }
 
+    private void configureFileChooser(final FileChooser fileChooser) {
+        fileChooser.setTitle("Select Code Files");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Java", "*.java")
+        );
+    }
+
+    private void saveFile(File file){
+        try {
+            String fileName = file.getName();
+            Path javaFilePath = Paths.get(PATH, fileName);
+
+            if (!Files.exists(javaFilePath)) {
+                Files.createFile(javaFilePath);
+                FileInputStream in = new FileInputStream(file);
+                CompilationUnit compilationUnit = JavaParser.parse(in);
+                compilationUnit.setPackageDeclaration(PACKAGE_NAME);
+
+                try (BufferedWriter writer = Files.newBufferedWriter(javaFilePath, StandardCharsets.UTF_8)) {
+                    writer.write(compilationUnit.toString());
+                } catch (IOException x) {
+                    System.err.format("IOException: %s%n", x);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error occured while opening the given file: " + e.getMessage());
+        }
     }
 }

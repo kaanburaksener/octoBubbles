@@ -22,6 +22,7 @@
                     <MenuItem text="Launch Server" onAction="#handleMenuActionServer"/>
                     <MenuItem text="Join as Client" onAction="#handleMenuActionClient"/>
                     <MenuItem text="Upload to GitHub" onAction="#handleMenuActionGit"/>
+                    <MenuItem text="Import Existing Source Code"  onAction="#handleMenuActionImportCode"/>
                     <SeparatorMenuItem/>
                     <CheckMenuItem fx:id="mouseMenuItem" text="Mouse activated" onAction="#handleMenuActionMouse" selected="false"/>
                     <SeparatorMenuItem/>

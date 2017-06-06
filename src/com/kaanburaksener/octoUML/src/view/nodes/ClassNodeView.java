@@ -138,7 +138,7 @@ public class ClassNodeView extends AbstractNodeView implements NodeView {
 
         type = new Label();
         type.setFont(Font.font("Helvetica", FontWeight.BOLD, 13));
-        type.setTextFill(Color.web("#EADB98"));
+        type.setTextFill(Color.web("#4B6299"));
 
         title = new Label();
         title.setFont(Font.font("Verdana", FontWeight.BOLD, 12));

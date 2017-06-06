@@ -129,7 +129,7 @@ public class EnumerationNodeView extends AbstractNodeView implements NodeView
         type = new Label();
         type.setFont(Font.font("Helvetica", FontWeight.BOLD, 13));
         type.setText("<<" + node.getType().toLowerCase() + ">>");
-        type.setTextFill(Color.web("#E48178"));
+        type.setTextFill(Color.web("#4B6299"));
         type.setAlignment(Pos.TOP_CENTER);
 
         title = new Label();
